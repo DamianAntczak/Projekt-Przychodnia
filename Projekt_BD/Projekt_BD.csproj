@@ -65,6 +65,7 @@
       <DependentUpon>201512021149524_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Choroba.cs" />
     <Compile Include="Models\Lekarz.cs" />
     <Compile Include="Models\Recepta.cs" />
     <Compile Include="Models\Specjalizacja.cs" />
@@ -85,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Pacjent.cs" />
+    <Compile Include="Models\Wizyta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
