@@ -10,6 +10,7 @@ namespace Projekt_BD.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "Projekt_BD.DbContext";
         }
 

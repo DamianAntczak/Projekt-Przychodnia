@@ -14,8 +14,7 @@ namespace Projekt_BD
         public Guid IdLekarza { get; set; }
         public String Imie { get; set; }
         public String Nazwisko { get; set; }
-       // [ForeignKey("IdSpecjalizacji")]
-        public Guid IdSpecjalizacji { get; set; }
+        public virtual Specjalizacja Specjalizacja { get; set; }
         public String Adres { get; set; }
     }
 }

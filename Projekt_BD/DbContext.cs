@@ -20,6 +20,16 @@ namespace Projekt_BD
         public DbSet<Lekarz> Lekarze { get; set; } 
         public DbSet<Choroba> Choroby { get; set; }
         public DbSet<Wizyta> Wizyty { get; set; }
+
+        public void OnModeOnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Lekarz>()
+                .HasRequired<Specjalizacja>(s => s.Specjalizacja)
+                .WithMany(s => s.Lekarze)
+                .HasForeignKey(s => s.IdLekarza);
+
+
+        }
     }
 }
 

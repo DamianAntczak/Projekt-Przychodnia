@@ -33,15 +33,23 @@ namespace Projekt_BD
 
             using (var db = new DbContext())
             {
+                db.Database.Delete();
+
                 Guid id = Guid.NewGuid();
 
                 var jan = new Pacjent{ IdPacjenta = id, Imie= "Jan", DataUrodzenie = new DateTime(1994,1,6),Mail = "rower@op.pl"};
 
                 db.Pacjentci.Add(jan);
 
-                var drMarcin = new Lekarz{IdLekarza = Guid.NewGuid(),Adres = "Kwiatowa 12",Imie = "Marcin", Nazwisko = "Nowak"};
+                var kardio = new Specjalizacja {IdSpecjalizacji = Guid.NewGuid(), Nazwa = "Kardiologia"};
+
+                db.Specjalizacje.Add(kardio);
+
+                var drMarcin = new Lekarz{IdLekarza = Guid.NewGuid(),Adres = "Kwiatowa 12",Imie = "Marcin", Nazwisko = "Nowak",Specjalizacja = kardio};
 
                 db.Lekarze.Add(drMarcin);
+
+
 
                 int i = db.SaveChanges();
             }
