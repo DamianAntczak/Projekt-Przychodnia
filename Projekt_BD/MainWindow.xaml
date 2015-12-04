@@ -4,6 +4,7 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Button Content="Utwórz baze" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Label Name="StatusTworzeniaBazy" Content="" HorizontalAlignment="Left" Margin="432,35,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
