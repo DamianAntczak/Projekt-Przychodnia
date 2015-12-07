@@ -16,6 +16,7 @@ using System.Data.Entity;
 using Projekt_BD.Migrations;
 using System.ComponentModel;
 using System.Windows.Threading;
+using Projekt_BD.Views;
 
 namespace Projekt_BD
 {
@@ -30,6 +31,8 @@ namespace Projekt_BD
             worker.DoWork += worker_DoWork;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             InitializeComponent();
+
+            (new Login()).ShowDialog(); //okno logowania
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e) {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,16 @@ namespace Projekt_BD.Views
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void bLogowanie_Click(object sender, RoutedEventArgs e)
+        {
+            if(passwordBox.Password == "admin") Close();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            
         }
     }
 }
