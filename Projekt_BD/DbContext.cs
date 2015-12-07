@@ -20,6 +20,7 @@ namespace Projekt_BD
         public DbSet<Lekarz> Lekarze { get; set; } 
         public DbSet<Choroba> Choroby { get; set; }
         public DbSet<Wizyta> Wizyty { get; set; }
+        public DbSet<Uzytkownik> Uzytkownicy { get; set; }
 
         public void OnModeOnModelCreating(DbModelBuilder modelBuilder)
         {
