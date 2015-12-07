@@ -9,7 +9,7 @@
     <Grid>
         <Label x:Name="label" Content="Przychodnia&#xD;&#xA;Logowanie" FontSize="20" HorizontalAlignment="Stretch" Margin="88,22,61,0" VerticalAlignment="Top" Height="78" RenderTransformOrigin="0.569,-0.051"/>
         <Label x:Name="label1" Content="Login:" HorizontalAlignment="Left" FontSize="16" Margin="29,119,0,0" VerticalAlignment="Top" Width="61"/>
-        <TextBox x:Name="login" HorizontalAlignment="Left" FontSize="16
+        <TextBox x:Name="loginBox" HorizontalAlignment="Left" FontSize="16
                  " Height="26" Margin="90,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
         <Label x:Name="label2" Content="Hasło:" HorizontalAlignment="Left" FontSize="16" Margin="29,166,0,0" VerticalAlignment="Top"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="90,166,0,0" VerticalAlignment="Top" Width="192" Height="28"/>

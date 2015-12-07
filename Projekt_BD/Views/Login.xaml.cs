@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,19 +20,29 @@ namespace Projekt_BD.Views
     /// </summary>
     public partial class Login : Window
     {
+        private SHA1 sha;
+        private byte[] adminPass;
+
         public Login()
         {
             InitializeComponent();
+            sha = new SHA1Managed();
+            adminPass = sha.ComputeHash(Encoding.ASCII.GetBytes("admin"));
         }
 
         private void bLogowanie_Click(object sender, RoutedEventArgs e)
         {
-            if(passwordBox.Password == "admin") Close();
-        }
+            var passHash = sha.ComputeHash(Encoding.ASCII.GetBytes(passwordBox.Password));
+            
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
+
+            if (loginBox.Text == "admin" && passHash.SequenceEqual(passHash))
+            {
+                Close();
+            }
             
         }
+
+
     }
 }
