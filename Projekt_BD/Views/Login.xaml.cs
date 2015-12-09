@@ -23,6 +23,7 @@ namespace Projekt_BD.Views
     {
         private SHA1 sha;
         private byte[] adminPass;
+        private bool sprawdzHaslo = false;
 
         public Login()
         {
@@ -34,7 +35,8 @@ namespace Projekt_BD.Views
         private void bLogowanie_Click(object sender, RoutedEventArgs e)
         {
             var passHash = sha.ComputeHash(Encoding.ASCII.GetBytes(passwordBox.Password));
-            if (SprawdzHaslo(passwordBox.Password, loginBox.Text))
+            sprawdzHaslo = SprawdzHaslo(passwordBox.Password, loginBox.Text);
+            if (sprawdzHaslo)
             {
                 Close();
             }
@@ -66,16 +68,12 @@ namespace Projekt_BD.Views
                 }
             }
         }
-        private void CloseLoginWindow()
-        {
-            this.Close();
-            MainWindow mw = new MainWindow(false);
-        }
-
         private void LoginWindow_Closed(object sender, EventArgs e)
         {
-            this.Close();
-            MainWindow mw = new MainWindow(true);
+            if (sprawdzHaslo)
+                this.Close();
+            else
+                Application.Current.Shutdown();
         }
     }
 }

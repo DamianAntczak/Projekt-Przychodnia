@@ -35,21 +35,6 @@ namespace Projekt_BD
             (new Login()).ShowDialog(); //okno logowania
             InitializeComponent();
         }
-        public MainWindow(bool close):this()
-        {
-            if (!close)
-            {
-                worker.DoWork += worker_DoWork;
-                worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-                (new Login()).ShowDialog(); //okno logowania
-                InitializeComponent();
-            }
-            else
-            {
-                this.Close();
-            }
-        }
-
         private void worker_DoWork(object sender, DoWorkEventArgs e) {
             StatusTworzeniaBazy.Dispatcher.Invoke(DispatcherPriority.Normal,
                 new Action(() => StatusTworzeniaBazy.Content = "Czekaj..."));
