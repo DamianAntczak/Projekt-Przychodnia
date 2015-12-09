@@ -32,9 +32,22 @@ namespace Projekt_BD
         {
             worker.DoWork += worker_DoWork;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-            InitializeComponent();
-
             (new Login()).ShowDialog(); //okno logowania
+            InitializeComponent();
+        }
+        public MainWindow(bool close):this()
+        {
+            if (!close)
+            {
+                worker.DoWork += worker_DoWork;
+                worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+                (new Login()).ShowDialog(); //okno logowania
+                InitializeComponent();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e) {
@@ -55,7 +68,7 @@ namespace Projekt_BD
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DbContext, Configuration>());
 
             using(var db = new DbContext()) {
-                db.Database.Delete();
+                //db.Database.Delete();
                 Guid id = Guid.NewGuid();
 
                 var jan = new Pacjent { IdPacjenta = id, Imie = "Jan", DataUrodzenie = new DateTime(1994, 1, 6), Mail = "rower@op.pl" };

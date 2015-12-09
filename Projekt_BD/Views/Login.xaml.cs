@@ -34,21 +34,16 @@ namespace Projekt_BD.Views
         private void bLogowanie_Click(object sender, RoutedEventArgs e)
         {
             var passHash = sha.ComputeHash(Encoding.ASCII.GetBytes(passwordBox.Password));
-            
-
-
-            if (loginBox.Text == "admin" && passHash.SequenceEqual(passHash))
-            {
-                Close();
-            }
-
             if (SprawdzHaslo(passwordBox.Password, loginBox.Text))
             {
                 Close();
             }
+            else
+            {
+                InvalidLoginData.Content = "Nieprawidlowe dane logowania";
+            }
 
         }
-
         public bool SprawdzHaslo(String haslo, String login)
         {
             using (var context = new DbContext())
@@ -71,6 +66,16 @@ namespace Projekt_BD.Views
                 }
             }
         }
+        private void CloseLoginWindow()
+        {
+            this.Close();
+            MainWindow mw = new MainWindow(false);
+        }
 
+        private void LoginWindow_Closed(object sender, EventArgs e)
+        {
+            this.Close();
+            MainWindow mw = new MainWindow(true);
+        }
     }
 }
