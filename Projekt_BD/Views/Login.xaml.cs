@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Projekt_BD.Models;
 
 namespace Projekt_BD.Views
 {
@@ -40,9 +41,36 @@ namespace Projekt_BD.Views
             {
                 Close();
             }
-            
+
+            if (SprawdzHaslo(passwordBox.Password, loginBox.Text))
+            {
+                Close();
+            }
+
         }
 
+        public bool SprawdzHaslo(String haslo, String login)
+        {
+            using (var context = new DbContext())
+            {
+                var query = context.Uzytkownicy.Where(s => s.Haslo == haslo);
+
+                var uzytkownik = query.FirstOrDefault<Uzytkownik>();
+
+                if (uzytkownik == null)
+                {
+                    return false;
+                }
+                else if (uzytkownik.Login == login)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
     }
 }

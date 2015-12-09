@@ -16,6 +16,7 @@ using System.Data.Entity;
 using Projekt_BD.Migrations;
 using System.ComponentModel;
 using System.Windows.Threading;
+using Projekt_BD.Models;
 using Projekt_BD.Views;
 
 namespace Projekt_BD
@@ -25,6 +26,7 @@ namespace Projekt_BD
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DbContext dbContext;
         readonly BackgroundWorker worker = new BackgroundWorker();
         public MainWindow()
         {
@@ -68,10 +70,17 @@ namespace Projekt_BD
 
                 db.Lekarze.Add(drMarcin);
 
+                var uzytkownik = new Uzytkownik {UzytkownikId = Guid.NewGuid(), Haslo = "abc", Login = "damian"};
+
+                db.Uzytkownicy.Add(uzytkownik);
+
 
 
                 int i = db.SaveChanges();
+                dbContext = db;
             }
         }
+
+
     }
 }
