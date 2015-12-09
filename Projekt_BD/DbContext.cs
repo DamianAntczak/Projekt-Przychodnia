@@ -11,7 +11,8 @@ namespace Projekt_BD
 {
     public class DbContext : System.Data.Entity.DbContext
     {
-        public DbContext() : base("name=DbContext") {}
+        //public DbContext() : base("name=DbContext") {}
+        public DbContext() : base("PrzychodniaDB") { }
 
         public DbSet<Pacjent> Pacjentci { get; set; }
         public DbSet<Lek> Leki { get; set; }
@@ -29,7 +30,10 @@ namespace Projekt_BD
                 .WithMany(s => s.Lekarze)
                 .HasForeignKey(s => s.IdLekarza);
 
-
+            modelBuilder.Entity<Pacjent>()
+                .HasMany<Wizyta>(w => w.Wizyty)
+                .WithRequired(p => p.Pacjenci)
+                .HasForeignKey(p => p.IdWizyty);
         }
     }
 }

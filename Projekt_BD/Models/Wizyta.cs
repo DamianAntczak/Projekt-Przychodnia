@@ -15,7 +15,8 @@ namespace Projekt_BD.Models
         //[ForeignKey("IdLekarza")]
        // public Lekarz Lekarz { get; set; }
         //[ForeignKey("IdPacjenta")]
-       // public Pacjent Pacjent { get; set; }
+        public Guid PacjentId { get; set; }
+        public virtual Pacjent Pacjenci { get; set; }
         //Pacjent u danego specjalisty może mieć zdjagnozowaną jedną chorobę
         //Jeżeli uwzględnimy więcej chorób można stworzyć nową klasę Diagnoza, która będzie miała
         //Kolekcję wykrytych chorób w danej wizycie
