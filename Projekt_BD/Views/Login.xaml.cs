@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Projekt_BD.Models;
+using System.ComponentModel;
+using System.Windows.Threading;
 
 namespace Projekt_BD.Views
 {
@@ -24,19 +26,19 @@ namespace Projekt_BD.Views
         private SHA1 sha;
         private byte[] adminPass;
         private bool sprawdzHaslo = false;
-
+        readonly BackgroundWorker worker = new BackgroundWorker();
         public Login()
         {
+            worker.DoWork += Worker_DoWork;
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
             InitializeComponent();
             sha = new SHA1Managed();
             adminPass = sha.ComputeHash(Encoding.ASCII.GetBytes("admin"));
         }
 
-        private void bLogowanie_Click(object sender, RoutedEventArgs e)
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var passHash = sha.ComputeHash(Encoding.ASCII.GetBytes(passwordBox.Password));
-            sprawdzHaslo = SprawdzHaslo(passwordBox.Password, loginBox.Text);
-            if (sprawdzHaslo)
+            if ((bool)e.Result)
             {
                 Close();
             }
@@ -44,15 +46,32 @@ namespace Projekt_BD.Views
             {
                 InvalidLoginData.Content = "Nieprawidlowe dane logowania";
             }
-
         }
-        public bool SprawdzHaslo(String haslo, String login)
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var passHash = sha.ComputeHash(Encoding.ASCII.GetBytes(passwordBox.Password));
+            string password = "";
+            string login = "";
+            passwordBox.Dispatcher.Invoke(DispatcherPriority.Normal,
+                new Action(() => password = passwordBox.Password));
+            loginBox.Dispatcher.Invoke(DispatcherPriority.Normal,
+                new Action(() => login = loginBox.Text));
+            sprawdzHaslo = SprawdzHaslo(password, login);
+            e.Result = sprawdzHaslo;
+        }
+
+        private void bLogowanie_Click(object sender, RoutedEventArgs e)
+        {
+            worker.RunWorkerAsync();
+        }
+        public bool SprawdzHaslo(string haslo, string login)
         {
             using (var context = new DbContext())
             {
                 var query = context.Uzytkownicy.Where(s => s.Haslo == haslo);
 
-                var uzytkownik = query.FirstOrDefault<Uzytkownik>();
+                var uzytkownik = query.FirstOrDefault();
 
                 if (uzytkownik == null)
                 {

@@ -48,6 +48,7 @@ namespace Projekt_BD
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             worker.RunWorkerAsync();
+            
         }
         private void PierwszaFunkcja() {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DbContext, Configuration>());
@@ -79,6 +80,9 @@ namespace Projekt_BD
             }
         }
 
-
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
