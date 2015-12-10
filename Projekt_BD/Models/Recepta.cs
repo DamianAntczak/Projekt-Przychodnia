@@ -23,5 +23,6 @@ namespace Projekt_BD.Models
         public String Przyjmowanie { get; set; }
         public DateTime CzasWystawienia { get; set; }
         public virtual ICollection<Lek> Leki { get; set; }
+        public virtual  Wizyta  Wizyta { get; set; }
     }
 }
