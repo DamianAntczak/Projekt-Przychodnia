@@ -34,6 +34,11 @@ namespace Projekt_BD
                 .HasMany<Wizyta>(w => w.Wizyty)
                 .WithRequired(p => p.Pacjenci)
                 .HasForeignKey(p => p.IdWizyty);
+
+            modelBuilder.Entity<Recepta>()
+                .HasMany<Lek>(l => l.Leki)
+                .WithRequired(r => r.Recepta)
+                .HasForeignKey(r => r.IdLeku);
         }
     }
 }

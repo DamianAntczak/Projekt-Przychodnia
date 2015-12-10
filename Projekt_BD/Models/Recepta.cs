@@ -10,6 +10,11 @@ namespace Projekt_BD.Models
 {
     public class Recepta
     {
+        public Recepta()
+        {
+            Leki = new List<Lek>();
+        }
+
         [Key]
         public Guid IdRecepty { get; set; }
         //[ForeignKey("IdLeku")]
@@ -17,5 +22,6 @@ namespace Projekt_BD.Models
         public String Dawka { get; set; }
         public String Przyjmowanie { get; set; }
         public DateTime CzasWystawienia { get; set; }
+        public virtual ICollection<Lek> Leki { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projekt_BD.Models;
 
 namespace Projekt_BD
 {
@@ -14,5 +15,6 @@ namespace Projekt_BD
         public String Nazwa { get; set; }
         public Int32 StopienRefundacji { get; set; }
         public String Producent { get; set; }
+        public virtual Recepta Recepta { get; set; }
     }
 }
