@@ -69,22 +69,14 @@ namespace Projekt_BD.Views
         {
             using (var context = new DbContext())
             {
-                var query = context.Uzytkownicy.Where(s => s.Haslo == haslo);
+                var query = context.Uzytkownicy
+                                   .Where(s => (s.Haslo == haslo) && (s.Login == login));
 
                 var uzytkownik = query.FirstOrDefault();
-
-                if (uzytkownik == null)
-                {
-                    return false;
-                }
-                else if (uzytkownik.Login == login)
-                {
+                if (uzytkownik != null)
                     return true;
-                }
                 else
-                {
                     return false;
-                }
             }
         }
         private void LoginWindow_Closed(object sender, EventArgs e)
