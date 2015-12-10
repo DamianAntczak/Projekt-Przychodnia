@@ -9,6 +9,7 @@ namespace Projekt_BD.Models
         public Pacjent()
         {
             Wizyty = new List<Wizyta>();
+            Choroby = new List<Choroba>();
         }
 
         [Key]
@@ -21,6 +22,7 @@ namespace Projekt_BD.Models
         public String Mail { get; set; }
 
         public virtual ICollection<Wizyta> Wizyty { get; set; }
+        public virtual ICollection<Choroba> Choroby { get; set; }
     }
 
     
