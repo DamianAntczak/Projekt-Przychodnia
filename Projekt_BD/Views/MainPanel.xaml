@@ -1,0 +1,90 @@
+﻿<Window x:Class="Projekt_BD.Views.MainPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekt_BD.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="768" Width="1366">
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" Height="717" Margin="10,10,0,0" VerticalAlignment="Top" Width="205" RenderTransformOrigin="0.26,-0.26">
+            <Button x:Name="PrzegladajBazeButton" Content="Przeglądaj Bazę" FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" Click="PrzegladajBazeButton_Click"/>
+            <Button x:Name="ObsluzWizyteButton" Content="Obsłuż Wizytę" FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" RenderTransformOrigin="-0.722,1.92" Click="ObsluzWizyteButton_Click"/>
+            <Button x:Name="ZarzadzajWizytamiButton"  FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" RenderTransformOrigin="-0.722,1.92" Click="ZarzadzajWizytamiButton_Click">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center" Width="160">Zarządzaj Wizytami</TextBlock>
+            </Button>
+            <Button x:Name="UstalGodzinyPrzyjecButton"  FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" RenderTransformOrigin="-0.722,1.92">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Ustal Godziny Przyjęć</TextBlock>
+            </Button>
+        </StackPanel>
+        <DockPanel Name="TopPanel" HorizontalAlignment="Left" Height="92" LastChildFill="False" Margin="215,10,0,0" VerticalAlignment="Top" Width="1133">
+            <Label x:Name="MenuItemName" FontSize="50" Content="Przeglądaj bazę" Height="92" VerticalAlignment="Top" Width="454"/>
+
+        </DockPanel>
+        <DockPanel Visibility="Visible" Name="CenterPanel1" HorizontalAlignment="Left" Height="620" LastChildFill="False" Margin="215,107,0,0" VerticalAlignment="Top" Width="1133" RenderTransformOrigin="0.33,0.41">
+            <TabControl x:Name="PrzegladajBaze" FontSize="20" Height="620" VerticalAlignment="Top" Width="1135">
+                <TabItem Header="Wizyty" Width="100">
+                    <Grid>
+                        <DataGrid x:Name="dataGrid_Wizyty" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.38" Margin="0,0,0,208"/>
+                        <Label x:Name="label" Content="Data:"  HorizontalAlignment="Left" Margin="32,408,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.291,0.486"/>
+                        <TextBox x:Name="Data"  HorizontalAlignment="Left" Height="33" Margin="92,412,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="229"/>
+                        <Label x:Name="label1" Content="Czas Wizyty:"  HorizontalAlignment="Left" Margin="32,464,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,1.635"/>
+                        <TextBox x:Name="CzasWizyty"  HorizontalAlignment="Left" Height="37" Margin="156,464,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="165" RenderTransformOrigin="0.492,1.027"/>
+                        <Label x:Name="label2" Content="IdLekarza:"  HorizontalAlignment="Left" Margin="32,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,-0.527"/>
+                        <TextBox x:Name="IdLekarza"  HorizontalAlignment="Left" Height="37" Margin="135,517,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="186" RenderTransformOrigin="0.488,1.5"/>
+                        <Label x:Name="label3" Content="IdChoroby:"  HorizontalAlignment="Left" Margin="494,464,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.82,0.392" Width="108"/>
+                        <TextBox x:Name="IdChoroby"  HorizontalAlignment="Left" Height="37" Margin="600,464,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="238" RenderTransformOrigin="0.05,-0.717"/>
+                        <Label x:Name="label4"  Content="IdPacjenta:" HorizontalAlignment="Left" Margin="494,412,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.386,-0.041" Height="33"/>
+                        <TextBox x:Name="IdPacjenta"  HorizontalAlignment="Left" Height="37" Margin="600,412,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="238" RenderTransformOrigin="0.05,-0.717"/>
+                        <Label x:Name="label5" Content="IdRecepty:"  HorizontalAlignment="Left" Margin="494,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.82,0.392" Width="108"/>
+                        <TextBox x:Name="IdRecepty"  HorizontalAlignment="Left" Height="37" Margin="600,517,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="238" RenderTransformOrigin="0.05,-0.717"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Pacjenci" Width="100">
+                    <Grid>
+                        <DataGrid x:Name="dataGrid_Pacienci" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.38" Margin="0,0,0,208"/>
+                        <Label x:Name="labe6" Content="Imię:"  HorizontalAlignment="Left" Margin="32,408,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.291,0.486"/>
+                        <TextBox x:Name="Imie"  HorizontalAlignment="Left" Height="33" Margin="92,412,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="222"/>
+                        <Label x:Name="label7" Content="Nazwisko:"  HorizontalAlignment="Left" Margin="32,464,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,1.635"/>
+                        <TextBox x:Name="Nazwisko"  HorizontalAlignment="Left" Height="37" Margin="135,464,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="179" RenderTransformOrigin="0.492,1.027"/>
+                        <Label x:Name="label8" Content="PESEL:"  HorizontalAlignment="Left" Margin="32,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,-0.527"/>
+                        <TextBox x:Name="PESEL"  HorizontalAlignment="Left" Height="37" Margin="103,517,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="211" RenderTransformOrigin="0.488,1.5"/>
+                        <Label x:Name="label9" Content="Data ur.:"  HorizontalAlignment="Left" Margin="381,464,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.82,0.392" Width="108"/>
+                        <TextBox x:Name="DataUrodzenia"  HorizontalAlignment="Left" Height="37" Margin="462,464,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="259" RenderTransformOrigin="0.05,-0.717"/>
+                        <Label x:Name="label10"  Content="Miejsce ur.:" HorizontalAlignment="Left" Margin="380,412,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.386,-0.041" Height="33"/>
+                        <TextBox x:Name="MiejsceUrodzenia"  HorizontalAlignment="Left" Height="37" Margin="489,412,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="232" RenderTransformOrigin="0.05,-0.717"/>
+                        <Label x:Name="label11" Content="Adres:"  HorizontalAlignment="Left" Margin="380,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.82,0.392" Width="108"/>
+                        <TextBox x:Name="Adres"  HorizontalAlignment="Left" Height="37" Margin="447,517,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="274" RenderTransformOrigin="0.05,-0.717"/>
+                        <Label x:Name="label6" Content="Płeć:"  HorizontalAlignment="Left" Margin="778,412,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="Plec"  HorizontalAlignment="Left" Height="33" Margin="856,412,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="192"/>
+                        <Label x:Name="label12" Content="Nr Tel."  HorizontalAlignment="Left" Margin="778,464,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="NrTelefonu"  HorizontalAlignment="Left" Height="37" Margin="856,464,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="192"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Leki" Width="100">
+                    <Grid>
+                        <DataGrid x:Name="dataGrid_Leki" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.38" Margin="0,0,0,208"/>
+                        <Label x:Name="label13" Content="Nazwa:" HorizontalAlignment="Left" Margin="10,412,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="NazwaLeku" HorizontalAlignment="Left" Height="33" Margin="83,416,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="266"/>
+                        <Label x:Name="label14"  Content="Stopień Refundacji:" HorizontalAlignment="Left" Margin="10,464,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="StopienRefundacji" HorizontalAlignment="Left" Height="33" Margin="195,468,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="154"/>
+                        <Label x:Name="label15"  Content="Producent:" HorizontalAlignment="Left" Margin="420,412,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="Producent" HorizontalAlignment="Left" Height="33" Margin="530,416,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="259"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Choroby" Width="100">
+                    <Grid>
+                        <DataGrid x:Name="dataGrid_Choroby" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.38" Margin="0,0,0,208"/>
+                        <Label x:Name="label16" Content="Nazwa:" HorizontalAlignment="Left" Margin="54,410,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="NazwaChroby" HorizontalAlignment="Left" Height="33" Margin="132,414,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="323"/>
+                        <Label x:Name="label17" Content="Opis:" HorizontalAlignment="Left" Margin="488,410,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="OpisChoroby" HorizontalAlignment="Left" Height="103" Margin="542,414,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="577"/>
+                        <Label x:Name="label18" Content="Objawy:" HorizontalAlignment="Left" Margin="54,480,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="Objawy" HorizontalAlignment="Left" Height="69" Margin="134,484,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="321"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+        </DockPanel>
+    </Grid>
+</Window>
