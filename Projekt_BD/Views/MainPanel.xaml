@@ -13,7 +13,7 @@
             <Button x:Name="ZarzadzajWizytamiButton"  FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" RenderTransformOrigin="-0.722,1.92" Click="ZarzadzajWizytamiButton_Click">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center" Width="160">Zarządzaj Wizytami</TextBlock>
             </Button>
-            <Button x:Name="UstalGodzinyPrzyjecButton"  FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" RenderTransformOrigin="-0.722,1.92">
+            <Button x:Name="UstalGodzinyPrzyjecButton"  FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="12,10,0,0" RenderTransformOrigin="-0.722,1.92" HorizontalAlignment="Left">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Ustal Godziny Przyjęć</TextBlock>
             </Button>
         </StackPanel>

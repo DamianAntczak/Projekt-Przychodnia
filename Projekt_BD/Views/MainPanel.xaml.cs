@@ -27,15 +27,23 @@ namespace Projekt_BD.Views
 
         private void PrzegladajBazeButton_Click(object sender, RoutedEventArgs e)
         {
-            MenuItemName.Content = PrzegladajBazeButton.Content;
+            MenuItemName.Content = "Przeglądanie Bazy";
             CenterPanel1.Visibility = Visibility.Visible;
         }
         private void ObsluzWizyteButton_Click(object sender, RoutedEventArgs e)
         {
+            MenuItemName.Content = "Obsługa Wizyty";
             CenterPanel1.Visibility = Visibility.Hidden;
         }
         private void ZarzadzajWizytamiButton_Click(object sender, RoutedEventArgs e)
         {
+            MenuItemName.Content = "Zarządanie Wizytami";
+            CenterPanel1.Visibility = Visibility.Hidden;
+        }
+
+        private void UstalGodzinyPrzyjecButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItemName.Content = "Godziny Przyjęć";
             CenterPanel1.Visibility = Visibility.Hidden;
         }
     }
