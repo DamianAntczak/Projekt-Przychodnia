@@ -32,7 +32,8 @@ namespace Projekt_BD
         {
             worker.DoWork += worker_DoWork;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-           // (new Login()).ShowDialog(); //okno logowania
+            // (new Login()).ShowDialog(); //okno logowania
+            (new MainPanel()).ShowDialog();
             InitializeComponent();
         }
         private void worker_DoWork(object sender, DoWorkEventArgs e)

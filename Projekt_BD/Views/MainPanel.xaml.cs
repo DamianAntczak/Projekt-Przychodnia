@@ -46,5 +46,10 @@ namespace Projekt_BD.Views
             MenuItemName.Content = "Godziny Przyjęć";
             CenterPanel1.Visibility = Visibility.Hidden;
         }
+
+        private void DodajPacjentaButton_Click(object sender, RoutedEventArgs e)
+        {
+            (new DodajPacjentaWindow()).ShowDialog();
+        }
     }
 }
