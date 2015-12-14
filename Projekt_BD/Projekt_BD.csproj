@@ -69,7 +69,6 @@
     <Compile Include="Models\Recepta.cs" />
     <Compile Include="Models\Specjalizacja.cs" />
     <Compile Include="Models\Uzytkownik.cs" />
-    <Compile Include="SqlDatabaseSetup.cs" />
     <Compile Include="Views\DodajPacjentaWindow.xaml.cs">
       <DependentUpon>DodajPacjentaWindow.xaml</DependentUpon>
     </Compile>
