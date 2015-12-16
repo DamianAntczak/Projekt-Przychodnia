@@ -84,5 +84,16 @@ namespace Projekt_BD.Views
                 dataGrid_Pacienci.ItemsSource = pact.ToList();
             }
         }
+
+        private void Nazwisko_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            using (var context = new DbContext())
+            {
+                var pact = from pacjent in context.Pacjentci where pacjent.Nazwisko.Contains(tNazwisko.Text) select pacjent;
+
+                dataGrid_Pacienci.ItemsSource = pact.ToList();
+            }
+
+        }
     }
 }

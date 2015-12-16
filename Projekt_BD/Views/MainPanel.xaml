@@ -46,7 +46,7 @@
                         <Label x:Name="labe6" Content="Imię:"  HorizontalAlignment="Left" Margin="32,408,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.291,0.486"/>
                         <TextBox x:Name="tImie"  HorizontalAlignment="Left" Height="33" Margin="92,412,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="222" TextChanged="Imie_TextChanged"/>
                         <Label x:Name="label7" Content="Nazwisko:"  HorizontalAlignment="Left" Margin="32,464,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,1.635"/>
-                        <TextBox x:Name="Nazwisko"  HorizontalAlignment="Left" Height="37" Margin="135,464,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="179" RenderTransformOrigin="0.492,1.027"/>
+                        <TextBox x:Name="tNazwisko"  HorizontalAlignment="Left" Height="37" Margin="135,464,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="179" RenderTransformOrigin="0.492,1.027" TextChanged="Nazwisko_TextChanged"/>
                         <Label x:Name="label8" Content="PESEL:"  HorizontalAlignment="Left" Margin="32,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,-0.527"/>
                         <TextBox x:Name="PESEL"  HorizontalAlignment="Left" Height="37" Margin="103,517,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="211" RenderTransformOrigin="0.488,1.5"/>
                         <Label x:Name="label9" Content="Data ur.:"  HorizontalAlignment="Left" Margin="381,464,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.82,0.392" Width="108"/>
