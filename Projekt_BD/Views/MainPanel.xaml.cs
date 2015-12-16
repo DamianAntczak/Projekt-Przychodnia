@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity.Core.Common.CommandTrees;
+using System.Data.Linq.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +73,16 @@ namespace Projekt_BD.Views
         private void DodajPacjentaButton_Click(object sender, RoutedEventArgs e)
         {
             (new DodajPacjentaWindow()).ShowDialog();
+        }
+
+        private void Imie_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            using (var context = new DbContext())
+            {
+                var pact = from pacjent in context.Pacjentci where pacjent.Imie.Contains(tImie.Text) select pacjent;
+
+                dataGrid_Pacienci.ItemsSource = pact.ToList();
+            }
         }
     }
 }
