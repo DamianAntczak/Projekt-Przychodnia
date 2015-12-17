@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projekt_BD.Models
 {
+   // public enum plec { Kobieta, Mężczyzna };
     public class Pacjent
     {
+        
+
         public Pacjent()
         {
             Wizyty = new List<Wizyta>();
             Choroby = new List<Choroba>();
         }
-
         [Key]
         public Guid IdPacjenta { get; set; }
         public String Imie { get; set; }
@@ -19,6 +22,8 @@ namespace Projekt_BD.Models
         public DateTime  DataUrodzenie { get; set; }
         public String MiejsceUrodzenia { get; set; }
         public String Plec { get; set; }
+        //z wykorzstaniem enum
+        //public plec Pleć { get; set; }
         public String NrTelefonu { get; set; }
         public String Mail { get; set; }
 

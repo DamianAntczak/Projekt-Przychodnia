@@ -16,6 +16,7 @@ namespace Projekt_BD
             Wizyty = new List<Wizyta>();
         }
 
+        
         [Key]
         public Guid IdLekarza { get; set; }
         public String Imie { get; set; }

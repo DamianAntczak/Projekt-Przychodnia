@@ -78,6 +78,7 @@ namespace Projekt_BD
 
                 db.Uzytkownicy.Add(uzytkownik);
                 var lek1 = new Lek { IdLeku = Guid.NewGuid(), Nazwa = "Aspiryna", Producent = "x", StopienRefundacji = 0 };
+                //var lek1 = new Lek { Nazwa = "Aspiryna", StopienRefundacji = 0 , Producent = "x" };
                 var lek2 = new Lek { IdLeku = Guid.NewGuid(), Nazwa = "Clotrimazor", Producent = "Farma", StopienRefundacji = 0 };
                 db.Leki.Add(lek1);
                 db.Leki.Add(lek2);

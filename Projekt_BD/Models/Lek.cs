@@ -10,6 +10,7 @@ namespace Projekt_BD
 {
     public class Lek
     {
+
         [Key]
         public Guid IdLeku { get; set; }
         public String Nazwa { get; set; }

@@ -45,10 +45,10 @@ namespace Projekt_BD.Views
                 dataGrid_Leki.ItemsSource = lek.ToList();
 
                 var wiz = from wizyty in context.Wizyty select wizyty;
-                dataGrid_Leki.ItemsSource = wiz.ToList();
+                dataGrid_Wizyty.ItemsSource = wiz.ToList();
 
                 var cho = from choroby in context.Choroby select choroby;
-                dataGrid_Leki.ItemsSource = cho.ToList();
+                dataGrid_Choroby.ItemsSource = cho.ToList();
             }
         
 
