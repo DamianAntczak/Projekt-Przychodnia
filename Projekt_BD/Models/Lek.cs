@@ -13,9 +13,10 @@ namespace Projekt_BD
 
         [Key]
         public Guid IdLeku { get; set; }
-        public String Nazwa { get; set; }
-        public Int32 StopienRefundacji { get; set; }
-        public String Producent { get; set; }
+        public int StopienRefundacji { get; set; }
+        public string Dawka { get; set; }
+        public string Przyjmowanie { get; set; }
         public virtual Recepta Recepta { get; set; }
+        public virtual SpisLekow SpisLekow { get; set; }
     }
 }

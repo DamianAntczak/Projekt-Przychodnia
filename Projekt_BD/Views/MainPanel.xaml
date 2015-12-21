@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt_BD.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1366">
+        Title="MainWindow" Height="768" Width="1366" KeyUp="Window_KeyUp">
     <Grid>
         <StackPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.26,-0.26">
             <Button x:Name="PrzegladajBazeButton" Content="Przeglądaj Bazę" FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" Click="PrzegladajBazeButton_Click"/>

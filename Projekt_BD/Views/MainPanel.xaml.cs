@@ -15,26 +15,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Projekt_BD.Views
-{
+namespace Projekt_BD.Views {
     /// <summary>
     /// Interaction logic for MainPanel.xaml
     /// </summary>
-    public partial class MainPanel : Window
-    {
-        public MainPanel()
-        {
+    public partial class MainPanel : Window {
+        public MainPanel() {
             InitializeComponent();
 
         }
 
-        private void PrzegladajBazeButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void PrzegladajBazeButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Przeglądanie Bazy";
             CenterPanel1.Visibility = Visibility.Visible;
 
-            using (var context = new DbContext())
-            {
+            using (var context = new DbContext()) {
 
                 var pac = from pacjentcis in context.Pacjentci select pacjentcis;
 
@@ -50,50 +45,46 @@ namespace Projekt_BD.Views
                 var cho = from choroby in context.Choroby select choroby;
                 dataGrid_Choroby.ItemsSource = cho.ToList();
             }
-        
+
 
         }
-        private void ObsluzWizyteButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void ObsluzWizyteButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Obsługa Wizyty";
             CenterPanel1.Visibility = Visibility.Hidden;
         }
-        private void ZarzadzajWizytamiButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void ZarzadzajWizytamiButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Zarządanie Wizytami";
             CenterPanel1.Visibility = Visibility.Hidden;
         }
 
-        private void UstalGodzinyPrzyjecButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void UstalGodzinyPrzyjecButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Godziny Przyjęć";
             CenterPanel1.Visibility = Visibility.Hidden;
         }
 
-        private void DodajPacjentaButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void DodajPacjentaButton_Click(object sender, RoutedEventArgs e) {
             (new DodajPacjentaWindow()).ShowDialog();
         }
 
-        private void Imie_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            using (var context = new DbContext())
-            {
+        private void Imie_TextChanged(object sender, TextChangedEventArgs e) {
+            using (var context = new DbContext()) {
                 var pact = from pacjent in context.Pacjentci where pacjent.Imie.Contains(tImie.Text) select pacjent;
 
                 dataGrid_Pacienci.ItemsSource = pact.ToList();
             }
         }
 
-        private void Nazwisko_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            using (var context = new DbContext())
-            {
+        private void Nazwisko_TextChanged(object sender, TextChangedEventArgs e) {
+            using (var context = new DbContext()) {
                 var pact = from pacjent in context.Pacjentci where pacjent.Nazwisko.Contains(tNazwisko.Text) select pacjent;
 
                 dataGrid_Pacienci.ItemsSource = pact.ToList();
             }
 
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e) {
+            Close();
         }
     }
 }

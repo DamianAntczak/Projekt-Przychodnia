@@ -6,17 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Projekt_BD.Models;
 
-namespace Projekt_BD
-{
-    public class Choroba
-    {
+namespace Projekt_BD {
+    public class Choroba {
         [Key]
+        // Id przypadku choroby?
         public Guid IdChoroby { get; set; }
-        public String Nazwa { get; set; }
-        public String Opis { get; set; }
-        public String Objawy { get; set; }
-        public String SposobyLeczenia { get; set; }
         public virtual Guid IdPacjenta { get; set; }
         public virtual Pacjent Pacjent { get; set; }
+        public SpisChorb ChorobaZeSpisu { get; set; }
     }
 }

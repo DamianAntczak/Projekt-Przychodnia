@@ -69,6 +69,8 @@
     <Compile Include="Models\Lekarz.cs" />
     <Compile Include="Models\Recepta.cs" />
     <Compile Include="Models\Specjalizacja.cs" />
+    <Compile Include="Models\SpisChorb.cs" />
+    <Compile Include="Models\SpisLekow.cs" />
     <Compile Include="Models\Uzytkownik.cs" />
     <Compile Include="Views\DodajPacjentaWindow.xaml.cs">
       <DependentUpon>DodajPacjentaWindow.xaml</DependentUpon>

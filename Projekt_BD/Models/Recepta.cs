@@ -17,10 +17,6 @@ namespace Projekt_BD.Models
 
         [Key]
         public Guid IdRecepty { get; set; }
-        //[ForeignKey("IdLeku")]
-        public Guid IdLeku { get; set; }
-        public String Dawka { get; set; }
-        public String Przyjmowanie { get; set; }
         public DateTime CzasWystawienia { get; set; }
         public virtual ICollection<Lek> Leki { get; set; }
         public virtual  Wizyta  Wizyta { get; set; }
