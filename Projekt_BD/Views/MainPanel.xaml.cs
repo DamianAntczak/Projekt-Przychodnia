@@ -84,7 +84,8 @@ namespace Projekt_BD.Views {
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e) {
-            Close();
+            if(e.Key == Key.Escape)
+                Close();
         }
     }
 }
