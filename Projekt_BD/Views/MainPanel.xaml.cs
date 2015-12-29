@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projekt_BD.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity.Core.Common.CommandTrees;
@@ -66,26 +67,58 @@ namespace Projekt_BD.Views {
             (new DodajPacjentaWindow()).ShowDialog();
         }
 
-        private void Imie_TextChanged(object sender, TextChangedEventArgs e) {
-            using (var context = new DbContext()) {
-                var pact = from pacjent in context.Pacjentci where pacjent.Imie.Contains(tImie.Text) select pacjent;
+        //private void Imie_TextChanged(object sender, TextChangedEventArgs e) {
+        //    using (var context = new DbContext()) {
+        //        var pact = from pacjent in context.Pacjentci where pacjent.Imie.Contains(tImie.Text) select pacjent;
 
-                dataGrid_Pacienci.ItemsSource = pact.ToList();
-            }
-        }
+        //        dataGrid_Pacienci.ItemsSource = pact.ToList();
+        //    }
+        //}
 
-        private void Nazwisko_TextChanged(object sender, TextChangedEventArgs e) {
-            using (var context = new DbContext()) {
-                var pact = from pacjent in context.Pacjentci where pacjent.Nazwisko.Contains(tNazwisko.Text) select pacjent;
+        //private void Nazwisko_TextChanged(object sender, TextChangedEventArgs e) {
+        //    using (var context = new DbContext()) {
+        //        var pact = from pacjent in context.Pacjentci where pacjent.Nazwisko.Contains(tNazwisko.Text) select pacjent;
 
-                dataGrid_Pacienci.ItemsSource = pact.ToList();
-            }
+        //        dataGrid_Pacienci.ItemsSource = pact.ToList();
+        //    }
 
-        }
+        //}
 
         private void Window_KeyUp(object sender, KeyEventArgs e) {
             if(e.Key == Key.Escape)
                 Close();
+        }
+        private DataGridRow gdr = new DataGridRow();
+        private void dataGrid_Wizyty_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var typ = dataGrid_Pacienci.SelectedItem.GetType();
+            //zabezpieczeniem przed wybraniem ostatniego rekordu (nie można rzutować na typ Wizyta)
+            if (typ.FullName.ToString() != "MS.Internal.NamedObject")
+            { 
+                var wizyta = (Wizyta)dataGrid_Wizyty.SelectedItem;
+                Data.Text = wizyta.Data.ToShortDateString();
+                CzasWizyty.Text = wizyta.CzasWizyty.TotalMinutes.ToString();
+                //brak lekarza
+                //IdLekarza.Text = Convert.ToString(wizyta.Lekarz.IdLekarza);
+                IdPacjenta.Text = wizyta.Pacjent.IdPacjenta.ToString();
+            }
+        }
+
+        private void dataGrid_Pacienci_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var typ = dataGrid_Pacienci.SelectedItem.GetType();
+            if (typ.FullName.ToString() != "MS.Internal.NamedObject")
+            { 
+                var pacjent = (Pacjent)dataGrid_Pacienci.SelectedItem;
+                tImie.Text = pacjent.Imie;
+                tNazwisko.Text = pacjent.Nazwisko;
+                ////brak numeru pesel
+                DataUrodzenia.Text = pacjent.DataUrodzenie.ToShortDateString();
+                MiejsceUrodzenia.Text = pacjent.MiejsceUrodzenia;
+                ////brak adresu zamieszkania
+                Plec.Text = pacjent.Plec;
+                NrTelefonu.Text = pacjent.NrTelefonu;
+            }
         }
     }
 }
