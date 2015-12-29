@@ -36,14 +36,14 @@ namespace Projekt_BD.Views {
 
                 dataGrid_Pacienci.ItemsSource = pac.ToList();
 
-                var lek = from leki in context.Leki select leki;
+                var lek = from leki in context.SpisLekow select leki;
 
                 dataGrid_Leki.ItemsSource = lek.ToList();
 
                 var wiz = from wizyty in context.Wizyty select wizyty;
                 dataGrid_Wizyty.ItemsSource = wiz.ToList();
 
-                var cho = from choroby in context.Choroby select choroby;
+                var cho = from choroby in context.SpisChorob select choroby;
                 dataGrid_Choroby.ItemsSource = cho.ToList();
             }
 
@@ -66,7 +66,8 @@ namespace Projekt_BD.Views {
         private void DodajPacjentaButton_Click(object sender, RoutedEventArgs e) {
             (new DodajPacjentaWindow()).ShowDialog();
         }
-
+        #region TextChaned nieaktywne - nie można było używać selekcji w datagrid do wypisywania danych pacjenta
+        //aby odkomentować zaznacz całość i użyj skrótów ctrl+k , ctrl+u
         //private void Imie_TextChanged(object sender, TextChangedEventArgs e) {
         //    using (var context = new DbContext()) {
         //        var pact = from pacjent in context.Pacjentci where pacjent.Imie.Contains(tImie.Text) select pacjent;
@@ -83,7 +84,7 @@ namespace Projekt_BD.Views {
         //    }
 
         //}
-
+        #endregion
         private void Window_KeyUp(object sender, KeyEventArgs e) {
             if(e.Key == Key.Escape)
                 Close();
@@ -91,7 +92,7 @@ namespace Projekt_BD.Views {
         private DataGridRow gdr = new DataGridRow();
         private void dataGrid_Wizyty_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var typ = dataGrid_Pacienci.SelectedItem.GetType();
+            var typ = dataGrid_Wizyty.SelectedItem.GetType();
             //zabezpieczeniem przed wybraniem ostatniego rekordu (nie można rzutować na typ Wizyta)
             if (typ.FullName.ToString() != "MS.Internal.NamedObject")
             { 
