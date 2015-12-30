@@ -85,7 +85,14 @@
                     </Grid>
                 </TabItem>
             </TabControl>
-
+        </DockPanel>
+        <DockPanel Visibility="Hidden" Name="CenterPanel2" HorizontalAlignment="Left" Height="620" LastChildFill="False" Margin="215,107,0,0" VerticalAlignment="Top" Width="1133" RenderTransformOrigin="0.33,0.41">
+        </DockPanel>
+        <DockPanel Visibility="Hidden" Name="CenterPanel3" HorizontalAlignment="Left" Height="620" LastChildFill="False" Margin="215,107,0,0" VerticalAlignment="Top" Width="1133" RenderTransformOrigin="0.33,0.41">
+            <TabControl x:Name="ZarzadzajWizytami" FontSize="20" Height="620" VerticalAlignment="Top" Width="1135">
+            </TabControl>
+        </DockPanel>
+        <DockPanel Visibility="Hidden" Name="CenterPanel4" HorizontalAlignment="Left" Height="620" LastChildFill="False" Margin="215,107,0,0" VerticalAlignment="Top" Width="1133" RenderTransformOrigin="0.33,0.41">
         </DockPanel>
     </Grid>
 </Window>
