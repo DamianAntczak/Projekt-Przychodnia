@@ -30,20 +30,22 @@ namespace Projekt_BD.Views {
             MenuItemName.Content = "Przeglądanie Bazy";
             CenterPanel1.Visibility = Visibility.Visible;
 
-            using (var context = new DbContext()) {
+            using (var context = new DbContext())
+            {
 
-                var pac = from pacjentcis in context.Pacjentci select pacjentcis;
+                var pac = from pacjentcis in context.Pacjentci select new { pacjentcis.IdPacjenta, pacjentcis.Imie, pacjentcis.Nazwisko, pacjentcis.DataUrodzenie.Year,Wiek = DateTime.Today.Year - pacjentcis.DataUrodzenie.Year , pacjentcis.MiejsceUrodzenia,pacjentcis.Mail};
 
                 dataGrid_Pacienci.ItemsSource = pac.ToList();
 
-                var lek = from leki in context.SpisLekow select leki;
+                var lek = from leki in context.SpisLekow select new {leki.NazwaLeku, leki.NazwaPolskaLeku};
 
                 dataGrid_Leki.ItemsSource = lek.ToList();
 
-                var wiz = from wizyty in context.Wizyty select wizyty;
+                var wiz = from wizyty in context.Wizyty
+                    select new {wizyty.CzasWizyty, Pacjent = wizyty.Pacjent.Imie + " " + wizyty.Pacjent.Nazwisko, wizyty.Data, Lekarz = wizyty.Lekarz.Imie + " "+ wizyty.Lekarz.Nazwisko};
                 dataGrid_Wizyty.ItemsSource = wiz.ToList();
 
-                var cho = from choroby in context.SpisChorob select choroby;
+                var cho = from choroby in context.SpisChorob select new {choroby.NazwaChoroby,choroby.NazwaPolskaChoroby, choroby.Objawy, choroby.Opis,choroby.SposobyLeczenia};
                 dataGrid_Choroby.ItemsSource = cho.ToList();
             }
 
@@ -90,19 +92,29 @@ namespace Projekt_BD.Views {
                 Close();
         }
         private DataGridRow gdr = new DataGridRow();
+
         private void dataGrid_Wizyty_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var typ = dataGrid_Wizyty.SelectedItem.GetType();
             //zabezpieczeniem przed wybraniem ostatniego rekordu (nie można rzutować na typ Wizyta)
-            if (typ.FullName.ToString() != "MS.Internal.NamedObject")
-            { 
-                var wizyta = (Wizyta)dataGrid_Wizyty.SelectedItem;
-                Data.Text = wizyta.Data.ToShortDateString();
-                CzasWizyty.Text = wizyta.CzasWizyty.TotalMinutes.ToString();
-                //brak lekarza
-                //IdLekarza.Text = Convert.ToString(wizyta.Lekarz.IdLekarza);
-                IdPacjenta.Text = wizyta.Pacjent.IdPacjenta.ToString();
+
+            using (var context = new DbContext())
+            {
+                if (typ.FullName.ToString() != "MS.Internal.NamedObject")
+                {
+
+
+                    var wizyta = (Wizyta) dataGrid_Wizyty.SelectedItem;
+                     Data.Text = wizyta.Data.ToShortDateString();
+                   //CzasWizyty.Text = wizyta.CzasWizyty.TotalMinutes.ToString();
+                   
+                    //IdLekarza.Text = Convert.ToString(wizyta.Lekarz.IdLekarza);
+                   IdPacjenta.Text = wizyta.Pacjent.IdPacjenta.ToString();
+
+
+                }
             }
+
         }
 
         private void dataGrid_Pacienci_SelectionChanged(object sender, SelectionChangedEventArgs e)
