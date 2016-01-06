@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt_BD.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1366" KeyUp="Window_KeyUp">
-    <Grid>
+        Title="MainWindow" Height="768" HorizontalAlignment="Stretch" Width="1366" KeyUp="Window_KeyUp">
+    <Grid HorizontalAlignment="Stretch">
         <StackPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.26,-0.26">
             <Button x:Name="PrzegladajBazeButton" Content="Przeglądaj Bazę" FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" Click="PrzegladajBazeButton_Click"/>
             <Button x:Name="ObsluzWizyteButton" Content="Obsłuż Wizytę" FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" RenderTransformOrigin="-0.722,1.92" Click="ObsluzWizyteButton_Click"/>
@@ -17,12 +17,11 @@
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Ustal Godziny Przyjęć</TextBlock>
             </Button>
         </StackPanel>
-        <DockPanel Name="TopPanel" HorizontalAlignment="Left" Height="92" LastChildFill="False" Margin="215,10,0,0" VerticalAlignment="Top" Width="1133">
+        <DockPanel Name="TopPanel" HorizontalAlignment="Stretch" Height="92" LastChildFill="False" Margin="215,10,0,0" VerticalAlignment="Top" Width="Auto">
             <Label x:Name="MenuItemName" FontSize="50" Content="Przeglądaj bazę" Height="92" VerticalAlignment="Top" Width="454"/>
-
         </DockPanel>
-        <DockPanel Visibility="Visible" Name="CenterPanel1" HorizontalAlignment="Left" Height="620" LastChildFill="False" Margin="215,107,0,0" VerticalAlignment="Top" Width="1133" RenderTransformOrigin="0.33,0.41">
-            <TabControl x:Name="PrzegladajBaze" FontSize="20" Height="620" VerticalAlignment="Top" Width="1135">
+        <DockPanel Visibility="Visible" Name="CenterPanel1" Margin="215,107,0,0" RenderTransformOrigin="0.33,0.41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabControl x:Name="PrzegladajBaze" FontSize="20" >
                 <TabItem Header="Wizyty" Width="100">
                     <Grid>
                         <DataGrid x:Name="dataGrid_Wizyty" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.38" Margin="0,0,0,208" SelectionChanged="dataGrid_Wizyty_SelectionChanged"/>
@@ -86,13 +85,13 @@
                 </TabItem>
             </TabControl>
         </DockPanel>
-        <DockPanel Visibility="Hidden" Name="CenterPanel2" HorizontalAlignment="Left" Height="620" LastChildFill="False" Margin="215,107,0,0" VerticalAlignment="Top" Width="1133" RenderTransformOrigin="0.33,0.41">
+        <DockPanel Visibility="Hidden" Name="CenterPanel2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="False" Margin="215,107,0,0" RenderTransformOrigin="0.33,0.41">
         </DockPanel>
-        <DockPanel Visibility="Hidden" Name="CenterPanel3" HorizontalAlignment="Left" Height="620" LastChildFill="False" Margin="215,107,0,0" VerticalAlignment="Top" Width="1133" RenderTransformOrigin="0.33,0.41">
-            <TabControl x:Name="ZarzadzajWizytami" FontSize="20" Height="620" VerticalAlignment="Top" Width="1135">
+        <DockPanel Visibility="Hidden" Name="CenterPanel3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="False" Margin="215,107,0,0" RenderTransformOrigin="0.33,0.41">
+            <TabControl x:Name="ZarzadzajWizytami" FontSize="20" >
             </TabControl>
         </DockPanel>
-        <DockPanel Visibility="Hidden" Name="CenterPanel4" HorizontalAlignment="Left" Height="620" LastChildFill="False" Margin="215,107,0,0" VerticalAlignment="Top" Width="1133" RenderTransformOrigin="0.33,0.41">
+        <DockPanel Visibility="Hidden" Name="CenterPanel4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LastChildFill="False" Margin="215,107,0,0" RenderTransformOrigin="0.33,0.41">
         </DockPanel>
     </Grid>
 </Window>
