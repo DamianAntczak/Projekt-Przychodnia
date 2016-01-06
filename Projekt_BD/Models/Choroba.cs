@@ -13,6 +13,8 @@ namespace Projekt_BD {
         public Guid IdChoroby { get; set; }
         public virtual Guid IdPacjenta { get; set; }
         public virtual Pacjent Pacjent { get; set; }
+        public string OpisChoroby { get; set; }
+        public DateTime OstatniaModyfikacjaOpisuChoroby { get; set; }
         public SpisChorb ChorobaZeSpisu { get; set; }
     }
 }

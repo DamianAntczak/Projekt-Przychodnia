@@ -44,7 +44,8 @@ namespace Projekt_BD {
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e) {
-            worker.RunWorkerAsync();
+            if (!worker.IsBusy)
+                worker.RunWorkerAsync();
 
         }
         private void PierwszaFunkcja() {
@@ -60,7 +61,7 @@ namespace Projekt_BD {
                 //db.Uzytkownicy.Add(new Uzytkownik { Login = "admin", Haslo = "admin", UzytkownikId = Guid.NewGuid() });
                 //db.Pacjentci.Add(new Pacjent { IdPacjenta = Guid.NewGuid(), Imie = "Katarzyna", Nazwisko = "Jan", DataUrodzenie = new DateTime(1984, 1, 4), MiejsceUrodzenia = "Opole", Plec = "Kobieta", NrTelefonu = "123456789", Mail = "katarzyna@bd.pl" });
                 //db.Lekarze.Add(new Lekarz());
-                
+
                 var i = db.SaveChanges();
                 dbContext = db;
             }

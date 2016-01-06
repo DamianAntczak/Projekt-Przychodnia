@@ -63,7 +63,8 @@ namespace Projekt_BD.Views
 
         private void bLogowanie_Click(object sender, RoutedEventArgs e)
         {
-            worker.RunWorkerAsync();
+            if(!worker.IsBusy)
+                worker.RunWorkerAsync();
         }
         public bool SprawdzHaslo(string haslo, string login)
         {

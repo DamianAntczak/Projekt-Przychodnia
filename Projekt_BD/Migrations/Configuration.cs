@@ -48,8 +48,8 @@ namespace Projekt_BD.Migrations {
             context.Set<SpisChorb>().AddOrUpdate(choroba);
             context.Set<SpisChorb>().AddOrUpdate(choroba2);
 
-            context.Set<Choroba>().AddOrUpdate(new Choroba { IdChoroby = Guid.NewGuid(), ChorobaZeSpisu = choroba, Pacjent = pacjent, IdPacjenta = pacjent.IdPacjenta });
-            context.Set<Choroba>().AddOrUpdate(new Choroba { IdChoroby = Guid.NewGuid(), ChorobaZeSpisu = choroba2, Pacjent = pacjent2, IdPacjenta = pacjent2.IdPacjenta });
+            context.Set<Choroba>().AddOrUpdate(new Choroba { IdChoroby = Guid.NewGuid(), ChorobaZeSpisu = choroba, Pacjent = pacjent, IdPacjenta = pacjent.IdPacjenta, OpisChoroby = "Angina u pacjenta ma typowe objawy i przebiega w normalny sposób", OstatniaModyfikacjaOpisuChoroby = DateTime.Today });
+            context.Set<Choroba>().AddOrUpdate(new Choroba { IdChoroby = Guid.NewGuid(), ChorobaZeSpisu = choroba2, Pacjent = pacjent2, IdPacjenta = pacjent2.IdPacjenta, OpisChoroby = "Wysokie nadciœnienie u pacjenta.", OstatniaModyfikacjaOpisuChoroby = DateTime.Today });
 
             var lek = new SpisLekow { NazwaLeku = "Amoxicillinum", NazwaPolskaLeku = "amoksycylina" };
             var lek2 = new SpisLekow { NazwaLeku = "Simvastatinum ", NazwaPolskaLeku = "symwastatyna" };
