@@ -114,22 +114,14 @@ namespace Projekt_BD.Views {
         private DataGridRow gdr = new DataGridRow();
 
         private void dataGrid_Wizyty_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            var typ = dataGrid_Wizyty.SelectedItem.GetType();
+            var objekt = dataGrid_Wizyty.SelectedItem;
             //zabezpieczeniem przed wybraniem ostatniego rekordu (nie można rzutować na typ Wizyta)
 
-            using (var context = new DbContext()) {
-                if (typ.FullName.ToString() != "MS.Internal.NamedObject") {
-                    var wizyta = (Wizyta)dataGrid_Wizyty.SelectedItem;
-                    Data.Text = wizyta.Data.ToShortDateString();
-                    //CzasWizyty.Text = wizyta.CzasWizyty.TotalMinutes.ToString();
-
-                    //IdLekarza.Text = Convert.ToString(wizyta.Lekarz.IdLekarza);
-                    IdPacjenta.Text = wizyta.Pacjent.IdPacjenta.ToString();
-
-
-                }
-            }
-
+            var typ = objekt.GetType();
+            Data.Text = typ.GetProperty("Data").GetValue(objekt).ToString();
+            CzasWizyty.Text = typ.GetProperty("CzasWizyty").GetValue(objekt).ToString();
+            IdLekarza.Text = typ.GetProperty("Lekarz").GetValue(objekt).ToString();
+            IdPacjenta.Text = typ.GetProperty("Pacjent").GetValue(objekt).ToString();
         }
 
         private void dataGrid_Pacienci_SelectionChanged(object sender, SelectionChangedEventArgs e) {
