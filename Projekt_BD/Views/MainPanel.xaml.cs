@@ -122,17 +122,14 @@ namespace Projekt_BD.Views {
         }
 
         private void dataGrid_Pacienci_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            var typ = dataGrid_Pacienci.SelectedItem.GetType();
-            if (typ.FullName.ToString() != "MS.Internal.NamedObject") {
-                var pacjent = dataGrid_Pacienci.SelectedItem;
-                var pacjentType = pacjent.GetType();
-
-                tImie.Text = pacjentType.GetProperty("Imie").GetValue(pacjent).ToString();
-                tNazwisko.Text = pacjentType.GetProperty("Nazwisko").GetValue(pacjent).ToString();
-                ////brak numeru pesel
-                DataUrodzenia.Text = pacjentType.GetProperty("Year").GetValue(pacjent).ToString();
-                ////brak adresu zamieszkania
-            }
+            var objekt = dataGrid_Pacienci.SelectedItem;
+            var typ = objekt.GetType();
+            tImie.Text = typ.GetProperty("Imie").GetValue(objekt).ToString();
+            tNazwisko.Text = typ.GetProperty("Nazwisko").GetValue(objekt).ToString();
+            PESEL.Text = typ.GetProperty("Pesel").GetValue(objekt).ToString();
+            DataUrodzenia.Text = typ.GetProperty("Year").GetValue(objekt).ToString();
+            MiejsceUrodzenia.Text = typ.GetProperty("MiejsceUrodzenia").GetValue(objekt).ToString();
+            
         }
     }
 }
