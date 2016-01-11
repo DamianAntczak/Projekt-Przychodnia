@@ -120,8 +120,8 @@ namespace Projekt_BD.Views {
             var typ = objekt.GetType();
             Data.Text = typ.GetProperty("Data").GetValue(objekt).ToString();
             CzasWizyty.Text = typ.GetProperty("CzasWizyty").GetValue(objekt).ToString();
-            IdLekarza.Text = typ.GetProperty("Lekarz").GetValue(objekt).ToString();
-            IdPacjenta.Text = typ.GetProperty("Pacjent").GetValue(objekt).ToString();
+            tLekarz.Text = typ.GetProperty("Lekarz").GetValue(objekt).ToString();
+            tPacjenta.Text = typ.GetProperty("Pacjent").GetValue(objekt).ToString();
         }
 
         private void dataGrid_Pacienci_SelectionChanged(object sender, SelectionChangedEventArgs e) {
