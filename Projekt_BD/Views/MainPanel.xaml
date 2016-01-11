@@ -67,7 +67,7 @@
                 </TabItem>
                 <TabItem Header="Leki" Width="100">
                     <Grid>
-                        <DataGrid x:Name="dataGrid_Leki" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.38" Margin="0,0,0,208"/>
+                        <DataGrid x:Name="dataGrid_Leki" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.38" Margin="0,0,0,208" SelectionChanged="dataGrid_Leki_SelectionChanged"/>
                         <Label x:Name="label13" Content="Nazwa:" HorizontalAlignment="Left" Margin="10,412,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="NazwaLeku" HorizontalAlignment="Left" Height="33" Margin="83,416,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="266"/>
                         <Label x:Name="label14"  Content="Stopień Refundacji:" HorizontalAlignment="Left" Margin="10,464,0,0" VerticalAlignment="Top"/>
@@ -78,9 +78,9 @@
                 </TabItem>
                 <TabItem Header="Choroby" Width="100">
                     <Grid>
-                        <DataGrid x:Name="dataGrid_Choroby" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.38" Margin="0,0,0,208"/>
+                        <DataGrid x:Name="dataGrid_Choroby" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.38" Margin="0,0,0,208" SelectionChanged="dataGrid_Choroby_SelectionChanged"/>
                         <Label x:Name="label16" Content="Nazwa:" HorizontalAlignment="Left" Margin="54,410,0,0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="NazwaChroby" HorizontalAlignment="Left" Height="33" Margin="132,414,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="323"/>
+                        <TextBox x:Name="NazwaChoroby" HorizontalAlignment="Left" Height="33" Margin="132,414,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="323"/>
                         <Label x:Name="label17" Content="Opis:" HorizontalAlignment="Left" Margin="488,410,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="OpisChoroby" HorizontalAlignment="Left" Height="103" Margin="542,414,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="577"/>
                         <Label x:Name="label18" Content="Objawy:" HorizontalAlignment="Left" Margin="54,480,0,0" VerticalAlignment="Top"/>

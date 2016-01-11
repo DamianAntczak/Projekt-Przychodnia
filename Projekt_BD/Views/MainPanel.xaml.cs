@@ -131,5 +131,21 @@ namespace Projekt_BD.Views {
             MiejsceUrodzenia.Text = typ.GetProperty("MiejsceUrodzenia").GetValue(objekt).ToString();
             
         }
+
+        private void dataGrid_Choroby_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var objekt = dataGrid_Choroby.SelectedItem;
+            var typ = objekt.GetType();
+            NazwaChoroby.Text = typ.GetProperty("NazwaChoroby").GetValue(objekt).ToString();
+            OpisChoroby.Text = typ.GetProperty("Opis").GetValue(objekt).ToString();
+            Objawy.Text = typ.GetProperty("Objawy").GetValue(objekt).ToString();
+        }
+
+        private void dataGrid_Leki_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var objekt = dataGrid_Leki.SelectedItem;
+            var typ = objekt.GetType();
+            NazwaLeku.Text = typ.GetProperty("NazwaLeku").GetValue(objekt).ToString();
+        }
     }
 }
