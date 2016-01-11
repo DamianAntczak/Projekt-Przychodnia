@@ -9,8 +9,8 @@ using Projekt_BD.Models;
 
 namespace Projekt_BD {
     public class DbContext : System.Data.Entity.DbContext {
-        //public DbContext() : base("name=DbContext") { }
-        public DbContext() : base("PrzychodniaDB") { }
+        public DbContext() : base("name=DbContext") { }
+        //public DbContext() : base("PrzychodniaDB") { }
 
         public DbSet<Pacjent> Pacjentci { get; set; }
         public DbSet<Lek> Leki { get; set; }

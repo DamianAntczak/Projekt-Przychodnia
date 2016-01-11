@@ -68,8 +68,6 @@ namespace Projekt_BD.Views {
         private void PrzegladajBazeButton_Click(object sender, RoutedEventArgs e) {
             if (!przegladajBazeWorker.IsBusy)
                 przegladajBazeWorker.RunWorkerAsync();
-            else
-                return;
         }
         private void ObsluzWizyteButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Obsługa Wizyty";
@@ -116,7 +114,6 @@ namespace Projekt_BD.Views {
         private void dataGrid_Wizyty_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var objekt = dataGrid_Wizyty.SelectedItem;
             //zabezpieczeniem przed wybraniem ostatniego rekordu (nie można rzutować na typ Wizyta)
-
             var typ = objekt.GetType();
             Data.Text = typ.GetProperty("Data").GetValue(objekt).ToString();
             CzasWizyty.Text = typ.GetProperty("CzasWizyty").GetValue(objekt).ToString();
@@ -127,15 +124,14 @@ namespace Projekt_BD.Views {
         private void dataGrid_Pacienci_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var typ = dataGrid_Pacienci.SelectedItem.GetType();
             if (typ.FullName.ToString() != "MS.Internal.NamedObject") {
-                var pacjent = (Pacjent)dataGrid_Pacienci.SelectedItem;
-                tImie.Text = pacjent.Imie;
-                tNazwisko.Text = pacjent.Nazwisko;
+                var pacjent = dataGrid_Pacienci.SelectedItem;
+                var pacjentType = pacjent.GetType();
+
+                tImie.Text = pacjentType.GetProperty("Imie").GetValue(pacjent).ToString();
+                tNazwisko.Text = pacjentType.GetProperty("Nazwisko").GetValue(pacjent).ToString();
                 ////brak numeru pesel
-                DataUrodzenia.Text = pacjent.DataUrodzenie.ToShortDateString();
-                MiejsceUrodzenia.Text = pacjent.MiejsceUrodzenia;
+                DataUrodzenia.Text = pacjentType.GetProperty("Year").GetValue(pacjent).ToString();
                 ////brak adresu zamieszkania
-                Plec.Text = pacjent.Plec;
-                NrTelefonu.Text = pacjent.NrTelefonu;
             }
         }
     }
