@@ -29,7 +29,7 @@ namespace Projekt_BD.Views
         {
             using (dbContext = new DbContext())
             {
-                dbContext.Pacjentci.Add(new Models.Pacjent { IdPacjenta = Guid.NewGuid(), Imie = tImie.Text, DataUrodzenie = tUrodzenie.SelectedDate.GetValueOrDefault(), Nazwisko = tNazwisko.Text, Mail = tMail.Text });
+                dbContext.Pacjentci.Add(new Models.Pacjent { Pesel = "11686911222", Imie = tImie.Text, DataUrodzenie = tUrodzenie.SelectedDate.GetValueOrDefault(), Nazwisko = tNazwisko.Text, Mail = tMail.Text });
                 dbContext.SaveChanges();
                 MessageBox.Show("DODANO PACJENTAAAAAAA!");
             }

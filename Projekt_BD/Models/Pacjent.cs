@@ -16,14 +16,12 @@ namespace Projekt_BD.Models
             Choroby = new List<Choroba>();
         }
         [Key]
-        public Guid IdPacjenta { get; set; }
+        public String Pesel { get; set; }
         public String Imie { get; set; }
         public string Nazwisko { get; set; }
         public DateTime  DataUrodzenie { get; set; }
         public String MiejsceUrodzenia { get; set; }
-        public String Plec { get; set; }
-        //z wykorzstaniem enum
-        //public plec Pleć { get; set; }
+        public Plec Plec { get; set; }
         public String NrTelefonu { get; set; }
         public String Mail { get; set; }
 

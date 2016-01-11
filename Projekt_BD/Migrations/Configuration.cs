@@ -26,8 +26,8 @@ namespace Projekt_BD.Migrations {
             //    );
             //
 
-            var pacjent = new Pacjent { IdPacjenta = Guid.NewGuid(), Imie = "Katarzyna", Nazwisko = "Janicka", DataUrodzenie = new DateTime(1984, 1, 4), MiejsceUrodzenia = "Opole", Plec = "Kobieta", NrTelefonu = "123456789", Mail = "katarzyna@bd.pl" };
-            var pacjent2 = new Pacjent { IdPacjenta = Guid.NewGuid(), Imie = "Janusz", Nazwisko = "Polewski", DataUrodzenie = new DateTime(1992, 12, 5), MiejsceUrodzenia = "Katowice", Plec = "Mê¿czyzna", NrTelefonu = "987654321", Mail = "janusz@bd.pl" };
+            var pacjent = new Pacjent { Pesel = "11686911222", Imie = "Katarzyna", Nazwisko = "Janicka", DataUrodzenie = new DateTime(1984, 1, 4), MiejsceUrodzenia = "Opole", Plec = Plec.Mezczyzna, NrTelefonu = "123456789", Mail = "katarzyna@bd.pl" };
+            var pacjent2 = new Pacjent { Pesel = "24686111254", Imie = "Janusz", Nazwisko = "Polewski", DataUrodzenie = new DateTime(1992, 12, 5), MiejsceUrodzenia = "Katowice", Plec = Plec.Kobieta, NrTelefonu = "987654321", Mail = "janusz@bd.pl" };
             context.Set<Pacjent>().AddOrUpdate(pacjent);
             context.Set<Pacjent>().AddOrUpdate(pacjent2);
 
@@ -48,8 +48,8 @@ namespace Projekt_BD.Migrations {
             context.Set<SpisChorb>().AddOrUpdate(choroba);
             context.Set<SpisChorb>().AddOrUpdate(choroba2);
 
-            context.Set<Choroba>().AddOrUpdate(new Choroba { IdChoroby = Guid.NewGuid(), ChorobaZeSpisu = choroba, Pacjent = pacjent, IdPacjenta = pacjent.IdPacjenta, OpisChoroby = "Angina u pacjenta ma typowe objawy i przebiega w normalny sposób", OstatniaModyfikacjaOpisuChoroby = DateTime.Today });
-            context.Set<Choroba>().AddOrUpdate(new Choroba { IdChoroby = Guid.NewGuid(), ChorobaZeSpisu = choroba2, Pacjent = pacjent2, IdPacjenta = pacjent2.IdPacjenta, OpisChoroby = "Wysokie nadciœnienie u pacjenta.", OstatniaModyfikacjaOpisuChoroby = DateTime.Today });
+            context.Set<Choroba>().AddOrUpdate(new Choroba { IdChoroby = Guid.NewGuid(), ChorobaZeSpisu = choroba, Pacjent = pacjent, Pesel = pacjent.Pesel, OpisChoroby = "Angina u pacjenta ma typowe objawy i przebiega w normalny sposób", OstatniaModyfikacjaOpisuChoroby = DateTime.Today });
+            context.Set<Choroba>().AddOrUpdate(new Choroba { IdChoroby = Guid.NewGuid(), ChorobaZeSpisu = choroba2, Pacjent = pacjent2, Pesel = pacjent2.Pesel, OpisChoroby = "Wysokie nadciœnienie u pacjenta.", OstatniaModyfikacjaOpisuChoroby = DateTime.Today });
 
             var lek = new SpisLekow { NazwaLeku = "Amoxicillinum", NazwaPolskaLeku = "amoksycylina" };
             var lek2 = new SpisLekow { NazwaLeku = "Simvastatinum ", NazwaPolskaLeku = "symwastatyna" };

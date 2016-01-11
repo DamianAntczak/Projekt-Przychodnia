@@ -11,7 +11,7 @@ namespace Projekt_BD {
         [Key]
         // Id przypadku choroby?
         public Guid IdChoroby { get; set; }
-        public virtual Guid IdPacjenta { get; set; }
+        public virtual String Pesel { get; set; }
         public virtual Pacjent Pacjent { get; set; }
         public string OpisChoroby { get; set; }
         public DateTime OstatniaModyfikacjaOpisuChoroby { get; set; }

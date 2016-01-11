@@ -46,7 +46,7 @@ namespace Projekt_BD.Views {
 
             using (var context = new DbContext()) {
 
-                var pac = from pacjentcis in context.Pacjentci select new { pacjentcis.IdPacjenta, pacjentcis.Imie, pacjentcis.Nazwisko, pacjentcis.DataUrodzenie.Year, Wiek = DateTime.Today.Year - pacjentcis.DataUrodzenie.Year, pacjentcis.MiejsceUrodzenia, pacjentcis.Mail };
+                var pac = from pacjentcis in context.Pacjentci select new { pacjentcis.Pesel, pacjentcis.Imie, pacjentcis.Nazwisko, pacjentcis.DataUrodzenie.Year, Wiek = DateTime.Today.Year - pacjentcis.DataUrodzenie.Year, pacjentcis.MiejsceUrodzenia, pacjentcis.Mail };
                 dataGrid_Pacienci.Dispatcher.Invoke(DispatcherPriority.Normal,
                     new Action(() => dataGrid_Pacienci.ItemsSource = pac.ToList()));
 
