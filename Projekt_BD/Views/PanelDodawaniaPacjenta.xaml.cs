@@ -29,10 +29,17 @@ namespace Projekt_BD.Views
         {
             using (dbContext = new DbContext())
             {
-                dbContext.Pacjentci.Add(new Models.Pacjent { Pesel = "11686911222", Imie = tImie.Text, DataUrodzenie = tUrodzenie.SelectedDate.GetValueOrDefault(), Nazwisko = tNazwisko.Text, Mail = tMail.Text });
+                dbContext.Pacjentci.Add(new Models.Pacjent { Pesel = TPesel.Text, Imie = tImie.Text, DataUrodzenie = tUrodzenie.SelectedDate.GetValueOrDefault(), Nazwisko = tNazwisko.Text, Mail = tMail.Text });
                 dbContext.SaveChanges();
-                MessageBox.Show("DODANO PACJENTAAAAAAA!");
+                MessageBox.Show("Pomyślnie dodano pacjenta!");
             }
         }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
     }
 }
