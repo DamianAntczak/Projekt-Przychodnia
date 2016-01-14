@@ -31,14 +31,30 @@ namespace Projekt_BD.Views
             using (dbContext = new DbContext())
             {
                 var x = (from Pacjent in dbContext.Pacjentci where Pacjent.Pesel == pesel select Pacjent).First();
+                tPesel.Text = x.Pesel;
                 tImie.Text = x.Imie;
+                tNazwisko.Text = x.Nazwisko;
+                tMiejsceUr.Text = x.MiejsceUrodzenia;
+                tTel.Text = x.NrTelefonu;
+                tMail.Text = x.Mail;
 
             }
         }
 
         private void bZapisz_Click(object sender, RoutedEventArgs e)
         {
-            
+            using (dbContext = new DbContext())
+            {
+                var pacjent = (from Pacjent in dbContext.Pacjentci where Pacjent.Pesel == pesel select Pacjent).First();
+                pacjent.Imie = tImie.Text;
+                pacjent.Nazwisko = tNazwisko.Text;
+                pacjent.Mail = tMail.Text;
+                pacjent.MiejsceUrodzenia = tMiejsceUr.Text;
+                pacjent.NrTelefonu = tTel.Text;
+                dbContext.SaveChanges();
+                MessageBox.Show("Pomyślnie zapisano zmiany");
+            }
+
         }
 
       
