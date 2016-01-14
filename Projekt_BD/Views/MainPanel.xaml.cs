@@ -160,5 +160,12 @@ namespace Projekt_BD.Views {
             if (typ.GetProperty("NazwaLeku").GetValue(objekt) != null)
                 NazwaLeku.Text = typ.GetProperty("NazwaLeku").GetValue(objekt).ToString();
         }
+
+        private void bEdytuj_Click(object sender, RoutedEventArgs e)
+        {
+            var objekt = dataGrid_Pacienci.SelectedItem;
+            var pesel = objekt.GetType().GetProperty("Pesel").GetValue(objekt).ToString();
+            (new EdytujPacjentaWindow(pesel)).ShowDialog();
+        }
     }
 }

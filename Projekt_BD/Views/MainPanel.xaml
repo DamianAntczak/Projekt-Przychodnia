@@ -62,7 +62,8 @@
                         <TextBox x:Name="Plec"  HorizontalAlignment="Left" Height="33" Margin="856,412,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="192"/>
                         <Label x:Name="label12" Content="Nr Tel."  HorizontalAlignment="Left" Margin="778,464,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="NrTelefonu"  HorizontalAlignment="Left" Height="37" Margin="856,464,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="192"/>
-                        <Button x:Name="DodajPacjentaButton" Content="DodajPacjenta" HorizontalAlignment="Left" Margin="778,517,0,0" VerticalAlignment="Top" Width="270" Height="37" Click="DodajPacjentaButton_Click"/>
+                        <Button x:Name="DodajPacjentaButton" Content="DodajPacjenta" HorizontalAlignment="Left" Margin="930,517,0,0" VerticalAlignment="Top" Width="186" Height="37" Click="DodajPacjentaButton_Click"/>
+                        <Button x:Name="bEdytuj" Content="Edytuj" HorizontalAlignment="Left" Margin="742,517,0,0" VerticalAlignment="Top" Width="174" Height="37" Click="bEdytuj_Click"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Leki" Width="100">
