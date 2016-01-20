@@ -65,7 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Choroba.cs" />
+    <Compile Include="Models\HistoriaChoroby.cs" />
     <Compile Include="Models\Lekarz.cs" />
     <Compile Include="Models\Plec.cs" />
     <Compile Include="Models\Recepta.cs" />

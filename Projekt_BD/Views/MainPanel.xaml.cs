@@ -55,11 +55,7 @@ namespace Projekt_BD.Views {
                 dataGrid_Leki.Dispatcher.Invoke(DispatcherPriority.Normal,
                     new Action(() => dataGrid_Leki.ItemsSource = lek.ToList()));
 
-                var wiz = from wizyty in context.Wizyty
-                          select new { wizyty.CzasWizyty, Pacjent = wizyty.Pacjent.Imie + " " + wizyty.Pacjent.Nazwisko,
-                              wizyty.Data, Lekarz = wizyty.Lekarz.Imie + " " + wizyty.Lekarz.Nazwisko };
-                dataGrid_Wizyty.Dispatcher.Invoke(DispatcherPriority.Normal,
-                    new Action(() => dataGrid_Wizyty.ItemsSource = wiz.ToList()));
+               
 
                 var cho = from choroby in context.SpisChorob select new { choroby.NazwaChoroby, choroby.NazwaPolskaChoroby, choroby.Objawy, choroby.Opis, choroby.SposobyLeczenia };
                 dataGrid_Choroby.Dispatcher.Invoke(DispatcherPriority.Normal,

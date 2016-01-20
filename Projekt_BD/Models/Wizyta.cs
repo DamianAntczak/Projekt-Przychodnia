@@ -18,9 +18,11 @@ namespace Projekt_BD.Models
         //ma być typu DateTime, gdzie będziemy określać ile ma trwać wizyta, np. 1 h 20 min czy Int32
         //do określenia ilości minut -> 80 min?
         public TimeSpan CzasWizyty { get; set; }
-        public virtual Lekarz Lekarz { get; set; }
-        public virtual Pacjent Pacjent { get; set; }
+        
         public ICollection<Recepta> Recepty { get; set; }
+
+        
+        public virtual HistoriaChoroby HistoriaChoroby { get; set; }
 
         //Pacjent u danego specjalisty może mieć zdjagnozowaną jedną chorobę
         //Jeżeli uwzględnimy więcej chorób można stworzyć nową klasę Diagnoza, która będzie miała

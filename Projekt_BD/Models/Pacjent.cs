@@ -12,8 +12,7 @@ namespace Projekt_BD.Models
 
         public Pacjent()
         {
-            Wizyty = new List<Wizyta>();
-            Choroby = new List<Choroba>();
+            HistoriaChoroby = new List<HistoriaChoroby>();
         }
         [Key]
         public String Pesel { get; set; }
@@ -25,8 +24,7 @@ namespace Projekt_BD.Models
         public String NrTelefonu { get; set; }
         public String Mail { get; set; }
 
-        public virtual ICollection<Wizyta> Wizyty { get; set; }
-        public virtual ICollection<Choroba> Choroby { get; set; }
+        public virtual ICollection<HistoriaChoroby> HistoriaChoroby { get; set; }
     }
 
     

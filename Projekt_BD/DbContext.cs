@@ -10,14 +10,15 @@ using Projekt_BD.Models;
 namespace Projekt_BD {
     public class DbContext : System.Data.Entity.DbContext {
         //public DbContext() : base("name=DbContext") { }
-        public DbContext() : base("PrzychodniaDB") { }
+        //public DbContext() : base("PrzychodniaDB") { }
+        public DbContext() : base("BazaDanychPrzychodnia") { }
 
         public DbSet<Pacjent> Pacjentci { get; set; }
         public DbSet<Lek> Leki { get; set; }
         public DbSet<Specjalizacja> Specjalizacje { get; set; }
         public DbSet<Recepta> Recepty { get; set; }
         public DbSet<Lekarz> Lekarze { get; set; }
-        public DbSet<Choroba> Choroby { get; set; }
+        public DbSet<HistoriaChoroby> HistoriaChoroby { get; set; }
         public DbSet<Wizyta> Wizyty { get; set; }
         public DbSet<Uzytkownik> Uzytkownicy { get; set; }
         public DbSet<SpisChorb> SpisChorob { get; set; }
@@ -29,30 +30,22 @@ namespace Projekt_BD {
                 .WithMany(s => s.Lekarze)
                 .HasForeignKey(s => s.IdLekarza);
 
+
+
+            modelBuilder.Entity<HistoriaChoroby>()
+                .HasMany(w => w.Wizyty)
+                .WithRequired(w => w.HistoriaChoroby)
+                .HasForeignKey(w => w.IdWizyty);
+            
             modelBuilder.Entity<Pacjent>()
-                .HasMany<Wizyta>(w => w.Wizyty)
-                .WithRequired(p => p.Pacjent)
-                .HasForeignKey(p => p.IdWizyty);
-
-            modelBuilder.Entity<Wizyta>()
-                .HasMany<Recepta>(r => r.Recepty)
-                .WithRequired(w => w.Wizyta)
-                .HasForeignKey(r => r.IdRecepty);
-
-            modelBuilder.Entity<Wizyta>()
-                .HasRequired(w => w.Lekarz)
-                .WithMany(l => l.Wizyty)
-                .HasForeignKey(l => l.IdWizyty);
-
-            modelBuilder.Entity<Pacjent>()
-                .HasMany(c => c.Choroby)
+                .HasMany(c => c.HistoriaChoroby)
                 .WithRequired(p => p.Pacjent)
                 .HasForeignKey(c => c.Pesel);
 
-            modelBuilder.Entity<Choroba>()
+            modelBuilder.Entity<HistoriaChoroby>()
                 .HasRequired(c => c.ChorobaZeSpisu)
                 .WithMany(c => c.Choroba)
-                .HasForeignKey(c => c.IdChoroby);
+                .HasForeignKey(c => new { c.Pesel,c.IdLekarza});
 
             modelBuilder.Entity<Lek>()
                 .HasRequired(l => l.SpisLekow)

@@ -11,11 +11,6 @@ namespace Projekt_BD
 {
     public class Lekarz 
     {
-        public Lekarz()
-        {
-            Wizyty = new List<Wizyta>();
-        }
-
         
         [Key]
         public Guid IdLekarza { get; set; }
@@ -24,6 +19,5 @@ namespace Projekt_BD
         public virtual Specjalizacja Specjalizacja { get; set; }
         public String Adres { get; set; }
 
-        public virtual  ICollection<Wizyta> Wizyty { get; set; }
     }
 }

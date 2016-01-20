@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Projekt_BD.Models {
     public class SpisChorb {
         public SpisChorb() {
-            Choroba = new List<Choroba>();
+            Choroba = new List<HistoriaChoroby>();
         }
         [Key]
         public string NazwaChoroby { get; set; }
@@ -12,6 +12,6 @@ namespace Projekt_BD.Models {
         public string Opis { get; set; }
         public string Objawy { get; set; }
         public string SposobyLeczenia { get; set; }
-        public ICollection<Choroba> Choroba { get; set; }
+        public ICollection<HistoriaChoroby> Choroba { get; set; }
     }
 }
