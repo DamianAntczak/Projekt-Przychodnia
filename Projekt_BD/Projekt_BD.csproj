@@ -88,6 +88,9 @@
     <Compile Include="Views\PanelDodawaniaPacjenta.xaml.cs">
       <DependentUpon>PanelDodawaniaPacjenta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PanelZarzadzaniaacjentem.xaml.cs">
+      <DependentUpon>PanelZarzadzaniaacjentem.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PanelDodawaniaPacjenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PanelZarzadzaniaacjentem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Projekt_BD.Models;
 
-namespace Projekt_BD {
+namespace Projekt_BD.Models {
     public class HistoriaChoroby {
-
-        HistoriaChoroby()
+        public HistoriaChoroby()
         {
             Wizyty = new List<Wizyta>();
         }

@@ -73,6 +73,7 @@ namespace Projekt_BD.Views {
         private void ZarzadzajWizytamiButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Zarządanie Wizytami";
             CenterPanel1.Visibility = Visibility.Hidden;
+
         }
 
         private void UstalGodzinyPrzyjecButton_Click(object sender, RoutedEventArgs e) {
@@ -162,6 +163,14 @@ namespace Projekt_BD.Views {
             var objekt = dataGrid_Pacienci.SelectedItem;
             var pesel = objekt.GetType().GetProperty("Pesel").GetValue(objekt).ToString();
             (new EdytujPacjentaWindow(pesel)).ShowDialog();
+        }
+
+        private void ZarzadzajPacjentamiButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItemName.Content = "Zarządanie Pacjentem";
+            CenterPanel1.Visibility = Visibility.Hidden;
+
+            PanelZarzadzaniaPacjentem.Visibility = Visibility.Visible;
         }
     }
 }
