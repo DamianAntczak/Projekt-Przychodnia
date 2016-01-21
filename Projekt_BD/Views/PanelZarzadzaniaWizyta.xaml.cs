@@ -50,12 +50,11 @@ namespace Projekt_BD.Views {
                 //var lekarz = from Lekarz in db.Lekarze select Lekarz ;
                 var pacjent = dataGrid_Pacjenci.SelectedItem;
                 var pesel = pacjent.GetType().GetProperty("Pesel").GetValue(pacjent).ToString();
-                var lekarz = db.Lekarze.Select(l =>db.HistoriaChoroby.Select(hs => hs.Pesel).Where(hs=> hs==pesel));
-
-                //var lek = from l in db.Lekarze
-                //          where from hc in db.HistoriaChoroby
-                //                 where pesel == hc.Pesel group hc.IdLekarza by
-                                 
+                var lekarz = from l in db.Lekarze
+                          join hc in db.HistoriaChoroby
+                          on l.IdLekarza equals hc.IdLekarza
+                          where hc.Pesel == pesel
+                          select l;
                 LekarzComboBox.ItemsSource = lekarz.ToList();
             }
         }

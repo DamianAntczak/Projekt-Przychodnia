@@ -9,9 +9,9 @@ using Projekt_BD.Models;
 
 namespace Projekt_BD {
     public class DbContext : System.Data.Entity.DbContext {
-        //public DbContext() : base("name=DbContext") { }
+        public DbContext() : base("name=DbContext") { }
         //public DbContext() : base("PrzychodniaDB") { }
-        public DbContext() : base("BazaDanychPrzychodnia") { }
+        //public DbContext() : base("BazaDanychPrzychodnia") { }
 
         public DbSet<Pacjent> Pacjentci { get; set; }
         public DbSet<Lek> Leki { get; set; }
@@ -29,8 +29,6 @@ namespace Projekt_BD {
                 .HasRequired<Specjalizacja>(s => s.Specjalizacja)
                 .WithMany(s => s.Lekarze)
                 .HasForeignKey(s => s.IdLekarza);
-
-
 
             modelBuilder.Entity<HistoriaChoroby>()
                 .HasMany(w => w.Wizyty)
