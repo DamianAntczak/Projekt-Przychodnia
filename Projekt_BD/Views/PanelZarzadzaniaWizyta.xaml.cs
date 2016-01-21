@@ -21,9 +21,11 @@ namespace Projekt_BD.Views {
     /// </summary>
     public partial class PanelZarzadzaniaWizyta : UserControl {
         readonly BackgroundWorker worker = new BackgroundWorker();
+        const int maksymalnaDataDoTylu = -14;
         public PanelZarzadzaniaWizyta() {
             worker.DoWork += Worker_DoWork;
             InitializeComponent();
+            WybierzDate.DisplayDateStart = DateTime.Today.AddDays(maksymalnaDataDoTylu);
         }
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e) {
@@ -46,16 +48,32 @@ namespace Projekt_BD.Views {
         }
 
         private void dataGrid_Pacjenci_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            using (var db = new DbContext()) {
-                //var lekarz = from Lekarz in db.Lekarze select Lekarz ;
+            using (var context = new DbContext()) {
                 var pacjent = dataGrid_Pacjenci.SelectedItem;
                 var pesel = pacjent.GetType().GetProperty("Pesel").GetValue(pacjent).ToString();
-                var lekarz = from l in db.Lekarze
-                          join hc in db.HistoriaChoroby
+                var lekarz = from l in context.Lekarze
+                          join hc in context.HistoriaChoroby
                           on l.IdLekarza equals hc.IdLekarza
                           where hc.Pesel == pesel
                           select l;
                 LekarzComboBox.ItemsSource = lekarz.ToList();
+            }
+        }
+
+        private void DodajNowaWizyte_Click(object sender, RoutedEventArgs e) {
+            if (WybierzDate.SelectedDate.HasValue && LekarzComboBox.HasItems) {
+                
+                using (var context = new DbContext()) {
+                    var lekarz = LekarzComboBox.SelectedItem as Lekarz;
+                    var pacjent = dataGrid_Pacjenci.SelectedItem;
+                    var pesel = pacjent.GetType().GetProperty("Pesel").GetValue(pacjent).ToString();
+                    var historiaChoroby = from hc in context.HistoriaChoroby
+                                          where hc.IdLekarza == lekarz.IdLekarza &&
+                                          hc.Pesel == pesel
+                                          select hc;                                          
+                    context.Wizyty.Add(new Models.Wizyta { IdWizyty = Guid.NewGuid(), Data = WybierzDate.SelectedDate.Value, HistoriaChoroby = historiaChoroby.FirstOrDefault()});
+                    context.SaveChanges();
+                }
             }
         }
     }
