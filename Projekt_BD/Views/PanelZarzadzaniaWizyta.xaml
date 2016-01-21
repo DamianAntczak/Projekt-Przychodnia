@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Projekt_BD.Views.PanelZarzadzaniaWizyta"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+    xmlns:local="clr-namespace:Projekt_BD.Views"
+    mc:Ignorable="d" Height="440" Width="617.068" >
+
+    <Grid x:Name="PanelZarzadzaniaWizyta1" Initialized="PanelZarzadzaniaWizyta1_Initialized" Margin="0,0,10,0">
+        <Button x:Name="button" Content="Dodaj nową wizytę" HorizontalAlignment="Left" Margin="337,376,0,0" VerticalAlignment="Top" Width="120" Height="54"/>
+        <DataGrid x:Name="dataGrid_Pacjenci" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="202" Width="553" SelectionChanged="dataGrid_Pacjenci_SelectionChanged"/>
+        <ComboBox x:Name="LekarzComboBox" HorizontalAlignment="Left" Margin="177,302,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Imie"/>
+                                <Binding Path="Nazwisko"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="label" Content="Wybierz pacjenta" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Wybierz lekarza" HorizontalAlignment="Left" Margin="177,276,0,0" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="355,302,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Data wizyty" HorizontalAlignment="Left" Margin="355,276,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="PrzypiszPacjentaDoLekarza" Content="Przypisz nowego &#xD;&#xA;lekarza do pacjenta" HorizontalAlignment="Left" Margin="177,376,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="PrzypiszPacjentaDoLekarza_Click"/>
+    </Grid>
+</UserControl>

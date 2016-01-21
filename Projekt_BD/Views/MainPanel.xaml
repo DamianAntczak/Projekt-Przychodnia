@@ -10,7 +10,7 @@
         <StackPanel HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.26,-0.26">
             <Button x:Name="PrzegladajBazeButton" Content="Przeglądaj Bazę" FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" Click="PrzegladajBazeButton_Click"/>
             <Button x:Name="ObsluzWizyteButton" Content="Obsłuż Wizytę" FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" RenderTransformOrigin="-0.722,1.92" Click="ObsluzWizyteButton_Click"/>
-            <Button x:Name="ZarzadzajWizytamiButton"  FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" RenderTransformOrigin="-0.722,1.92" Click="ZarzadzajWizytamiButton_Click">
+            <Button x:Name="ZarzadzajWizytamiButton"  FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="10,10,10,0" RenderTransformOrigin="-0.722,1.92" Focusable="True" Click="ZarzadzajWizytamiButton_Click">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center" Width="160">Zarządzaj Wizytami</TextBlock>
             </Button>
             <Button x:Name="UstalGodzinyPrzyjecButton"  FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="12,10,0,0" RenderTransformOrigin="-0.722,1.92" HorizontalAlignment="Left" Click="UstalGodzinyPrzyjecButton_Click">
@@ -101,6 +101,8 @@
         <Button x:Name="ZarzadzajPacjentamiButton"  FontSize="20" Height="87" VerticalAlignment="Top" Width="180" Margin="21,412,0,0" RenderTransformOrigin="-0.722,1.92" HorizontalAlignment="Left" Click="ZarzadzajPacjentamiButton_Click">
             <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Zarządaj Pacjentami"/></TextBlock>
         </Button>
-        <local:PanelZarzadzaniaacjentem x:Name="PanelZarzadzaniaPacjentem" Visibility="Hidden"  Margin="215,157,840,223"></local:PanelZarzadzaniaacjentem>
+        <!--<local:PanelZarzadzaniaacjentem x:Name="PanelZarzadzaniaPacjentem" Visibility="Visible"  Margin="215,157,840,223"></local:PanelZarzadzaniaacjentem>-->
+        <!--<local:PanelZarzadzaniaWizyta Margin="488,104,0,0" VerticalAlignment="Top" Width="617" Visibility="Hidden"></local:PanelZarzadzaniaWizyta>-->
+        <ContentControl x:Name="Content" HorizontalAlignment="Left" Margin="215,102,0,0" VerticalAlignment="Top" Width="1133" Height="635"/>
     </Grid>
 </Window>

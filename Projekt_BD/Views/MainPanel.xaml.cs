@@ -63,22 +63,28 @@ namespace Projekt_BD.Views {
             }
         }
         private void PrzegladajBazeButton_Click(object sender, RoutedEventArgs e) {
+            Content.Content = null;
             if (!przegladajBazeWorker.IsBusy)
                 przegladajBazeWorker.RunWorkerAsync();
+           
         }
         private void ObsluzWizyteButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Obsługa Wizyty";
             CenterPanel1.Visibility = Visibility.Hidden;
+            Content.Content = null;
         }
         private void ZarzadzajWizytamiButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Zarządanie Wizytami";
+            PanelZarzadzaniaWizyta pzw = new PanelZarzadzaniaWizyta();
             CenterPanel1.Visibility = Visibility.Hidden;
-
+            this.Content.Content = pzw;
+            pzw.VerticalAlignment = VerticalAlignment.Top;
         }
 
         private void UstalGodzinyPrzyjecButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Godziny Przyjęć";
             CenterPanel1.Visibility = Visibility.Hidden;
+            Content.Content = null;
         }
 
         private void DodajPacjentaButton_Click(object sender, RoutedEventArgs e) {
@@ -169,8 +175,9 @@ namespace Projekt_BD.Views {
         {
             MenuItemName.Content = "Zarządanie Pacjentem";
             CenterPanel1.Visibility = Visibility.Hidden;
-
-            PanelZarzadzaniaPacjentem.Visibility = Visibility.Visible;
+            PanelZarzadzaniaacjentem pzp = new PanelZarzadzaniaacjentem();
+            Content.Content = pzp;
+            pzp.VerticalAlignment = VerticalAlignment.Top;
         }
     }
 }

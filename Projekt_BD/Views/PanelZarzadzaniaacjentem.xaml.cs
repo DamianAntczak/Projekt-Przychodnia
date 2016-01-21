@@ -24,9 +24,7 @@ namespace Projekt_BD.Views
         public PanelZarzadzaniaacjentem()
         {
             InitializeComponent();
-
-            using (DbContext db = new DbContext())
-            {
+            using (DbContext db = new DbContext()) {
 
                 var pac = from Pacjent in db.Pacjentci select Pacjent;
                 PacjentComboBox.ItemsSource = pac.ToList();
@@ -34,8 +32,6 @@ namespace Projekt_BD.Views
                 var lekarz = from Lekarz in db.Lekarze select Lekarz;
                 LekarzComboBox.ItemsSource = lekarz.ToList();
             }
-
-
         }
 
         private void Polacz_Click(object sender, RoutedEventArgs e)
@@ -52,7 +48,6 @@ namespace Projekt_BD.Views
 
                 MessageBox.Show("Dodano " + pacjent.Imie + "" + pacjent.Nazwisko + " do pacjentów "+lekarz.Imie+" "+lekarz.Nazwisko);
             }
-
         }
     }
 }
