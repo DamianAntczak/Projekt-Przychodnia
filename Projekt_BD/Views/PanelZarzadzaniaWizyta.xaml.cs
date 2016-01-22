@@ -48,6 +48,7 @@ namespace Projekt_BD.Views {
         }
 
         private void dataGrid_Pacjenci_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            LekarzComboBox.SelectedItem = null;
             using (var context = new DbContext()) {
                 var pacjent = dataGrid_Pacjenci.SelectedItem;
                 var pesel = pacjent.GetType().GetProperty("Pesel").GetValue(pacjent).ToString();
@@ -56,13 +57,13 @@ namespace Projekt_BD.Views {
                           on l.IdLekarza equals hc.IdLekarza
                           where hc.Pesel == pesel
                           select l;
-                LekarzComboBox.ItemsSource = lekarz.ToList();
+                LekarzComboBox.ItemsSource = lekarz.ToList();   
             }
         }
 
         private void DodajNowaWizyte_Click(object sender, RoutedEventArgs e) {
-            if (WybierzDate.SelectedDate.HasValue && LekarzComboBox.HasItems) {
-                
+            if (WybierzDate.SelectedDate.HasValue && LekarzComboBox.SelectedItem != null) {
+
                 using (var context = new DbContext()) {
                     var lekarz = LekarzComboBox.SelectedItem as Lekarz;
                     var pacjent = dataGrid_Pacjenci.SelectedItem;
@@ -70,11 +71,40 @@ namespace Projekt_BD.Views {
                     var historiaChoroby = from hc in context.HistoriaChoroby
                                           where hc.IdLekarza == lekarz.IdLekarza &&
                                           hc.Pesel == pesel
-                                          select hc;                                          
-                    context.Wizyty.Add(new Models.Wizyta { IdWizyty = Guid.NewGuid(), Data = WybierzDate.SelectedDate.Value, HistoriaChoroby = historiaChoroby.FirstOrDefault()});
+                                          select hc;
+                    context.Wizyty.Add(new Models.Wizyta { IdWizyty = Guid.NewGuid(), Data = WybierzDate.SelectedDate.Value, HistoriaChoroby = historiaChoroby.FirstOrDefault() });
                     context.SaveChanges();
                 }
+                var button = sender as Button;
+                button.Foreground = Brushes.Green;
+                button.Content = "Pomyślnie zapisano.";
             }
+            else
+                MessageBox.Show("Proszę wybrać pacjenta, lekarza i datę wizyty");
+        }
+
+        private void LekarzComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            WizytaPacjenta.Content = "";
+            var lekarz = LekarzComboBox.SelectedItem as Lekarz;
+            if (lekarz != null) {
+                using (var context = new DbContext()) {
+                    var pacjent = dataGrid_Pacjenci.SelectedItem;
+                    var pesel = pacjent.GetType().GetProperty("Pesel").GetValue(pacjent).ToString();
+                    var wizyta = from w in context.Wizyty
+                                 where w.HistoriaChoroby.IdLekarza == lekarz.IdLekarza &&
+                                 w.HistoriaChoroby.Pesel == pesel
+                                 select w;
+                    foreach (var i in wizyta) {
+                        WizytaPacjenta.Content += i.Data.ToString() + "\n";
+                    }
+                }
+            }
+        }
+
+        private void DodajNowaWizyte_LostFocus(object sender, RoutedEventArgs e) {
+            var button = sender as Button;
+            button.Foreground = Brushes.Black;
+            button.Content = "Dodaj nową wizytę";
         }
     }
 }

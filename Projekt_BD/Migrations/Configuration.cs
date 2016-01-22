@@ -48,15 +48,29 @@ namespace Projekt_BD.Migrations {
             context.Set<SpisChorb>().AddOrUpdate(choroba);
             context.Set<SpisChorb>().AddOrUpdate(choroba2);
 
-            //context.Set<HistoriaChoroby>().AddOrUpdate(new HistoriaChoroby {  ChorobaZeSpisu = choroba, Pacjent = pacjent, Pesel = pacjent.Pesel, OpisChoroby = "Angina u pacjenta ma typowe objawy i przebiega w normalny sposób", OstatniaModyfikacjaOpisuChoroby = DateTime.Today });
-            //context.Set<HistoriaChoroby>().AddOrUpdate(new HistoriaChoroby { ChorobaZeSpisu = choroba2, Pacjent = pacjent2, Pesel = pacjent2.Pesel, OpisChoroby = "Wysokie nadciœnienie u pacjenta.", OstatniaModyfikacjaOpisuChoroby = DateTime.Today });
+            var histChoroby1 = new HistoriaChoroby {
+                ChorobaZeSpisu = choroba,
+                IdLekarza = lekarz.IdLekarza,
+                Pesel = pacjent.Pesel,
+                OpisChoroby = "Angina u pacjenta ma typowe objawy i przebiega w normalny sposób",
+                OstatniaModyfikacjaOpisuChoroby = DateTime.Today
+            };
+            var histChoroby2 = new HistoriaChoroby {
+                ChorobaZeSpisu = choroba2,
+                IdLekarza = lekarz.IdLekarza,
+                Pesel = pacjent2.Pesel,
+                OpisChoroby = "Wysokie nadciœnienie u pacjenta.",
+                OstatniaModyfikacjaOpisuChoroby = DateTime.Today
+            };
+            context.Set<HistoriaChoroby>().AddOrUpdate(histChoroby1);
+            context.Set<HistoriaChoroby>().AddOrUpdate(histChoroby2);
 
             var lek = new SpisLekow { NazwaLeku = "Amoxicillinum", NazwaPolskaLeku = "amoksycylina" };
             var lek2 = new SpisLekow { NazwaLeku = "Simvastatinum ", NazwaPolskaLeku = "symwastatyna" };
             context.Set<SpisLekow>().AddOrUpdate(lek, lek2);
 
-            var wizyta = new Wizyta { IdWizyty = Guid.NewGuid(), CzasWizyty = new TimeSpan(0, 20, 0), Data = new DateTime(2015, 09, 18)};
-            var wizyta2 = new Wizyta { IdWizyty = Guid.NewGuid(), CzasWizyty = new TimeSpan(0, 34, 0), Data = new DateTime(2015, 09, 18)};
+            var wizyta = new Wizyta { IdWizyty = Guid.NewGuid(), CzasWizyty = new TimeSpan(0, 20, 0), Data = new DateTime(2015, 09, 18), HistoriaChoroby = histChoroby1 };
+            var wizyta2 = new Wizyta { IdWizyty = Guid.NewGuid(), CzasWizyty = new TimeSpan(0, 34, 0), Data = new DateTime(2015, 09, 18), HistoriaChoroby = histChoroby2};
             context.Set<Wizyta>().AddOrUpdate(wizyta, wizyta2);
 
             var recepta = new Recepta { IdRecepty = Guid.NewGuid(), Wizyta = wizyta, CzasWystawienia = new DateTime(2015, 09, 18, 12, 12, 12) };

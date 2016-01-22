@@ -7,9 +7,9 @@
     mc:Ignorable="d" Height="440" Width="617.068" >
 
     <Grid x:Name="PanelZarzadzaniaWizyta1" Initialized="PanelZarzadzaniaWizyta1_Initialized" Margin="0,0,10,0">
-        <Button x:Name="DodajNowaWizyte" Content="Dodaj nową wizytę" HorizontalAlignment="Left" Margin="337,376,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="DodajNowaWizyte_Click" />
+        <Button x:Name="DodajNowaWizyte" Content="Dodaj nową wizytę" HorizontalAlignment="Left" Margin="474,376,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="DodajNowaWizyte_Click" LostFocus="DodajNowaWizyte_LostFocus" />
         <DataGrid x:Name="dataGrid_Pacjenci" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="202" Width="553" SelectionChanged="dataGrid_Pacjenci_SelectionChanged"/>
-        <ComboBox x:Name="LekarzComboBox" HorizontalAlignment="Left" Margin="177,302,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="LekarzComboBox" HorizontalAlignment="Left" Margin="10,302,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="LekarzComboBox_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -24,9 +24,11 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Label x:Name="label" Content="Wybierz pacjenta" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Wybierz lekarza" HorizontalAlignment="Left" Margin="177,276,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="WybierzDate" HorizontalAlignment="Left" Margin="355,302,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Data wizyty" HorizontalAlignment="Left" Margin="355,276,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="PrzypiszPacjentaDoLekarza" Content="Przypisz nowego &#xD;&#xA;lekarza do pacjenta" HorizontalAlignment="Left" Margin="177,376,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="PrzypiszPacjentaDoLekarza_Click"/>
+        <Label x:Name="label1" Content="Wybierz lekarza" HorizontalAlignment="Left" Margin="10,276,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="WybierzDate" HorizontalAlignment="Left" Margin="474,302,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label2" Content="Data wizyty" HorizontalAlignment="Left" Margin="492,276,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="PrzypiszPacjentaDoLekarza" Content="Przypisz nowego &#xD;&#xA;lekarza do pacjenta" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="PrzypiszPacjentaDoLekarza_Click"/>
+        <Label x:Name="label3" Content="Wizyty pacjenta" HorizontalAlignment="Left" Margin="232,300,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="WizytaPacjenta" Content="" HorizontalAlignment="Left" Margin="204,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.423,0.436" Width="204" Height="72"/>
     </Grid>
 </UserControl>
