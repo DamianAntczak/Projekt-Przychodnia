@@ -13,40 +13,52 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Projekt_BD.Models;
+using System.ComponentModel;
+using System.Windows.Threading;
 
-namespace Projekt_BD.Views
-{
+namespace Projekt_BD.Views {
     /// <summary>
     /// Interaction logic for PanelZarzadzaniaacjentem.xaml
     /// </summary>
-    public partial class PanelZarzadzaniaacjentem : UserControl
-    {
-        public PanelZarzadzaniaacjentem()
-        {
+    public partial class PanelZarzadzaniaacjentem : UserControl {
+        readonly BackgroundWorker worker = new BackgroundWorker();
+        public PanelZarzadzaniaacjentem() {
+            worker.DoWork += Worker_DoWork;
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
             InitializeComponent();
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e) {
             using (DbContext db = new DbContext()) {
-
                 var pac = from Pacjent in db.Pacjentci select Pacjent;
-                PacjentComboBox.ItemsSource = pac.ToList();
-
                 var lekarz = from Lekarz in db.Lekarze select Lekarz;
-                LekarzComboBox.ItemsSource = lekarz.ToList();
+                PacjentComboBox.Dispatcher.Invoke(DispatcherPriority.Normal,
+                    new Action(() => PacjentComboBox.ItemsSource = pac.ToList()));
+                LekarzComboBox.Dispatcher.Invoke(DispatcherPriority.Normal,
+                    new Action(() => LekarzComboBox.ItemsSource = lekarz.ToList()));
             }
         }
 
-        private void Polacz_Click(object sender, RoutedEventArgs e)
-        {
+        private void Polacz_Click(object sender, RoutedEventArgs e) {
             var lekarz = (Lekarz)LekarzComboBox.SelectedItem;
 
             var pacjent = (Pacjent)PacjentComboBox.SelectedItem;
 
 
-            using (DbContext db = new DbContext())
-            {
-                db.HistoriaChoroby.Add(new Models.HistoriaChoroby { IdLekarza = lekarz.IdLekarza, Pesel = pacjent.Pesel, OstatniaModyfikacjaOpisuChoroby = DateTime.Now});
+            using (DbContext db = new DbContext()) {
+                db.HistoriaChoroby.Add(new Models.HistoriaChoroby { IdLekarza = lekarz.IdLekarza, Pesel = pacjent.Pesel, OstatniaModyfikacjaOpisuChoroby = DateTime.Now });
                 db.SaveChanges();
 
-                MessageBox.Show("Dodano " + pacjent.Imie + "" + pacjent.Nazwisko + " do pacjentów "+lekarz.Imie+" "+lekarz.Nazwisko);
+                MessageBox.Show("Dodano " + pacjent.Imie + "" + pacjent.Nazwisko + " do pacjentów " + lekarz.Imie + " " + lekarz.Nazwisko);
+            }
+        }
+
+        private void UserControl_Initialized(object sender, EventArgs e) {
+            if (!worker.IsBusy) {
+                worker.RunWorkerAsync();
             }
         }
     }

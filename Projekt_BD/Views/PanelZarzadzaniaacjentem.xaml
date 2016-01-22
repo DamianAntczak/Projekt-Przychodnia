@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projekt_BD.Views" x:Class="Projekt_BD.Views.PanelZarzadzaniaacjentem" 
-             mc:Ignorable="d" Height="357" Width="303">
+             mc:Ignorable="d" Height="357" Width="303" Initialized="UserControl_Initialized">
     <Grid >
         <Button x:Name="Polacz" Content="Dodaj lekarza do pacjenta" HorizontalAlignment="Left" Margin="141,297,0,0" VerticalAlignment="Top" Width="149" Click="Polacz_Click"/>
         <ComboBox x:Name="PacjentComboBox" HorizontalAlignment="Left" Margin="141,45,0,0" VerticalAlignment="Top" Width="120">
