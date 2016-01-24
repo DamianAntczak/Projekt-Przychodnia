@@ -22,23 +22,33 @@ namespace Projekt_BD.Views {
     /// </summary>
     public partial class PanelZarzadzaniaacjentem : UserControl {
         readonly BackgroundWorker worker = new BackgroundWorker();
+        const string wczytajDane = "Wczytaj dane";
+        const string wczytajLekarzy = "Wczytaj lekarzy";
         public PanelZarzadzaniaacjentem() {
             worker.DoWork += Worker_DoWork;
-            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
             InitializeComponent();
         }
 
-        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
-        }
-
         private void Worker_DoWork(object sender, DoWorkEventArgs e) {
-            using (DbContext db = new DbContext()) {
-                var pac = from Pacjent in db.Pacjentci select Pacjent;
-                var lekarz = from Lekarz in db.Lekarze select Lekarz;
-                PacjentComboBox.Dispatcher.Invoke(DispatcherPriority.Normal,
-                    new Action(() => PacjentComboBox.ItemsSource = pac.ToList()));
-                LekarzComboBox.Dispatcher.Invoke(DispatcherPriority.Normal,
-                    new Action(() => LekarzComboBox.ItemsSource = lekarz.ToList()));
+            if (e.Argument.ToString() == wczytajDane) {
+                using (DbContext db = new DbContext()) {
+                    var pac = from Pacjent in db.Pacjentci select Pacjent;
+                    PacjentComboBox.Dispatcher.Invoke(DispatcherPriority.Normal,
+                        new Action(() => PacjentComboBox.ItemsSource = pac.ToList()));
+                }
+            }
+            else if (e.Argument.ToString() == wczytajLekarzy) {
+                using (DbContext db = new DbContext()) {
+                    Pacjent pacjent = null;
+                    PacjentComboBox.Dispatcher.Invoke(DispatcherPriority.Normal,
+                        new Action(() => pacjent = PacjentComboBox.SelectedItem as Pacjent));
+                    if (pacjent != null) {
+                        //wybrać tylko tych lekarzy którzy nie są już przypisani. 
+                        var lekarz = from l in db.Lekarze select l;
+                        LekarzComboBox.Dispatcher.Invoke(DispatcherPriority.Normal,
+                            new Action(() => LekarzComboBox.ItemsSource = lekarz.ToList()));
+                    }
+                }
             }
         }
 
@@ -46,20 +56,33 @@ namespace Projekt_BD.Views {
             var lekarz = (Lekarz)LekarzComboBox.SelectedItem;
 
             var pacjent = (Pacjent)PacjentComboBox.SelectedItem;
-
-
+            //try {
             using (DbContext db = new DbContext()) {
                 db.HistoriaChoroby.Add(new Models.HistoriaChoroby { IdLekarza = lekarz.IdLekarza, Pesel = pacjent.Pesel, OstatniaModyfikacjaOpisuChoroby = DateTime.Now });
                 db.SaveChanges();
 
                 MessageBox.Show("Dodano " + pacjent.Imie + "" + pacjent.Nazwisko + " do pacjentów " + lekarz.Imie + " " + lekarz.Nazwisko);
             }
+            //}
+            //catch(System.Data.Entity.Infrastructure.DbUpdateException) {
+
+            //}
         }
 
         private void UserControl_Initialized(object sender, EventArgs e) {
             if (!worker.IsBusy) {
-                worker.RunWorkerAsync();
+                worker.RunWorkerAsync(wczytajDane);
             }
+        }
+
+        private void PacjentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            //LekarzComboBox.ItemsSource = null;
+            if (PacjentComboBox.SelectedItem != null)
+                while (true)
+                    if (!worker.IsBusy) {
+                        worker.RunWorkerAsync(wczytajLekarzy);
+                        break;
+                    }
         }
     }
 }

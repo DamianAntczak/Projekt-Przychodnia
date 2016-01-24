@@ -20,7 +20,7 @@
         <DockPanel Name="TopPanel" HorizontalAlignment="Stretch" Height="92" LastChildFill="False" Margin="215,10,0,0" VerticalAlignment="Top" Width="Auto">
             <Label x:Name="MenuItemName" FontSize="50" Content="Przeglądaj bazę" Height="92" VerticalAlignment="Top" Width="454"/>
         </DockPanel>
-        <DockPanel Visibility="Visible" Name="CenterPanel1" Margin="215,107,0,0" RenderTransformOrigin="0.33,0.41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <DockPanel Visibility="Visible" Name="CenterPanel1" Margin="215,107,0,0" RenderTransformOrigin="0.33,0.41" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" GotFocus="CenterPanel1_GotFocus">
             <TabControl x:Name="PrzegladajBaze" FontSize="20" >
                 <TabItem Header="Wizyty" Width="100">
                     <Grid>

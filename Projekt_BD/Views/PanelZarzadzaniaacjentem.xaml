@@ -7,7 +7,7 @@
              mc:Ignorable="d" Height="357" Width="303" Initialized="UserControl_Initialized">
     <Grid >
         <Button x:Name="Polacz" Content="Dodaj lekarza do pacjenta" HorizontalAlignment="Left" Margin="141,297,0,0" VerticalAlignment="Top" Width="149" Click="Polacz_Click"/>
-        <ComboBox x:Name="PacjentComboBox" HorizontalAlignment="Left" Margin="141,45,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="PacjentComboBox" HorizontalAlignment="Left" Margin="141,45,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="PacjentComboBox_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>

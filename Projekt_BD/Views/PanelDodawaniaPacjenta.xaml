@@ -17,7 +17,7 @@
         <Label x:Name="label_Copy2" Content="mail" HorizontalAlignment="Left" Margin="11,185,0,0" VerticalAlignment="Top"/>
         <Button x:Name="button" Content="Add" HorizontalAlignment="Left" Margin="135,232,0,0" VerticalAlignment="Top" Width="120" Click="button_Click" RenderTransformOrigin="0.496,2.143"/>
         <Label  Content="PESEL" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.64,1.349" Margin="11,7,0,0"/>
-        <TextBox x:Name="TPesel" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="135,11,0,0" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox x:Name="TPesel" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="135,11,0,0" MaxLength="11" />
 
     </Grid>
 </UserControl>

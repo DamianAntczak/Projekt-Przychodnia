@@ -63,7 +63,6 @@ namespace Projekt_BD.Views {
 
         private void DodajNowaWizyte_Click(object sender, RoutedEventArgs e) {
             if (WybierzDate.SelectedDate.HasValue && LekarzComboBox.SelectedItem != null) {
-
                 using (var context = new DbContext()) {
                     var lekarz = LekarzComboBox.SelectedItem as Lekarz;
                     var pacjent = dataGrid_Pacjenci.SelectedItem;

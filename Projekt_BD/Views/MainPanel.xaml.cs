@@ -32,7 +32,6 @@ namespace Projekt_BD.Views {
         }
 
         private void PrzegladajBazeWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
-
         }
 
         private void PrzegladajBazeWorker_DoWork(object sender, DoWorkEventArgs e) {
@@ -91,6 +90,10 @@ namespace Projekt_BD.Views {
 
         private void DodajPacjentaButton_Click(object sender, RoutedEventArgs e) {
             (new DodajPacjentaWindow()).ShowDialog();
+            if (!przegladajBazeWorker.IsBusy) {
+                przegladajBazeWorker.RunWorkerAsync();
+            }
+
         }
         #region TextChaned nieaktywne - nie można było używać selekcji w datagrid do wypisywania danych pacjenta
         //aby odkomentować zaznacz całość i użyj skrótów ctrl+k , ctrl+u
@@ -185,6 +188,9 @@ namespace Projekt_BD.Views {
             PanelZarzadzaniaacjentem pzp = new PanelZarzadzaniaacjentem();
             Panele.Content = pzp;
             pzp.VerticalAlignment = VerticalAlignment.Top;
+        }
+
+        private void CenterPanel1_GotFocus(object sender, RoutedEventArgs e) {
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,33 +14,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Projekt_BD.Views
-{
+namespace Projekt_BD.Views {
     /// <summary>
     /// Interaction logic for PanelDodawaniaPacjenta.xaml
     /// </summary>
-    public partial class PanelDodawaniaPacjenta : UserControl
-    {
+    public partial class PanelDodawaniaPacjenta : UserControl {
         private DbContext dbContext;
-        public PanelDodawaniaPacjenta()
-        {
+        public PanelDodawaniaPacjenta() {
             InitializeComponent();
         }
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            using (dbContext = new DbContext())
-            {
-                dbContext.Pacjentci.Add(new Models.Pacjent { Pesel = TPesel.Text, Imie = tImie.Text, DataUrodzenie = tUrodzenie.SelectedDate.GetValueOrDefault(), Nazwisko = tNazwisko.Text, Mail = tMail.Text });
-                dbContext.SaveChanges();
-                MessageBox.Show("Pomyślnie dodano pacjenta!");
+        private void button_Click(object sender, RoutedEventArgs e) {
+            if (TPesel.Text != string.Empty && sprawdzCzyJestNumerem(TPesel.Text) && tImie.Text != string.Empty && tNazwisko.Text != string.Empty && tUrodzenie.SelectedDate.HasValue) {
+                using (dbContext = new DbContext()) {
+                    dbContext.Pacjentci.Add(new Models.Pacjent { Pesel = TPesel.Text, Imie = tImie.Text, DataUrodzenie = tUrodzenie.SelectedDate.GetValueOrDefault(), Nazwisko = tNazwisko.Text, Mail = tMail.Text });
+                    dbContext.SaveChanges();
+                    MessageBox.Show("Pomyślnie dodano pacjenta!");
+                }
             }
+            else
+                MessageBox.Show("Błąd przy wprowadzaniu danych");
         }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
+        private bool sprawdzCzyJestNumerem(string text) {
+            Regex regex = new Regex("^[0-9]*$");
+            return regex.IsMatch(text);
         }
-
-
     }
 }
