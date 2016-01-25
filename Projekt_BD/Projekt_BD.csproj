@@ -67,6 +67,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CzasWizyty.cs" />
     <Compile Include="Models\HistoriaChoroby.cs" />
     <Compile Include="Models\Lekarz.cs" />
     <Compile Include="Models\Plec.cs" />
@@ -95,6 +96,9 @@
     </Compile>
     <Compile Include="Views\PanelZarzadzaniaWizyta.xaml.cs">
       <DependentUpon>PanelZarzadzaniaWizyta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DyzurLekarza.xaml.cs">
+      <DependentUpon>DyzurLekarza.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PanelZarzadzaniaWizyta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DyzurLekarza.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

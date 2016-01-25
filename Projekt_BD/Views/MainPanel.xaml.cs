@@ -80,6 +80,7 @@ namespace Projekt_BD.Views {
             CenterPanel1.Visibility = Visibility.Hidden;
             this.Panele.Content = pzw;
             pzw.VerticalAlignment = VerticalAlignment.Top;
+            pzw.HorizontalAlignment = HorizontalAlignment.Left;
         }
 
         private void UstalGodzinyPrzyjecButton_Click(object sender, RoutedEventArgs e) {

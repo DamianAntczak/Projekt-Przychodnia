@@ -34,12 +34,13 @@ namespace Projekt_BD.Views {
                 dataGrid_Pacjenci.Dispatcher.Invoke(DispatcherPriority.Normal,
                     new Action(() => dataGrid_Pacjenci.ItemsSource = pac.ToList()));
             }
+            List<Projekt_BD.Models.Czas> czas = new List<Models.Czas>() { Models.Czas.min15, Models.Czas.min30, Models.Czas.min45, Models.Czas.h1, Models.Czas.h2 };
+            CzasComboBox.Dispatcher.Invoke(DispatcherPriority.Normal,
+                new Action(() => CzasComboBox.ItemsSource = czas));
         }
 
         private void PrzypiszPacjentaDoLekarza_Click(object sender, RoutedEventArgs e) {
             PanelZarzadzaniaacjentem pzp = new PanelZarzadzaniaacjentem();
-            this.Content = pzp;
-            pzp.VerticalAlignment = VerticalAlignment.Top;
         }
 
         private void PanelZarzadzaniaWizyta1_Initialized(object sender, EventArgs e) {
@@ -71,7 +72,8 @@ namespace Projekt_BD.Views {
                                           where hc.IdLekarza == lekarz.IdLekarza &&
                                           hc.Pesel == pesel
                                           select hc;
-                    context.Wizyty.Add(new Models.Wizyta { IdWizyty = Guid.NewGuid(), Data = WybierzDate.SelectedDate.Value, HistoriaChoroby = historiaChoroby.FirstOrDefault() });
+                    var czas =(Models.Czas)CzasComboBox.SelectedItem;
+                    context.Wizyty.Add(new Models.Wizyta { IdWizyty = Guid.NewGuid(), Data = WybierzDate.SelectedDate.Value, HistoriaChoroby = historiaChoroby.FirstOrDefault(), CzasWizyty = Models.CzasWizyty.getTimeSpan(czas)});
                     context.SaveChanges();
                 }
                 var button = sender as Button;

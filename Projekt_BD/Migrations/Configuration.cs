@@ -69,8 +69,8 @@ namespace Projekt_BD.Migrations {
             var lek2 = new SpisLekow { NazwaLeku = "Simvastatinum ", NazwaPolskaLeku = "symwastatyna" };
             context.Set<SpisLekow>().AddOrUpdate(lek, lek2);
 
-            var wizyta = new Wizyta { IdWizyty = Guid.NewGuid(), CzasWizyty = new TimeSpan(0, 20, 0), Data = new DateTime(2015, 09, 18), HistoriaChoroby = histChoroby1 };
-            var wizyta2 = new Wizyta { IdWizyty = Guid.NewGuid(), CzasWizyty = new TimeSpan(0, 34, 0), Data = new DateTime(2015, 09, 18), HistoriaChoroby = histChoroby2};
+            var wizyta = new Wizyta { IdWizyty = Guid.NewGuid(), Data = new DateTime(2015, 09, 18), HistoriaChoroby = histChoroby1, CzasWizyty = CzasWizyty.getTimeSpan(Czas.min15) };
+            var wizyta2 = new Wizyta { IdWizyty = Guid.NewGuid(), Data = new DateTime(2015, 09, 18), HistoriaChoroby = histChoroby2, CzasWizyty = CzasWizyty.getTimeSpan(Czas.min30)};
             context.Set<Wizyta>().AddOrUpdate(wizyta, wizyta2);
 
             var recepta = new Recepta { IdRecepty = Guid.NewGuid(), Wizyta = wizyta, CzasWystawienia = new DateTime(2015, 09, 18, 12, 12, 12) };
