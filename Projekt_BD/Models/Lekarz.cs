@@ -19,5 +19,7 @@ namespace Projekt_BD
         public virtual Specjalizacja Specjalizacja { get; set; }
         public String Adres { get; set; }
 
+        public ICollection<DniPrzyjec> DniPrzyjec { get; set; }
+
     }
 }

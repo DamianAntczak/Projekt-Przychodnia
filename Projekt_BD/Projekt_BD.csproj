@@ -68,6 +68,7 @@
     </ApplicationDefinition>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CzasWizyty.cs" />
+    <Compile Include="Models\DniPrzyjec.cs" />
     <Compile Include="Models\HistoriaChoroby.cs" />
     <Compile Include="Models\Lekarz.cs" />
     <Compile Include="Models\Plec.cs" />
