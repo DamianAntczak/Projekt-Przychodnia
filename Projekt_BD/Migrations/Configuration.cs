@@ -69,12 +69,12 @@ namespace Projekt_BD.Migrations {
             var lek2 = new SpisLekow { NazwaLeku = "Simvastatinum ", NazwaPolskaLeku = "symwastatyna" };
             context.Set<SpisLekow>().AddOrUpdate(lek, lek2);
 
-            var wizyta = new Wizyta { IdWizyty = Guid.NewGuid(), Data = new DateTime(2015, 09, 18), HistoriaChoroby = histChoroby1, CzasWizyty = CzasWizyty.getTimeSpan(Czas.min15) };
-            var wizyta2 = new Wizyta { IdWizyty = Guid.NewGuid(), Data = new DateTime(2015, 09, 18), HistoriaChoroby = histChoroby2, CzasWizyty = CzasWizyty.getTimeSpan(Czas.min30)};
+            var wizyta = new Wizyta { IdWizyty = Guid.NewGuid(), Data = new DateTime(2015, 09, 18, 12, 12, 12), HistoriaChoroby = histChoroby1, CzasWizyty = CzasWizyty.getTimeSpan(Czas.min15) };
+            var wizyta2 = new Wizyta { IdWizyty = Guid.NewGuid(), Data = new DateTime(2015, 09, 18, 10, 10, 10), HistoriaChoroby = histChoroby2, CzasWizyty = CzasWizyty.getTimeSpan(Czas.min30) };
             context.Set<Wizyta>().AddOrUpdate(wizyta, wizyta2);
 
             var recepta = new Recepta { IdRecepty = Guid.NewGuid(), Wizyta = wizyta, CzasWystawienia = new DateTime(2015, 09, 18, 12, 12, 12) };
-            var recepta2 = new Recepta { IdRecepty = Guid.NewGuid(), Wizyta = wizyta2, CzasWystawienia = new DateTime(2015, 09, 18, 12, 12, 12) };
+            var recepta2 = new Recepta { IdRecepty = Guid.NewGuid(), Wizyta = wizyta2, CzasWystawienia = new DateTime(2015, 09, 18, 10, 10, 10) };
             context.Set<Recepta>().AddOrUpdate(recepta, recepta2);
 
             context.Set<Lek>().AddOrUpdate(new Lek { IdLeku = Guid.NewGuid(), Dawka = "5mg", Przyjmowanie = "2 razy dziennie", StopienRefundacji = 0, SpisLekow = lek2, Recepta = recepta },
