@@ -86,8 +86,13 @@ namespace Projekt_BD.Views {
 
         private void UstalGodzinyPrzyjecButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Godziny Przyjęć";
+
+            var pdp = new PanelDodawaniaPrzyjec();
             CenterPanel1.Visibility = Visibility.Hidden;
-            Panele.Content = null;
+            this.Panele.Content = pdp;
+            pdp.VerticalAlignment = VerticalAlignment.Top;
+            pdp.HorizontalAlignment = HorizontalAlignment.Left;
+     
         }
 
         private void DodajPacjentaButton_Click(object sender, RoutedEventArgs e) {
