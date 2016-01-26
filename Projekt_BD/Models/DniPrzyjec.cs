@@ -10,7 +10,7 @@ namespace Projekt_BD.Models
     {
         public int ID { get; set; }
         public virtual Lekarz Lekarz { get; set; }
-        public DateTime CzasDatarRozpoczecia { get; set; }
-        public TimeSpan CzasPrzyjec { get; set; }
+        public DateTime CzasDataRozpoczecia { get; set; }
+        public DateTime CzasZakonczenia { get; set; }
     }
 }

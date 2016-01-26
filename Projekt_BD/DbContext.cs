@@ -23,6 +23,7 @@ namespace Projekt_BD {
         public DbSet<Uzytkownik> Uzytkownicy { get; set; }
         public DbSet<SpisChorb> SpisChorob { get; set; }
         public DbSet<SpisLekow> SpisLekow { get; set; }
+        public DbSet<DniPrzyjec> DniPrzyjec { get; set; }
 
         public void OnModeOnModelCreating(DbModelBuilder modelBuilder) {
             modelBuilder.Entity<Lekarz>()

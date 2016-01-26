@@ -11,7 +11,7 @@
                     <Calendar x:Name="Kalendarz" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="155"/>
                     <ComboBox x:Name="rozpoczecieBox" HorizontalAlignment="Left" Margin="216,46,0,0" VerticalAlignment="Top" Width="120"/>
                     <ComboBox x:Name="zakoczenieBox" HorizontalAlignment="Left" Margin="216,97,0,0" VerticalAlignment="Top" Width="120"/>
-                    <DataGrid HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Height="162" Width="614"/>
+                    <DataGrid x:Name="przyjeciaDataGrid" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Height="162" Width="614"/>
                     <Label Content="Godzina rozpoczęcia:" HorizontalAlignment="Left" Margin="216,17,0,0" VerticalAlignment="Top"/>
                     <Label Content="Godzina zakończenia:" HorizontalAlignment="Left" Margin="216,73,0,0" VerticalAlignment="Top" Width="120"/>
                     <Label x:Name="lImieLekarza" Content="Imie Nazwisko" HorizontalAlignment="Left" Margin="480,17,0,0" VerticalAlignment="Top" Width="120"/>
@@ -20,6 +20,8 @@
                     <DatePicker HorizontalAlignment="Left" Margin="307,174,0,0" VerticalAlignment="Top"/>
                     <Label Content="do:" HorizontalAlignment="Left" Margin="275,174,0,0" VerticalAlignment="Top"/>
                     <Image HorizontalAlignment="Left" Height="100" Margin="480,48,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="bDodajGodziny" Content="Dodaj godziny" HorizontalAlignment="Left" Margin="216,128,0,0" VerticalAlignment="Top" Width="120" Height="37" Click="bDodajGodziny_Click"/>
+                    <Label x:Name="lInfo" Content="" HorizontalAlignment="Left" Margin="351,97,0,0" VerticalAlignment="Top" Width="124" Height="62"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">

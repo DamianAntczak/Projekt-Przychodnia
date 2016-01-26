@@ -40,16 +40,61 @@ namespace Projekt_BD.Views
             rozpoczecieBox.ItemsSource = godziny;
             zakoczenieBox.ItemsSource = godziny;
 
+            gridRefresh();
+
+        }
+
+        private void gridRefresh()
+        {
+            using (DbContext db = new DbContext())
+            {
+                var przyjecia = from DniPrzyjec in db.DniPrzyjec select DniPrzyjec;
+
+
+                przyjeciaDataGrid.ItemsSource = przyjecia.ToList();
+            }
+        }
+
+        private void bDodajGodziny_Click(object sender, RoutedEventArgs e)
+        {
             using (DbContext db = new DbContext())
             {
                 var lekarz = db.Lekarze.First();
 
                 DniPrzyjec dniPrzyjec = new DniPrzyjec();
                 dniPrzyjec.Lekarz = lekarz;
-                //dniPrzyjec.CzasDatarRozpoczecia = Kalendarz.SelectedDate.Value;
-                //dniPrzyjec.CzasPrzyjec = TimeSpan.Parse("8h");
+                if (Kalendarz.SelectedDate.HasValue)
+                {
+                    dniPrzyjec.CzasDataRozpoczecia = Kalendarz.SelectedDate.Value;
+                    //dniPrzyjec.CzasDataRozpoczecia.Tim = 
+                }
+                //dniPrzyjec.CzasZakonczenia.Time
 
+                TimeSpan czasOd;
+                TimeSpan czasDo;
+
+                TimeSpan.TryParseExact(rozpoczecieBox.SelectedValue.ToString(), @"hh\:mm", null, out czasOd);
+                TimeSpan.TryParseExact(zakoczenieBox.SelectedValue.ToString(), @"hh\:mm", null, out czasDo);
+
+                if (czasDo > czasOd)
+                {
+                    db.DniPrzyjec.Add(new Models.DniPrzyjec
+                    {
+                        CzasDataRozpoczecia = Kalendarz.SelectedDate.Value + czasOd,
+                        CzasZakonczenia = Kalendarz.SelectedDate.Value + czasDo,
+                        Lekarz = lekarz
+                    });
+                }
+                else
+                {
+                    lInfo.Content = "Czas rozpoczęcia\n musi być mniejszy\n od czasu zakończenia";
+                }
+
+                db.SaveChanges();
             }
+
+            bDodajGodziny.Content = "Pomyślnie dodano wizytę";
+            gridRefresh();
         }
     }
 }
