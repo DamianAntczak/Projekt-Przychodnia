@@ -46,7 +46,7 @@ namespace Projekt_BD.Views {
 
             using (var context = new DbContext()) {
 
-                var pac = from pacjentcis in context.Pacjentci select new { pacjentcis.Pesel, pacjentcis.Imie, pacjentcis.Nazwisko, pacjentcis.DataUrodzenie.Year, Wiek = DateTime.Today.Year - pacjentcis.DataUrodzenie.Year, pacjentcis.MiejsceUrodzenia, pacjentcis.Mail };
+                var pac = from pacjentcis in context.Pacjentci select new { pacjentcis.Pesel, pacjentcis.Imie, pacjentcis.Nazwisko, pacjentcis.DataUrodzenie.Year, Wiek = DateTime.Today.Year - pacjentcis.DataUrodzenie.Year, pacjentcis.MiejsceUrodzenia, pacjentcis.Mail, pacjentcis.NrTelefonu };
                 dataGrid_Pacienci.Dispatcher.Invoke(DispatcherPriority.Normal,
                     new Action(() => dataGrid_Pacienci.ItemsSource = pac.ToList()));
 
@@ -163,6 +163,8 @@ namespace Projekt_BD.Views {
                 DataUrodzenia.Text = typ.GetProperty("Year").GetValue(objekt) != null ? typ.GetProperty("Year").GetValue(objekt).ToString() : " ";
             if (typ.GetProperty("MiejsceUrodzenia").GetValue(objekt) != null)
                 MiejsceUrodzenia.Text = typ.GetProperty("MiejsceUrodzenia").GetValue(objekt).ToString();
+            //if (typ.GetProperty("NrTelefonu").GetValue(objekt) != null)
+            //    NrTelefonu.Text = typ.GetProperty("NrTelefonu").GetValue(objekt).ToString();
         }
 
         private void dataGrid_Choroby_SelectionChanged(object sender, SelectionChangedEventArgs e) {

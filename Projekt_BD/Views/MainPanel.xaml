@@ -35,13 +35,9 @@
                         <TextBox x:Name="CzasWizyty"  HorizontalAlignment="Left" Height="37" Margin="10,464,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="165" RenderTransformOrigin="0.492,1.027" Grid.Column="1"/>
                         <Label x:Name="lLekarz" Content="Lekarz:"  HorizontalAlignment="Left" Margin="32,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.518,-0.527"/>
                         <TextBox x:Name="tLekarz"  HorizontalAlignment="Left" Height="37" Margin="0,517,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="186" RenderTransformOrigin="0.488,1.5" Grid.Column="1"/>
-                        <Label x:Name="label3" Content="IdChoroby:"  HorizontalAlignment="Left" Margin="346,464,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.82,0.392" Width="108" Grid.Column="1"/>
-                        <TextBox x:Name="IdChoroby"  HorizontalAlignment="Left" Height="37" Margin="459,464,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="238" RenderTransformOrigin="0.05,-0.717" Grid.Column="1"/>
                         <Label x:Name="label4"  Content="Pacjent:" HorizontalAlignment="Left" Margin="346,412,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.386,-0.041" Height="33" Grid.Column="1" Width="108"/>
                         <TextBox x:Name="tPacjenta"  HorizontalAlignment="Left" Height="37" Margin="459,412,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="238" RenderTransformOrigin="0.05,-0.717" Grid.Column="1"/>
-                        <Label x:Name="label5" Content="IdRecepty:"  HorizontalAlignment="Left" Margin="344,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.82,0.392" Width="108" Grid.Column="1"/>
-                        <TextBox x:Name="IdRecepty"  HorizontalAlignment="Left" Height="37" Margin="459,517,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="238" RenderTransformOrigin="0.05,-0.717" Grid.Column="1"/>
-                    </Grid>
+                     </Grid>
                 </TabItem>
                 <TabItem Header="Pacjenci" Width="100">
                     <Grid>
@@ -56,8 +52,6 @@
                         <TextBox x:Name="DataUrodzenia"  HorizontalAlignment="Left" Height="37" Margin="462,464,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="259" RenderTransformOrigin="0.05,-0.717"/>
                         <Label x:Name="label10"  Content="Miejsce ur.:" HorizontalAlignment="Left" Margin="380,412,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.386,-0.041" Height="33"/>
                         <TextBox x:Name="MiejsceUrodzenia"  HorizontalAlignment="Left" Height="37" Margin="489,412,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="232" RenderTransformOrigin="0.05,-0.717"/>
-                        <Label x:Name="label11" Content="Adres:"  HorizontalAlignment="Left" Margin="380,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.82,0.392" Width="108"/>
-                        <TextBox x:Name="Adres"  HorizontalAlignment="Left" Height="37" Margin="447,517,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="274" RenderTransformOrigin="0.05,-0.717"/>
                         <Label x:Name="label6" Content="Płeć:"  HorizontalAlignment="Left" Margin="778,412,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="Plec"  HorizontalAlignment="Left" Height="33" Margin="856,412,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="192"/>
                         <Label x:Name="label12" Content="Nr Tel."  HorizontalAlignment="Left" Margin="778,464,0,0" VerticalAlignment="Top"/>
@@ -71,10 +65,6 @@
                         <DataGrid x:Name="dataGrid_Leki" HorizontalAlignment="Stretch" RenderTransformOrigin="0.5,0.38" Margin="0,0,0,208" SelectionChanged="dataGrid_Leki_SelectionChanged"/>
                         <Label x:Name="label13" Content="Nazwa:" HorizontalAlignment="Left" Margin="10,412,0,0" VerticalAlignment="Top"/>
                         <TextBox x:Name="NazwaLeku" HorizontalAlignment="Left" Height="33" Margin="83,416,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="266"/>
-                        <Label x:Name="label14"  Content="Stopień Refundacji:" HorizontalAlignment="Left" Margin="10,464,0,0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="StopienRefundacji" HorizontalAlignment="Left" Height="33" Margin="195,468,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="154"/>
-                        <Label x:Name="label15"  Content="Producent:" HorizontalAlignment="Left" Margin="420,412,0,0" VerticalAlignment="Top"/>
-                        <TextBox x:Name="Producent" HorizontalAlignment="Left" Height="33" Margin="530,416,0,0" TextWrapping="Wrap" IsEnabled="False" VerticalAlignment="Top" Width="259"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Choroby" Width="100">
