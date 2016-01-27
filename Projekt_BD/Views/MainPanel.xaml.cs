@@ -76,7 +76,7 @@ namespace Projekt_BD.Views {
         }
         private void ZarzadzajWizytamiButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Zarządanie Wizytami";
-            
+
             PanelZarzadzaniaWizyta pzw = new PanelZarzadzaniaWizyta();
             CenterPanel1.Visibility = Visibility.Hidden;
             this.Panele.Content = pzw;
@@ -92,7 +92,7 @@ namespace Projekt_BD.Views {
             this.Panele.Content = pdp;
             pdp.VerticalAlignment = VerticalAlignment.Top;
             pdp.HorizontalAlignment = HorizontalAlignment.Left;
-     
+
         }
 
         private void DodajPacjentaButton_Click(object sender, RoutedEventArgs e) {
@@ -129,23 +129,25 @@ namespace Projekt_BD.Views {
 
         private void dataGrid_Wizyty_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var objekt = dataGrid_Wizyty.SelectedItem;
-            //zabezpieczeniem przed wybraniem ostatniego rekordu (nie można rzutować na typ Wizyta)
-            var typ = objekt.GetType();
-            var idWizyty = typ.GetProperty("IdWizyty").GetValue(objekt);
-            if (typ.GetProperty("Data").GetValue(objekt) != null)
-                Data.Text = typ.GetProperty("Data").GetValue(objekt).ToString();
-            if (typ.GetProperty("CzasWizyty").GetValue(objekt) != null)
-                CzasWizyty.Text = typ.GetProperty("CzasWizyty").GetValue(objekt).ToString();
-            //niektore wizyty maja nula w idlekarza- poprawic
-            using (var context = new DbContext()) {
-                var wizyta = from w in context.Wizyty
-                             where w.IdWizyty == (Guid)idWizyty
-                             select w;
-                var pesel = wizyta.Select(w => w.HistoriaChoroby.Pesel).FirstOrDefault();
-                if (pesel != null) {
-                    var idLekarza = wizyta.Select(w => w.HistoriaChoroby.IdLekarza).FirstOrDefault();
-                    tPacjenta.Text = pesel;
-                    tLekarz.Text = idLekarza.ToString();
+            if (objekt != null) {
+                //zabezpieczeniem przed wybraniem ostatniego rekordu (nie można rzutować na typ Wizyta)
+                var typ = objekt.GetType();
+                var idWizyty = typ.GetProperty("IdWizyty").GetValue(objekt);
+                if (typ.GetProperty("Data").GetValue(objekt) != null)
+                    Data.Text = typ.GetProperty("Data").GetValue(objekt).ToString();
+                if (typ.GetProperty("CzasWizyty").GetValue(objekt) != null)
+                    CzasWizyty.Text = typ.GetProperty("CzasWizyty").GetValue(objekt).ToString();
+                //niektore wizyty maja nula w idlekarza- poprawic
+                using (var context = new DbContext()) {
+                    var wizyta = from w in context.Wizyty
+                                 where w.IdWizyty == (Guid)idWizyty
+                                 select w;
+                    var pesel = wizyta.Select(w => w.HistoriaChoroby.Pesel).FirstOrDefault();
+                    if (pesel != null) {
+                        var idLekarza = wizyta.Select(w => w.HistoriaChoroby.IdLekarza).FirstOrDefault();
+                        tPacjenta.Text = pesel;
+                        tLekarz.Text = idLekarza.ToString();
+                    }
                 }
             }
         }

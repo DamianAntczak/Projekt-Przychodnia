@@ -95,6 +95,9 @@
     <Compile Include="Views\PanelDodawaniaPrzyjec.xaml.cs">
       <DependentUpon>PanelDodawaniaPrzyjec.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PanelDodawaniaRecepty.xaml.cs">
+      <DependentUpon>PanelDodawaniaRecepty.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PanelZarzadzaniaacjentem.xaml.cs">
       <DependentUpon>PanelZarzadzaniaacjentem.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PanelDodawaniaPrzyjec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PanelDodawaniaRecepty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
