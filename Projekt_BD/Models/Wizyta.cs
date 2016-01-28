@@ -19,10 +19,9 @@ namespace Projekt_BD.Models
         //do określenia ilości minut -> 80 min?
         public TimeSpan CzasWizyty { get; set; }
         public string Opis { get; set; }
+        public bool CzyOdbyta { get; set; }
         
         public ICollection<Recepta> Recepty { get; set; }
-
-        
         public virtual HistoriaChoroby HistoriaChoroby { get; set; }
 
         //Pacjent u danego specjalisty może mieć zdjagnozowaną jedną chorobę
