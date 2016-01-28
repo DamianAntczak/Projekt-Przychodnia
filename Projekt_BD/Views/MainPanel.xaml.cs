@@ -70,9 +70,13 @@ namespace Projekt_BD.Views {
 
         }
         private void ObsluzWizyteButton_Click(object sender, RoutedEventArgs e) {
+
+            var pok = new PanelObslugiWizyty();
             MenuItemName.Content = "Obsługa Wizyty";
             CenterPanel1.Visibility = Visibility.Hidden;
-            Panele.Content = null;
+            this.Panele.Content = pok;
+            pok.VerticalAlignment = VerticalAlignment.Top;
+            pok.HorizontalAlignment = HorizontalAlignment.Left;
         }
         private void ZarzadzajWizytamiButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Zarządanie Wizytami";

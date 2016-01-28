@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="Projekt_BD.Views.PanelObslugiWizyty"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="286.956" Width="623.716">
+    <Grid>
+        <ComboBox x:Name="wyborPacjentaBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged_1"/>
+        <ComboBox x:Name="wyborWizytyBox" HorizontalAlignment="Left" Margin="155,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="opisText" HorizontalAlignment="Left" Height="169" Margin="10,60,0,0" VerticalAlignment="Top" Width="491"/>  
+    </Grid>
+</UserControl>
