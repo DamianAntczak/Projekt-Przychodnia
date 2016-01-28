@@ -4,36 +4,82 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
     xmlns:local="clr-namespace:Projekt_BD.Views"
-    mc:Ignorable="d" Height="440" Width="617.068" >
+    mc:Ignorable="d" Height="602.105" Width="721.279" >
 
     <Grid x:Name="PanelZarzadzaniaWizyta1" Initialized="PanelZarzadzaniaWizyta1_Initialized" Margin="0,0,10,0">
-        <Button x:Name="DodajNowaWizyte" Content="Dodaj nową wizytę" HorizontalAlignment="Left" Margin="474,376,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="DodajNowaWizyte_Click" LostFocus="DodajNowaWizyte_LostFocus" />
-        <DataGrid x:Name="dataGrid_Pacjenci" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="202" Width="553" SelectionChanged="dataGrid_Pacjenci_SelectionChanged"/>
-        <ComboBox x:Name="LekarzComboBox" HorizontalAlignment="Left" Margin="10,302,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="LekarzComboBox_SelectionChanged">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="{}{0} {1}">
-                                <Binding Path="Imie"/>
-                                <Binding Path="Nazwisko"/>
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Label x:Name="label" Content="Wybierz pacjenta" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Wybierz lekarza" HorizontalAlignment="Left" Margin="10,276,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="WybierzDate" HorizontalAlignment="Left" Margin="325,288,0,0" VerticalAlignment="Top" Width="120"  />
-        <Label x:Name="label2" Content="Data wizyty" HorizontalAlignment="Left" Margin="325,257,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="PrzypiszPacjentaDoLekarza" Content="Przypisz nowego &#xD;&#xA;lekarza do pacjenta" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="PrzypiszPacjentaDoLekarza_Click"/>
-        <Label x:Name="label3" Content="Wizyty pacjenta" HorizontalAlignment="Left" Margin="156,308,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="WizytaPacjenta" Content="" HorizontalAlignment="Left" Margin="156,339,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.486,0.392" Width="169" Height="91"/>
-        <ComboBox x:Name="CzasComboBox" HorizontalAlignment="Left" Margin="474,339,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Długość wizyty" HorizontalAlignment="Left" Margin="474,313,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="GodzinaWizyty" HorizontalAlignment="Left" Height="23" Margin="472,288,0,0" TextWrapping="Wrap" Text="GG" VerticalAlignment="Top" Width="53" Foreground="Gray" MaxLines="1" FlowDirection="RightToLeft" MaxLength="2" GotFocus="GodzinaWizyty_GotFocus" LostFocus="GodzinaWizyty_LostFocus"/>
-        <TextBox x:Name="MinutaWizyty" HorizontalAlignment="Left" Height="23" Margin="541,288,0,0" TextWrapping="Wrap" Text="MM" VerticalAlignment="Top" Width="53" Foreground="Gray" MaxLines="1" MaxLength="2" LostFocus="MinutaWizyty_LostFocus" GotFocus="MinutaWizyty_GotFocus"/>
-        <Label Content="Czas wizyty" HorizontalAlignment="Left" Margin="472,257,0,0" VerticalAlignment="Top"/>
+        <TabControl x:Name="ZarzadzajWizytami" Margin="0,0,10,10" Height="582" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="691" IsTextSearchEnabled="True" >
+            <TabItem Header="Zapisz pacjenta na wizytę." x:Name="ZapiszPacjentaNaWizyteTab">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="237*"/>
+                        <ColumnDefinition Width="448*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="WyszukajPacjenta" HorizontalAlignment="Left" Height="23" Margin="134,76,0,0" TextWrapping="Wrap" Text="Wpisz pesel pacjenta." VerticalAlignment="Top" Width="120" Foreground="#FFB4B4B4" Grid.ColumnSpan="2"/>
+                    <Button x:Name="DodajNowaWizyte" Content="Dodaj nową wizytę" HorizontalAlignment="Left" Margin="242.226,442,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="DodajNowaWizyte_Click" LostFocus="DodajNowaWizyte_LostFocus" Grid.Column="1" />
+                    <DataGrid x:Name="dataGrid_Pacjenci" HorizontalAlignment="Left" Margin="15,107,0,0" VerticalAlignment="Top" Height="202" Width="553" SelectionChanged="dataGrid_Pacjenci_SelectionChanged" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="LekarzComboBox" HorizontalAlignment="Left" Margin="15,368,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="LekarzComboBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="Imie"/>
+                                            <Binding Path="Nazwisko"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Label x:Name="label" Content="Wybierz pacjenta" HorizontalAlignment="Left" Margin="15,72,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label1" Content="Wybierz lekarza" HorizontalAlignment="Left" Margin="15,342,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="WybierzDate" HorizontalAlignment="Left" Margin="93.226,354,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"  />
+                    <Label x:Name="label2" Content="Data wizyty" HorizontalAlignment="Left" Margin="93.226,323,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="PrzypiszPacjentaDoLekarza" Content="Przypisz nowego &#xD;&#xA;lekarza do pacjenta" HorizontalAlignment="Left" Margin="15,442,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="PrzypiszPacjentaDoLekarza_Click"/>
+                    <Label x:Name="label3" Content="Wizyty pacjenta" HorizontalAlignment="Left" Margin="161,374,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label x:Name="WizytaPacjenta" Content="" HorizontalAlignment="Left" Margin="161,405,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.486,0.392" Width="169" Height="91" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="CzasComboBox" HorizontalAlignment="Left" Margin="242.226,405,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label Content="Długość wizyty" HorizontalAlignment="Left" Margin="242.226,379,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="GodzinaWizyty" HorizontalAlignment="Left" Height="23" Margin="240.226,354,0,0" TextWrapping="Wrap" Text="GG" VerticalAlignment="Top" Width="53" Foreground="Gray" MaxLines="1" FlowDirection="RightToLeft" MaxLength="2" GotFocus="GodzinaWizyty_GotFocus" LostFocus="GodzinaWizyty_LostFocus" Grid.Column="1"/>
+                    <TextBox x:Name="MinutaWizyty" HorizontalAlignment="Left" Height="23" Margin="309.226,354,0,0" TextWrapping="Wrap" Text="MM" VerticalAlignment="Top" Width="53" Foreground="Gray" MaxLines="1" MaxLength="2" LostFocus="MinutaWizyty_LostFocus" GotFocus="MinutaWizyty_GotFocus" Grid.Column="1"/>
+                    <Label Content="Czas wizyty" HorizontalAlignment="Left" Margin="240.226,323,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Ustal wizyty lekarzowi." x:Name="UstalWizytyLekarzowiTab" Initialized="UstalWizytyLekarzowiTab_Initialized">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85*"/>
+                        <ColumnDefinition Width="148*"/>
+                        <ColumnDefinition Width="452*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="WybierzLekarza" HorizontalAlignment="Left" Margin="20,36,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="WybierzLekarza_SelectionChanged" Grid.ColumnSpan="2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="Imie"/>
+                                            <Binding Path="Nazwisko"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBox x:Name="WyszukajPacjentaLekarz" HorizontalAlignment="Left" Height="23" Margin="49,76,0,0" TextWrapping="Wrap" Text="Wpisz pesel pacjenta." VerticalAlignment="Top" Width="120" Foreground="#FFB4B4B4" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <DataGrid x:Name="PacjenciLekarza" HorizontalAlignment="Left" Margin="15,107,0,0" VerticalAlignment="Top" Height="202" Width="553" Grid.ColumnSpan="3"/>
+                    <Label x:Name="label_Copy" Content="Wybierz pacjenta" HorizontalAlignment="Left" Margin="15,72,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <DatePicker x:Name="WybierzDateLekarz" HorizontalAlignment="Left" Margin="96.534,354,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2"  />
+                    <Label x:Name="label2_Copy" Content="Data wizyty" HorizontalAlignment="Left" Margin="96.534,323,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <ComboBox x:Name="CzasComboBoxLekarz" HorizontalAlignment="Left" Margin="245.534,405,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
+                    <Label Content="Długość wizyty" HorizontalAlignment="Left" Margin="245.534,379,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <TextBox x:Name="GodzinaWizytyLekarz" HorizontalAlignment="Left" Height="23" Margin="243.534,354,0,0" TextWrapping="Wrap" Text="GG" VerticalAlignment="Top" Width="53" Foreground="Gray" MaxLines="1" FlowDirection="RightToLeft" MaxLength="2" GotFocus="GodzinaWizyty_GotFocus" LostFocus="GodzinaWizyty_LostFocus" Grid.Column="2"/>
+                    <TextBox x:Name="MinutaWizytyLekarz" HorizontalAlignment="Left" Height="23" Margin="312.534,354,0,0" TextWrapping="Wrap" Text="MM" VerticalAlignment="Top" Width="53" Foreground="Gray" MaxLines="1" MaxLength="2" LostFocus="MinutaWizyty_LostFocus" GotFocus="MinutaWizyty_GotFocus" Grid.Column="2"/>
+                    <Label Content="Czas wizyty" HorizontalAlignment="Left" Margin="243.534,323,0,0" VerticalAlignment="Top" Grid.Column="2"/>
+                    <Button x:Name="ZapiszPacjentaNaWizyteDoLekarza" Content="Zapisz na wizytę." HorizontalAlignment="Left" Margin="245.534,458,0,0" VerticalAlignment="Top" Width="120" Height="45" Grid.Column="2"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>

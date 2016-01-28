@@ -189,8 +189,10 @@ namespace Projekt_BD.Views {
 
         private void bEdytuj_Click(object sender, RoutedEventArgs e) {
             var objekt = dataGrid_Pacienci.SelectedItem;
-            var pesel = objekt.GetType().GetProperty("Pesel").GetValue(objekt).ToString();
-            (new EdytujPacjentaWindow(pesel)).ShowDialog();
+            if (objekt != null) {
+                var pesel = objekt.GetType().GetProperty("Pesel").GetValue(objekt).ToString();
+                (new EdytujPacjentaWindow(pesel)).ShowDialog();
+            }
         }
 
         private void ZarzadzajPacjentamiButton_Click(object sender, RoutedEventArgs e) {
