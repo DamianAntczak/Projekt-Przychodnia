@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,10 @@ namespace Projekt_BD.Views
     /// </summary>
     public partial class PanelObslugiWizyty : UserControl
     {
+        private Guid IDwizyty;
+        private HistoriaChoroby historia;
+        private Pacjent pacjent;
+
         public PanelObslugiWizyty()
         {
             InitializeComponent();
@@ -35,6 +40,7 @@ namespace Projekt_BD.Views
                     join h in db.HistoriaChoroby on p.Pesel equals h.Pesel
                     where h.Lekarz.IdLekarza == idLekarza
                     select p;
+                this.pacjent = (Pacjent)pacjent.FirstOrDefault();
 
                 wyborPacjentaBox.ItemsSource = pacjent.ToList();
                 wyborPacjentaBox.DisplayMemberPath = "Imie";
@@ -51,15 +57,83 @@ namespace Projekt_BD.Views
 
             using (DbContext db = new DbContext())
             {
-                opisText.Text = pacjentPesel.Pesel.ToString();
+                
                 var wizyty = from w in db.Wizyty
                     where w.HistoriaChoroby.Pacjent.Pesel == pacjentPesel.Pesel
-                    select w.Data + " " + w.CzasWizyty;
+                    select w;
+
+                
 
                 wyborWizytyBox.ItemsSource = wizyty.ToList();
-                wyborWizytyBox.DisplayMemberPath = "Data CzasWizyty";
+                wyborWizytyBox.DisplayMemberPath = "Data";
+                wyborWizytyBox.SelectedValuePath = "IdWizyty";
+
+                var historia = from h in db.HistoriaChoroby
+                    where h.Pacjent.Pesel == pacjentPesel.Pesel
+                    select h as HistoriaChoroby;
+
+                opisText.Text = historia.First().OpisChoroby;
+                this.historia = historia.First();
+
+                
             }
 
+        }
+
+        private void opisText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void wyborWizytyBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedWizyta = (Wizyta)wyborWizytyBox.SelectedItem;
+
+            using (DbContext db = new DbContext())
+            {
+                var wizyta = (from w in db.Wizyty
+                    where w.IdWizyty == selectedWizyta.IdWizyty
+                    select w).First();
+
+                IDwizyty = wizyta.IdWizyty;
+                tOpisWizyty.Text = wizyta.Opis;
+            }
+        }
+
+        private void opisText_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            using (DbContext db = new DbContext())
+            {
+                var queryHistoria = from HistoriaChoroby in db.HistoriaChoroby
+                    where HistoriaChoroby.Pacjent == pacjent
+                    select HistoriaChoroby;
+
+                var historia = queryHistoria.FirstOrDefault();
+                historia.OpisChoroby = opisText.Text;
+
+                db.SaveChanges();
+            }
+
+        }
+
+        private void bSave_Click(object sender, RoutedEventArgs e)
+        {
+            using (DbContext db = new DbContext())
+            {
+                var historia = (from HistoriaChoroby in db.HistoriaChoroby
+                                    where HistoriaChoroby.Pacjent.Pesel == pacjent.Pesel
+                                    select HistoriaChoroby).First();
+
+                historia.OpisChoroby = opisText.Text;
+
+                var wiz = (from w in db.Wizyty
+                    where w.IdWizyty == IDwizyty
+                    select w).First();
+
+                wiz.Opis = tOpisWizyty.Text;
+
+                db.SaveChanges();
+            }
         }
     }
 }

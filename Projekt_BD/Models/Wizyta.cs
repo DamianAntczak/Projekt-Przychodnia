@@ -18,6 +18,7 @@ namespace Projekt_BD.Models
         //ma być typu DateTime, gdzie będziemy określać ile ma trwać wizyta, np. 1 h 20 min czy Int32
         //do określenia ilości minut -> 80 min?
         public TimeSpan CzasWizyty { get; set; }
+        public string Opis { get; set; }
         
         public ICollection<Recepta> Recepty { get; set; }
 
