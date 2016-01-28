@@ -37,6 +37,7 @@ namespace Projekt_BD.Views
                 tMiejsceUr.Text = x.MiejsceUrodzenia;
                 tTel.Text = x.NrTelefonu;
                 tMail.Text = x.Mail;
+                tUrodzenie.SelectedDate = x.DataUrodzenie;
 
             }
         }
@@ -51,6 +52,7 @@ namespace Projekt_BD.Views
                 pacjent.Mail = tMail.Text;
                 pacjent.MiejsceUrodzenia = tMiejsceUr.Text;
                 pacjent.NrTelefonu = tTel.Text;
+                pacjent.DataUrodzenie = tUrodzenie.SelectedDate.Value;
                 dbContext.SaveChanges();
                 MessageBox.Show("Pomyślnie zapisano zmiany");
             }

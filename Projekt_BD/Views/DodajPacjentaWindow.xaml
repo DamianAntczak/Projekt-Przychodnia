@@ -6,8 +6,8 @@
         xmlns:controls="clr-namespace:Projekt_BD.Views"
         xmlns:local="clr-namespace:Projekt_BD.Views"
         mc:Ignorable="d"
-        Title="DodajPacjentaWindow" Height="300" Width="300">
+        Title="DodajPacjentaWindow" Height="428.571" Width="359.775">
     <Grid>
-        <controls:PanelDodawaniaPacjenta></controls:PanelDodawaniaPacjenta>
+        <controls:PanelDodawaniaPacjenta HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Width="351"></controls:PanelDodawaniaPacjenta>
     </Grid>
 </Window>

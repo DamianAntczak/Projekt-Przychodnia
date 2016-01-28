@@ -14,12 +14,12 @@
         <TextBox x:Name="tPesel" HorizontalAlignment="Left" Height="23" Margin="128,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tImie" HorizontalAlignment="Left" Height="23" Margin="128,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tNazwisko" HorizontalAlignment="Left" Height="23" Margin="128,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tDataUr" HorizontalAlignment="Left" Height="23" Margin="128,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tMiejsceUr"  HorizontalAlignment="Left" Height="23" Margin="128,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tPlec" HorizontalAlignment="Left" Height="23" Margin="128,204,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tTel" HorizontalAlignment="Left" Height="23" Margin="128,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tMail" HorizontalAlignment="Left" Height="23" Margin="128,281,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="bZapisz" Content="Zapisz" HorizontalAlignment="Left" Margin="128,324,0,0" VerticalAlignment="Top" Width="120" Click="bZapisz_Click"/>
+        <DatePicker x:Name="tUrodzenie" HorizontalAlignment="Left" Margin="128,127,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

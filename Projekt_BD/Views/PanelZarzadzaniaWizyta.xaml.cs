@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,18 +27,20 @@ namespace Projekt_BD.Views {
         const string min = "MM";
         const string uruchomLekarza = "lekarz";
         const string uruchomPacjenta = "pacjent";
-        const int maksymalnaDataDoTylu = -14;
+        const string wyszPacjenta = "Wpisz pesel pacjenta.";
+        const int maksymalnaDataDoTylu = -1;
         public PanelZarzadzaniaWizyta() {
             worker_Pacjent.DoWork += Worker_Pacjent_DoWork;
             worker_Lekarz.DoWork += Worker_Lekarz_DoWork;
             InitializeComponent();
             WybierzDate.DisplayDateStart = DateTime.Today.AddDays(maksymalnaDataDoTylu);
+            WybierzDateLekarz.DisplayDateStart = DateTime.Today.AddDays(maksymalnaDataDoTylu);
         }
 
         private void Worker_Lekarz_DoWork(object sender, DoWorkEventArgs e) {
-            if(e.Argument.ToString() == uruchomLekarza)
+            if (e.Argument.ToString() == uruchomLekarza)
                 WczytajLekarzy();
-            else if(e.Argument.ToString() == uruchomPacjenta) {
+            else if (e.Argument.ToString() == uruchomPacjenta) {
                 WczytajPacjentowLekarza();
             }
         }
@@ -198,6 +201,46 @@ namespace Projekt_BD.Views {
         private void WybierzLekarza_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             if (!worker_Lekarz.IsBusy)
                 worker_Lekarz.RunWorkerAsync(uruchomPacjenta);
+        }
+
+        private void ZapiszPacjentaNaWizyteDoLekarza_Click(object sender, RoutedEventArgs e) {
+            //Guid g = Guid.Parse("FC0ADDDC-27FA-400E-96EF-E66478712914");
+            //using (var context = new DbContext()) {
+
+            //    var hist = (from h in context.HistoriaChoroby
+            //                where h.Pesel == "11686911222" && h.IdLekarza == g
+            //                select h).First();
+            //    hist.OpisChoroby = "Opis choroby";
+            //    context.HistoriaChoroby.Attach(hist);
+            //    context.Entry(hist).Property(x => x.OpisChoroby).IsModified = true;
+            //    context.SaveChanges();
+            //}
+        }
+
+        private void WyszukajPacjenta_GotFocus(object sender, RoutedEventArgs e) {
+            var textbox = (TextBox)sender;
+            if (textbox.Text == wyszPacjenta) {
+                textbox.Foreground = Brushes.Black;
+                textbox.Text = "";
+            }
+        }
+
+        private void WyszukajPacjenta_LostFocus(object sender, RoutedEventArgs e) {
+            var textbox = (TextBox)sender;
+            if (textbox.Text == "") {
+                textbox.Foreground = Brushes.Gray;
+                textbox.Text = wyszPacjenta;
+            }
+        }
+
+        private void TylkoNumer_Handler(object sender, TextCompositionEventArgs e) {
+            if (!sprawdzCzyJestNumerem(e.Text))
+                e.Handled = true; ;
+
+        }
+        private bool sprawdzCzyJestNumerem(string text) {
+            Regex regex = new Regex("^[0-9]*$");
+            return regex.IsMatch(text);
         }
     }
 }

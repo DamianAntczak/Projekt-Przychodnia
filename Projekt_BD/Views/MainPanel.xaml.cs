@@ -158,19 +158,21 @@ namespace Projekt_BD.Views {
 
         private void dataGrid_Pacienci_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var objekt = dataGrid_Pacienci.SelectedItem;
-            var typ = objekt.GetType();
-            if (typ.GetProperty("Imie").GetValue(objekt) != null)
-                tImie.Text = typ.GetProperty("Imie").GetValue(objekt).ToString();
-            if (typ.GetProperty("Nazwisko").GetValue(objekt) != null)
-                tNazwisko.Text = typ.GetProperty("Nazwisko").GetValue(objekt).ToString();
-            if (typ.GetProperty("Pesel").GetValue(objekt) != null)
-                PESEL.Text = typ.GetProperty("Pesel").GetValue(objekt).ToString();
-            if (typ.GetProperty("Year").GetValue(objekt) != null)
-                DataUrodzenia.Text = typ.GetProperty("Year").GetValue(objekt) != null ? typ.GetProperty("Year").GetValue(objekt).ToString() : " ";
-            if (typ.GetProperty("MiejsceUrodzenia").GetValue(objekt) != null)
-                MiejsceUrodzenia.Text = typ.GetProperty("MiejsceUrodzenia").GetValue(objekt).ToString();
-            //if (typ.GetProperty("NrTelefonu").GetValue(objekt) != null)
-            //    NrTelefonu.Text = typ.GetProperty("NrTelefonu").GetValue(objekt).ToString();
+            if (objekt != null) {
+                var typ = objekt.GetType();
+                if (typ.GetProperty("Imie").GetValue(objekt) != null)
+                    tImie.Text = typ.GetProperty("Imie").GetValue(objekt).ToString();
+                if (typ.GetProperty("Nazwisko").GetValue(objekt) != null)
+                    tNazwisko.Text = typ.GetProperty("Nazwisko").GetValue(objekt).ToString();
+                if (typ.GetProperty("Pesel").GetValue(objekt) != null)
+                    PESEL.Text = typ.GetProperty("Pesel").GetValue(objekt).ToString();
+                if (typ.GetProperty("Year").GetValue(objekt) != null)
+                    DataUrodzenia.Text = typ.GetProperty("Year").GetValue(objekt) != null ? typ.GetProperty("Year").GetValue(objekt).ToString() : " ";
+                if (typ.GetProperty("MiejsceUrodzenia").GetValue(objekt) != null)
+                    MiejsceUrodzenia.Text = typ.GetProperty("MiejsceUrodzenia").GetValue(objekt).ToString();
+                //if (typ.GetProperty("NrTelefonu").GetValue(objekt) != null)
+                //    NrTelefonu.Text = typ.GetProperty("NrTelefonu").GetValue(objekt).ToString();
+            }
         }
 
         private void dataGrid_Choroby_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -197,6 +199,8 @@ namespace Projekt_BD.Views {
                 var pesel = objekt.GetType().GetProperty("Pesel").GetValue(objekt).ToString();
                 (new EdytujPacjentaWindow(pesel)).ShowDialog();
             }
+            if (!przegladajBazeWorker.IsBusy)
+                przegladajBazeWorker.RunWorkerAsync();
         }
 
         private void ZarzadzajPacjentamiButton_Click(object sender, RoutedEventArgs e) {

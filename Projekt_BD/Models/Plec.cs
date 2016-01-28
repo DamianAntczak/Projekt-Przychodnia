@@ -2,7 +2,7 @@
 {
     public enum Plec
     {
-        Mezczyzna,
-        Kobieta
+        Mezczyzna = 0,
+        Kobieta = 1
     }
 }

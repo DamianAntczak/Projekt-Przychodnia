@@ -26,7 +26,8 @@ namespace Projekt_BD.Views {
         private void button_Click(object sender, RoutedEventArgs e) {
             if (TPesel.Text != string.Empty && sprawdzCzyJestNumerem(TPesel.Text) && tImie.Text != string.Empty && tNazwisko.Text != string.Empty && tUrodzenie.SelectedDate.HasValue) {
                 using (dbContext = new DbContext()) {
-                    dbContext.Pacjentci.Add(new Models.Pacjent { Pesel = TPesel.Text, Imie = tImie.Text, DataUrodzenie = tUrodzenie.SelectedDate.GetValueOrDefault(), Nazwisko = tNazwisko.Text, Mail = tMail.Text });
+                    var plec = (bool)Kobieta.IsChecked ? Models.Plec.Kobieta : Models.Plec.Mezczyzna;
+                    dbContext.Pacjentci.Add(new Models.Pacjent { Pesel = TPesel.Text, Imie = tImie.Text, DataUrodzenie = tUrodzenie.SelectedDate.GetValueOrDefault(), Nazwisko = tNazwisko.Text, Mail = tMail.Text, MiejsceUrodzenia = tMiejsceUr.Text, NrTelefonu = tTel.Text, Plec= plec });
                     dbContext.SaveChanges();
                     MessageBox.Show("Pomyślnie dodano pacjenta!");
                 }

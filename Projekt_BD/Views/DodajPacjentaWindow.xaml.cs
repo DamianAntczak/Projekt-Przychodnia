@@ -22,8 +22,6 @@ namespace Projekt_BD.Views
         public DodajPacjentaWindow()
         {
             InitializeComponent();
-
-
         }
     }
 }
