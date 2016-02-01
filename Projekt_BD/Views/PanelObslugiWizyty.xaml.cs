@@ -26,6 +26,7 @@ namespace Projekt_BD.Views
         private Guid IDwizyty;
         private HistoriaChoroby historia;
         private Pacjent pacjent;
+        private Wizyta Wybrana_Wizyta; //wybrana wizyta
 
         public PanelObslugiWizyty()
         {
@@ -88,6 +89,8 @@ namespace Projekt_BD.Views
         private void wyborWizytyBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedWizyta = (Wizyta)wyborWizytyBox.SelectedItem;
+
+            Wybrana_Wizyta = selectedWizyta;
 
             using (DbContext db = new DbContext())
             {
