@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Projekt_BD.Models;
+using System.Data;
 
 namespace Projekt_BD.Views
 {
@@ -27,11 +28,15 @@ namespace Projekt_BD.Views
         private HistoriaChoroby historia;
         private Pacjent pacjent;
         private Wizyta Wybrana_Wizyta; //wybrana wizyta
+        private SpisLekow Wybrany_Lek;
+        private List<Lek> ListaLekow;
+        private Recepta NowaRecepta;
 
         public PanelObslugiWizyty()
         {
             InitializeComponent();
 
+            ListaLekow = new List<Lek>();
             using (DbContext db = new DbContext())
             {
                 var lekarz = db.Lekarze.First();
@@ -42,6 +47,11 @@ namespace Projekt_BD.Views
                     where h.Lekarz.IdLekarza == idLekarza
                     select p;
                 this.pacjent = (Pacjent)pacjent.FirstOrDefault();
+
+                var leks = from leki in db.SpisLekow select new { leki.NazwaLeku};
+
+                
+                dataGrid_WyborLeku.ItemsSource = leks.ToList();
 
                 wyborPacjentaBox.ItemsSource = pacjent.ToList();
                 wyborPacjentaBox.DisplayMemberPath = "Imie";
@@ -136,6 +146,59 @@ namespace Projekt_BD.Views
                 wiz.Opis = tOpisWizyty.Text;
 
                 db.SaveChanges();
+            }
+        }
+
+        private void dataGrid_WyborLeku_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var row = dataGrid_WyborLeku.SelectedItem;
+            var typ = row.GetType();
+            using (DbContext db = new DbContext())
+            {
+                if( typ.GetProperty("NazwaLeku").GetValue(row) != null)
+                {
+                    string nazwaLek = typ.GetProperty("NazwaLeku").GetValue(row).ToString();
+                    var result = (from SpisLekow in db.SpisLekow
+                                  where SpisLekow.NazwaLeku == nazwaLek
+                                  select SpisLekow).First();
+                    Wybrany_Lek = (SpisLekow)result; //
+                    label5_WybranyLek.Content = nazwaLek;
+                }
+            }
+        }
+
+        private void DodajLekButtton_Click(object sender, RoutedEventArgs e)
+        {
+            if(Wybrany_Lek != null && comboBox_Dawka.Text != "" && comboBox_Przyjmowanie.Text != "")
+            {
+                using (DbContext db = new DbContext())
+                {
+                    Lek nowyLek = new Lek { IdLeku = Guid.NewGuid(), Dawka = comboBox_Dawka.Text, Przyjmowanie = comboBox_Przyjmowanie.Text, StopienRefundacji = 0, SpisLekow = Wybrany_Lek, Recepta = NowaRecepta };
+                    //db.Set<Lek>().AddOrUpdate(nowyLek);
+                    ListaLekow.Add(nowyLek);
+                    //dataGridDodaneLeki.ItemsSource = ListaLekow.Select(o => o.SpisLekow).Select( o => o.NazwaLeku);
+                    dataGridDodaneLeki.ItemsSource = ListaLekow.Select(o => o.SpisLekow);
+                    dataGridDodaneLeki.Items.Refresh();
+                }
+                    
+            }
+        }
+
+        private void ZatwierdzRecepteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(ListaLekow.Count > 0)
+            {
+                NowaRecepta = new Recepta { IdRecepty = Guid.NewGuid(), Leki = ListaLekow, CzasWystawienia = DateTime.Now, Wizyta = Wybrana_Wizyta };
+                //NowaRecepta.Leki = ListaLekow;
+                using (DbContext db = new DbContext())
+                {
+                    if(Wybrana_Wizyta != null) { 
+                        db.Set<Lek>().AddRange(ListaLekow);
+                        db.Set<Recepta>().Add(NowaRecepta);
+                        db.Set<Wizyta>().AddOrUpdate(Wybrana_Wizyta);
+                        db.SaveChanges();
+                    }
+                }
             }
         }
     }

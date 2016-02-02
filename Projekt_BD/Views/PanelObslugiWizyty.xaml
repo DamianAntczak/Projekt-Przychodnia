@@ -19,30 +19,29 @@
             </TabItem>
             <TabItem Header="Recepta">
                 <Grid>
-                    <Label x:Name="label" Content="Wybierz lek" Margin="10,0,603,318" RenderTransformOrigin="0.065,0.503"/>
-                    <DataGrid x:Name="dataGrid_WyborLeku" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="190" Width="116"/>
-                    <Label x:Name="label1" Content="Dawka" HorizontalAlignment="Left" Margin="178,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.163,0.138" Height="35" Width="100"/>
-                    <ComboBox x:Name="comboBox_Dawka" HorizontalAlignment="Left" Margin="178,40,0,0" VerticalAlignment="Top" Width="100">
+                    <Label x:Name="label" Content="Wybierz lek" Margin="3,10,610,308" RenderTransformOrigin="0.065,0.503"/>
+                    <DataGrid x:Name="dataGrid_WyborLeku" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="190" Width="auto" SelectionChanged="dataGrid_WyborLeku_SelectionChanged"/>
+                    <Label x:Name="label1" Content="Dawka" HorizontalAlignment="Left" Margin="172,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.163,0.138" Height="35" Width="100"/>
+                    <ComboBox x:Name="comboBox_Dawka" HorizontalAlignment="Left" Margin="178,92,0,0" VerticalAlignment="Top" Width="100">
                         <ComboBoxItem>5 mg</ComboBoxItem>
                         <ComboBoxItem>10 mg</ComboBoxItem>
                         <ComboBoxItem>15 mg</ComboBoxItem>
                         <ComboBoxItem>20 mg</ComboBoxItem>
                     </ComboBox>
-                    <Label x:Name="label2" Content="Ilość Przyjęć" HorizontalAlignment="Left" Margin="318,0,0,0" VerticalAlignment="Top" Width="91"/>
-                    <ComboBox x:Name="comboBox_Przyjmowanie" HorizontalAlignment="Left" Margin="318,40,0,0" VerticalAlignment="Top" Width="120">
+                    <Label x:Name="label2" Content="Ilość Przyjmowania" HorizontalAlignment="Left" Margin="312,58,0,0" VerticalAlignment="Top" Width="126"/>
+                    <ComboBox x:Name="comboBox_Przyjmowanie" HorizontalAlignment="Left" Margin="318,92,0,0" VerticalAlignment="Top" Width="120">
                         <ComboBoxItem>1 raz dziennie</ComboBoxItem>
                         <ComboBoxItem>2 razy dziennie</ComboBoxItem>
                         <ComboBoxItem>3 razy dziennie</ComboBoxItem>
                     </ComboBox>
-                    <Button x:Name="button" Content="Dodaj Lek" FontSize="16" HorizontalAlignment="Left" Margin="510,40,0,0" VerticalAlignment="Top" Width="142"/>
-                    <Label x:Name="label3" Content="Lista dodanych leków" HorizontalAlignment="Left" Margin="510,88,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="510,136,0,0" VerticalAlignment="Top" Height="126" Width="142"/>
-                    <Button x:Name="button1" Content="Zatwierdź Receptę" FontSize="16" HorizontalAlignment="Left" Margin="510,293,0,0" VerticalAlignment="Top" Width="142" Height="32"/>
-
+                    <Button x:Name="DodajLekButtton" Content="Dodaj Lek" FontSize="16" HorizontalAlignment="Left" Margin="510,62,0,0" VerticalAlignment="Top" Width="142" Click="DodajLekButtton_Click"/>
+                    <Label x:Name="label3" Content="Lista dodanych leków" HorizontalAlignment="Left" Margin="504,107,0,0" VerticalAlignment="Top"/>
+                    <DataGrid x:Name="dataGridDodaneLeki" HorizontalAlignment="Left" Margin="510,136,0,0" VerticalAlignment="Top" Height="126" Width="142"/>
+                    <Button x:Name="ZatwierdzRecepteButton" Content="Zatwierdź Receptę" FontSize="16" HorizontalAlignment="Left" Margin="510,293,0,0" VerticalAlignment="Top" Width="142" Height="32" Click="ZatwierdzRecepteButton_Click"/>
+                    <Label x:Name="label4" Content="Wybrany Lek:" FontSize="20" HorizontalAlignment="Left" Margin="178,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label5_WybranyLek"  FontSize="20" HorizontalAlignment="Left" Margin="306,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.593,-6.897" Height="35" Width="240"/>
                 </Grid>
             </TabItem>
-
-
         </TabControl>
     </Grid>
 </UserControl>
