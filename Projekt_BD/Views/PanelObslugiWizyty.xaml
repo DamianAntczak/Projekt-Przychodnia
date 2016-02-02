@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" Height="383.956" Width="735.216">
     <Grid>
-        <TabControl x:Name="Obsluga_Wizyt"  FontSize="20">
+        <TabControl x:Name="Obsluga_Wizyt"  FontSize="14">
             <TabItem Header="Wybór wizyty">
                 <Grid>
                     <ComboBox x:Name="wyborPacjentaBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged_1"/>
@@ -18,8 +18,31 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Recepta">
-                
+                <Grid>
+                    <Label x:Name="label" Content="Wybierz lek" Margin="10,0,603,318" RenderTransformOrigin="0.065,0.503"/>
+                    <DataGrid x:Name="dataGrid_WyborLeku" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="190" Width="116"/>
+                    <Label x:Name="label1" Content="Dawka" HorizontalAlignment="Left" Margin="178,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.163,0.138" Height="35" Width="100"/>
+                    <ComboBox x:Name="comboBox_Dawka" HorizontalAlignment="Left" Margin="178,40,0,0" VerticalAlignment="Top" Width="100">
+                        <ComboBoxItem>5 mg</ComboBoxItem>
+                        <ComboBoxItem>10 mg</ComboBoxItem>
+                        <ComboBoxItem>15 mg</ComboBoxItem>
+                        <ComboBoxItem>20 mg</ComboBoxItem>
+                    </ComboBox>
+                    <Label x:Name="label2" Content="Ilość Przyjęć" HorizontalAlignment="Left" Margin="318,0,0,0" VerticalAlignment="Top" Width="91"/>
+                    <ComboBox x:Name="comboBox_Przyjmowanie" HorizontalAlignment="Left" Margin="318,40,0,0" VerticalAlignment="Top" Width="120">
+                        <ComboBoxItem>1 raz dziennie</ComboBoxItem>
+                        <ComboBoxItem>2 razy dziennie</ComboBoxItem>
+                        <ComboBoxItem>3 razy dziennie</ComboBoxItem>
+                    </ComboBox>
+                    <Button x:Name="button" Content="Dodaj Lek" FontSize="16" HorizontalAlignment="Left" Margin="510,40,0,0" VerticalAlignment="Top" Width="142"/>
+                    <Label x:Name="label3" Content="Lista dodanych leków" HorizontalAlignment="Left" Margin="510,88,0,0" VerticalAlignment="Top"/>
+                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="510,136,0,0" VerticalAlignment="Top" Height="126" Width="142"/>
+                    <Button x:Name="button1" Content="Zatwierdź Receptę" FontSize="16" HorizontalAlignment="Left" Margin="510,293,0,0" VerticalAlignment="Top" Width="142" Height="32"/>
+
+                </Grid>
             </TabItem>
+
+
         </TabControl>
     </Grid>
 </UserControl>
