@@ -70,7 +70,6 @@ namespace Projekt_BD.Views {
 
         }
         private void ObsluzWizyteButton_Click(object sender, RoutedEventArgs e) {
-
             var pok = new PanelObslugiWizyty();
             MenuItemName.Content = "Obsługa Wizyty";
             CenterPanel1.Visibility = Visibility.Hidden;
@@ -90,7 +89,6 @@ namespace Projekt_BD.Views {
 
         private void UstalGodzinyPrzyjecButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Godziny Przyjęć";
-
             var pdp = new PanelDodawaniaPrzyjec();
             CenterPanel1.Visibility = Visibility.Hidden;
             this.Panele.Content = pdp;
@@ -212,6 +210,11 @@ namespace Projekt_BD.Views {
         }
 
         private void CenterPanel1_GotFocus(object sender, RoutedEventArgs e) {
+        }
+
+        private void Window_Initialized(object sender, EventArgs e) {
+            if (!przegladajBazeWorker.IsBusy)
+                przegladajBazeWorker.RunWorkerAsync();
         }
     }
 }
