@@ -146,20 +146,35 @@ namespace Projekt_BD.Views {
             }
         }
 
-        private void ZatwierdzRecepteButton_Click(object sender, RoutedEventArgs e) {
-            if (ListaLekow.Count > 0) {
-                NowaRecepta = new Recepta { IdRecepty = Guid.NewGuid(), Leki = ListaLekow, CzasWystawienia = DateTime.Now, Wizyta = Wybrana_Wizyta };
+
+        private void ZatwierdzRecepteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ListaLekow.Count > 0)
+            {
+
                 //NowaRecepta.Leki = ListaLekow;
-                using (DbContext db = new DbContext()) {
-                    if (Wybrana_Wizyta != null) {
-                        db.Set<Lek>().AddRange(ListaLekow);
-                        db.Set<Recepta>().Add(NowaRecepta);
-                        db.Set<Wizyta>().AddOrUpdate(Wybrana_Wizyta);
+                using (DbContext db = new DbContext())
+                {
+                    if (Wybrana_Wizyta != null)
+                    {
+                        var wizyta = from wiz in db.Wizyty
+                                     where wiz.IdWizyty == Wybrana_Wizyta.IdWizyty
+                                     select wiz;
+                        NowaRecepta = new Recepta { IdRecepty = Guid.NewGuid(), CzasWystawienia = DateTime.Now, Wizyta = wizyta.FirstOrDefault() };
+                        db.Recepty.Add(NowaRecepta);
                         db.SaveChanges();
+                        //dodawanie recepty działa
+                        //z lekami ma problem
+                        foreach (var item in ListaLekow)
+                        {
+                            db.Leki.Add(new Lek { IdLeku = item.IdLeku, Dawka = item.Dawka, Przyjmowanie = item.Przyjmowanie, Recepta = NowaRecepta, SpisLekow = item.SpisLekow, StopienRefundacji = 0 });
+                        }
+                        //db.SaveChanges();
                     }
                 }
             }
         }
+
 
         private void UserControl_Initialized(object sender, EventArgs e) {
             while (true) {
