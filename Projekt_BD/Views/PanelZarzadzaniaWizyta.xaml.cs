@@ -79,7 +79,6 @@ namespace Projekt_BD.Views {
             }
         }
         private void PrzypiszPacjentaDoLekarza_Click(object sender, RoutedEventArgs e) {
-            PanelZarzadzaniaacjentem pzp = new PanelZarzadzaniaacjentem();
         }
 
         private void PanelZarzadzaniaWizyta1_Initialized(object sender, EventArgs e) {

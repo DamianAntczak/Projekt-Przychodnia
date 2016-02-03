@@ -47,9 +47,9 @@ namespace Projekt_BD.Views {
                 var idLekarza = lekarz.IdLekarza;
                 var pacjent = from p in context.Pacjentci
                               join h in context.HistoriaChoroby on p.Pesel equals h.Pesel
-                              where h.Lekarz.IdLekarza == idLekarza
+                              where h.IdLekarza == idLekarza
                               select p;
-                this.pacjent = pacjent.FirstOrDefault();
+                //this.pacjent = pacjent.FirstOrDefault();
                 var leks = from leki in context.SpisLekow select new { leki.NazwaLeku };
                 dataGrid_WyborLeku.Dispatcher.Invoke(DispatcherPriority.Normal,
                     new Action(() => dataGrid_WyborLeku.ItemsSource = leks.ToList()));
@@ -64,19 +64,19 @@ namespace Projekt_BD.Views {
 
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e) {
             wyborWizytyBox.ItemsSource = null;
-            var pacjentPesel = (Models.Pacjent)wyborPacjentaBox.SelectedItem;
+            pacjent = (Models.Pacjent)wyborPacjentaBox.SelectedItem;
 
             using (DbContext db = new DbContext()) {
 
                 var wizyty = from w in db.Wizyty
-                             where w.HistoriaChoroby.Pacjent.Pesel == pacjentPesel.Pesel
+                             where w.HistoriaChoroby.Pacjent.Pesel == pacjent.Pesel
                              select w;
                 wyborWizytyBox.ItemsSource = wizyty.ToList();
                 wyborWizytyBox.DisplayMemberPath = "Data";
                 wyborWizytyBox.SelectedValuePath = "IdWizyty";
 
                 var historia = from h in db.HistoriaChoroby
-                               where h.Pacjent.Pesel == pacjentPesel.Pesel
+                               where h.Pacjent.Pesel == pacjent.Pesel
                                select h as HistoriaChoroby;
 
                 opisText.Text = historia.First().OpisChoroby;
@@ -162,14 +162,14 @@ namespace Projekt_BD.Views {
                                      select wiz;
                         NowaRecepta = new Recepta { IdRecepty = Guid.NewGuid(), CzasWystawienia = DateTime.Now, Wizyta = wizyta.FirstOrDefault() };
                         db.Recepty.Add(NowaRecepta);
-                        db.SaveChanges();
-                        //dodawanie recepty działa
-                        //z lekami ma problem
                         foreach (var item in ListaLekow)
                         {
-                            db.Leki.Add(new Lek { IdLeku = item.IdLeku, Dawka = item.Dawka, Przyjmowanie = item.Przyjmowanie, Recepta = NowaRecepta, SpisLekow = item.SpisLekow, StopienRefundacji = 0 });
+                            var l = from s in db.SpisLekow
+                                    where s.NazwaLeku == item.SpisLekow.NazwaLeku
+                                    select s;
+                            db.Leki.Add(new Lek { IdLeku = Guid.NewGuid(), Dawka = item.Dawka, Przyjmowanie = item.Przyjmowanie, Recepta = NowaRecepta, SpisLekow = l.FirstOrDefault(), StopienRefundacji = 0 });
                         }
-                        //db.SaveChanges();
+                       db.SaveChanges(); 
                     }
                 }
             }

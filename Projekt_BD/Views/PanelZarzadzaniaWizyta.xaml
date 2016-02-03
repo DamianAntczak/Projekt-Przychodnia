@@ -35,7 +35,6 @@
                     <Label x:Name="label1" Content="Wybierz lekarza" HorizontalAlignment="Left" Margin="15,342,0,0" VerticalAlignment="Top"/>
                     <DatePicker x:Name="WybierzDate" HorizontalAlignment="Left" Margin="93.226,354,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"  />
                     <Label x:Name="label2" Content="Data wizyty" HorizontalAlignment="Left" Margin="93.226,323,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                    <Button x:Name="PrzypiszPacjentaDoLekarza" Content="Przypisz nowego &#xD;&#xA;lekarza do pacjenta" HorizontalAlignment="Left" Margin="15,442,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="PrzypiszPacjentaDoLekarza_Click"/>
                     <Label x:Name="label3" Content="Wizyty pacjenta" HorizontalAlignment="Left" Margin="161,374,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                     <Label x:Name="WizytaPacjenta" Content="" HorizontalAlignment="Left" Margin="161,405,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.486,0.392" Width="169" Height="91" Grid.ColumnSpan="2"/>
                     <ComboBox x:Name="CzasComboBox" HorizontalAlignment="Left" Margin="242.226,405,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>

@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Projekt_BD.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Projekt_BD
+namespace Projekt_BD.Models
 {
     public class Lek
     {

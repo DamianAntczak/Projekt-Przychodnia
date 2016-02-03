@@ -155,9 +155,6 @@
     <Compile Include="Views\PanelDodawaniaPrzyjec.xaml.cs">
       <DependentUpon>PanelDodawaniaPrzyjec.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PanelDodawaniaRecepty.xaml.cs">
-      <DependentUpon>PanelDodawaniaRecepty.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\PanelObslugiWizyty.xaml.cs">
       <DependentUpon>PanelObslugiWizyty.xaml</DependentUpon>
     </Compile>
@@ -166,9 +163,6 @@
     </Compile>
     <Compile Include="Views\PanelZarzadzaniaWizyta.xaml.cs">
       <DependentUpon>PanelZarzadzaniaWizyta.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DyzurLekarza.xaml.cs">
-      <DependentUpon>DyzurLekarza.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wizytas.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -215,10 +209,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PanelDodawaniaRecepty.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\PanelObslugiWizyty.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -228,10 +218,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PanelZarzadzaniaWizyta.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DyzurLekarza.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
