@@ -16,24 +16,28 @@
         <TabControl HorizontalAlignment="Left" Height="403" Margin="0,10,0,0" VerticalAlignment="Top" Width="816">
             <TabItem Header="Wizyty">
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource wizytasViewSource}">
-                    <DataGrid x:Name="wizytasDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,10,10,115" RowDetailsVisibilityMode="VisibleWhenSelected">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="23*"/>
+                        <ColumnDefinition Width="247*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="wizytasDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,10,10,115" RowDetailsVisibilityMode="VisibleWhenSelected" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="idWizytyColumn" Binding="{Binding IdWizyty}" Header="Id Wizyty" Width="SizeToHeader"/>
-                            <DataGridTemplateColumn x:Name="dataColumn" Header="Data" Width="SizeToHeader">
+                            <DataGridTextColumn x:Name="idWizytyColumn" Binding="{Binding IdWizyty}" Header="Id Wizyty" Width="SizeToCells"/>
+                            <DataGridTemplateColumn x:Name="dataColumn" Header="Data" Width="SizeToCells">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <DatePicker SelectedDate="{Binding Data, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="czasWizytyColumn" Binding="{Binding CzasWizyty}" Header="Czas Wizyty" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="historiaChoroby_PeselColumn" Binding="{Binding HistoriaChoroby_Pesel}" Header="Pesel" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="historiaChoroby_IdLekarzaColumn" Binding="{Binding HistoriaChoroby_IdLekarza}" Header="Historia Choroby Id Lekarza" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="opisColumn" Binding="{Binding Opis}" Header="Opis" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="czasWizytyColumn" Binding="{Binding CzasWizyty}" Header="Czas Wizyty" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="historiaChoroby_PeselColumn" Binding="{Binding HistoriaChoroby_Pesel}" Header="Pesel" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="historiaChoroby_IdLekarzaColumn" Binding="{Binding HistoriaChoroby_IdLekarza}" Header="Historia Choroby Id Lekarza" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="opisColumn" Binding="{Binding Opis}" Header="Opis" Width="SizeToCells"/>
                             <DataGridCheckBoxColumn x:Name="czyOdbytaColumn" Binding="{Binding CzyOdbyta}" Header="Czy Odbyta" Width="SizeToHeader"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top">
+                    <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -44,7 +48,7 @@
                         <Label Content="Id Wizyty:" Grid.Column="0" HorizontalAlignment="Left" Margin="-5,85,0,-79" Grid.Row="0" VerticalAlignment="Center"/>
                         <TextBox x:Name="idWizytyTextBox" HorizontalAlignment="Left" Height="23" Margin="62,86,0,-77" Grid.Row="0" Text="{Binding IdWizyty, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2"/>
                     </Grid>
-                    <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="7,302,0,0" VerticalAlignment="Top">
+                    <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="7,302,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -55,7 +59,7 @@
                         <Label Content="Data:" Grid.Column="0" HorizontalAlignment="Left" Margin="6,6,0,0" Grid.Row="0" VerticalAlignment="Center"/>
                         <DatePicker x:Name="dataDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="27,6,-21,2" Grid.Row="0" SelectedDate="{Binding Data, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
                     </Grid>
-                    <Grid x:Name="grid3" HorizontalAlignment="Left" Margin="251,193,0,0" VerticalAlignment="Top">
+                    <Grid x:Name="grid3" HorizontalAlignment="Left" Margin="182.438,193,0,0" VerticalAlignment="Top" Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -66,7 +70,7 @@
                         <Label Content="Czas Wizyty:" Grid.Column="0" HorizontalAlignment="Left" Margin="-48,77,0,-71" Grid.Row="0" VerticalAlignment="Center"/>
                         <TextBox x:Name="czasWizytyTextBox" HorizontalAlignment="Left" Height="23" Margin="33,78,0,-69" Grid.Row="0" Text="{Binding CzasWizyty, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2"/>
                     </Grid>
-                    <Grid x:Name="grid4" HorizontalAlignment="Left" Margin="266,246,0,0" VerticalAlignment="Top">
+                    <Grid x:Name="grid4" HorizontalAlignment="Left" Margin="197.438,246,0,0" VerticalAlignment="Top" Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -77,7 +81,7 @@
                         <Label Content="Opis:" Grid.Column="0" HorizontalAlignment="Left" Margin="-23,64,0,-58" Grid.Row="0" VerticalAlignment="Center"/>
                         <TextBox x:Name="opisTextBox" HorizontalAlignment="Left" Height="23" Margin="20,65,-29,-56" Grid.Row="0" Text="{Binding Opis, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2"/>
                     </Grid>
-                    <Grid x:Name="grid5" HorizontalAlignment="Left" Margin="519,198,0,0" VerticalAlignment="Top">
+                    <Grid x:Name="grid5" HorizontalAlignment="Left" Margin="450.438,198,0,0" VerticalAlignment="Top" Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -95,20 +99,20 @@
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource pacjentsViewSource}">
                     <DataGrid x:Name="pacjentsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0,0,0,175" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="imieColumn" Binding="{Binding Imie}" Header="Imie" Width="SizeToHeader"/>
-                            <DataGridTemplateColumn x:Name="dataUrodzenieColumn" Header="Data Urodzenie" Width="SizeToHeader">
+                            <DataGridTextColumn x:Name="imieColumn" Binding="{Binding Imie}" Header="Imie" Width="SizeToCells"/>
+                            <DataGridTemplateColumn x:Name="dataUrodzenieColumn" Header="Data Urodzenie" Width="SizeToCells">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <DatePicker SelectedDate="{Binding DataUrodzenie, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn x:Name="miejsceUrodzeniaColumn" Binding="{Binding MiejsceUrodzenia}" Header="Miejsce Urodzenia" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="plecColumn" Binding="{Binding Plec}" Header="Plec" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="nrTelefonuColumn" Binding="{Binding NrTelefonu}" Header="Nr Telefonu" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="mailColumn" Binding="{Binding Mail}" Header="Mail" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="peselColumn" Binding="{Binding Pesel}" Header="Pesel" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="nazwiskoColumn" Binding="{Binding Nazwisko}" Header="Nazwisko" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="miejsceUrodzeniaColumn" Binding="{Binding MiejsceUrodzenia}" Header="Miejsce Urodzenia" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="plecColumn" Binding="{Binding Plec}" Header="Plec" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="nrTelefonuColumn" Binding="{Binding NrTelefonu}" Header="Nr Telefonu" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="mailColumn" Binding="{Binding Mail}" Header="Mail" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="peselColumn" Binding="{Binding Pesel}" Header="Pesel" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="nazwiskoColumn" Binding="{Binding Nazwisko}" Header="Nazwisko" Width="SizeToCells"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Grid x:Name="grid6" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top">
@@ -195,7 +199,7 @@
                         <TextBox x:Name="miejsceUrodzeniaTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding MiejsceUrodzenia, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                     </Grid>
                     <Button x:Name="bEdytuj" Content="Edytuj" HorizontalAlignment="Left" Margin="541,239,0,0" VerticalAlignment="Top" Width="75" Click="bEdytuj_Click">
-                        
+
                     </Button>
                     <Button x:Name="bDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="541,287,0,0" VerticalAlignment="Top" Width="75" Click="bDodaj_Click"/>
                 </Grid>
@@ -204,11 +208,11 @@
                 <Grid DataContext="{StaticResource lekarzsViewSource}">
                     <DataGrid x:Name="lekarzsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,10,10,159" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="idLekarzaColumn" Binding="{Binding IdLekarza}" Header="Id Lekarza" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="imieColumn1" Binding="{Binding Imie}" Header="Imie" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="nazwiskoColumn1" Binding="{Binding Nazwisko}" Header="Nazwisko" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="adresColumn" Binding="{Binding Adres}" Header="Adres" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="specjalizacja_IdSpecjalizacjiColumn" Binding="{Binding Specjalizacja_IdSpecjalizacji}" Header="Specjalizacja Id Specjalizacji" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="idLekarzaColumn" Binding="{Binding IdLekarza}" Header="Id Lekarza" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="imieColumn1" Binding="{Binding Imie}" Header="Imie" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="nazwiskoColumn1" Binding="{Binding Nazwisko}" Header="Nazwisko" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="adresColumn" Binding="{Binding Adres}" Header="Adres" Width="SizeToCells"/>
+                            <DataGridTextColumn x:Name="specjalizacja_IdSpecjalizacjiColumn" Binding="{Binding Specjalizacja_IdSpecjalizacji}" Header="Specjalizacja Id Specjalizacji" Width="SizeToCells"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Grid x:Name="grid13" HorizontalAlignment="Left" Margin="27,247,0,0" VerticalAlignment="Top">
@@ -262,7 +266,7 @@
                 <Grid DataContext="{StaticResource dniPrzyjecsViewSource}">
                     <DataGrid x:Name="dniPrzyjecsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,10,10,152" RowDetailsVisibilityMode="VisibleWhenSelected">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" IsReadOnly="True" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" IsReadOnly="True" Width="SizeToCells"/>
                             <DataGridTextColumn x:Name="lekarz_IdLekarzaColumn" Binding="{Binding Lekarz_IdLekarza}" Header="Lekarz Id Lekarza" Width="SizeToHeader"/>
                             <DataGridTemplateColumn x:Name="czasDataRozpoczeciaColumn" Header="Czas Data Rozpoczecia" Width="SizeToHeader">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -271,7 +275,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn x:Name="czasZakonczeniaColumn" Header="Czas Zakonczenia" Width="SizeToHeader">
+                            <DataGridTemplateColumn x:Name="czasZakonczeniaColumn" Header="Czas Zakonczenia" Width="SizeToCells">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <DatePicker SelectedDate="{Binding CzasZakonczenia, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>

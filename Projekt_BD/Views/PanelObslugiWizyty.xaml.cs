@@ -63,6 +63,7 @@ namespace Projekt_BD.Views {
         }
 
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e) {
+            wyborWizytyBox.ItemsSource = null;
             var pacjentPesel = (Models.Pacjent)wyborPacjentaBox.SelectedItem;
 
             using (DbContext db = new DbContext()) {
@@ -83,38 +84,19 @@ namespace Projekt_BD.Views {
             }
 
         }
-
-        private void opisText_TextChanged(object sender, TextChangedEventArgs e) {
-
-        }
-
         private void wyborWizytyBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             var selectedWizyta = (Wizyta)wyborWizytyBox.SelectedItem;
+            if (selectedWizyta != null) {
+                Wybrana_Wizyta = selectedWizyta;
+                using (DbContext db = new DbContext()) {
+                    var wizyta = (from w in db.Wizyty
+                                  where w.IdWizyty == selectedWizyta.IdWizyty
+                                  select w).First();
 
-            Wybrana_Wizyta = selectedWizyta;
-
-            using (DbContext db = new DbContext()) {
-                var wizyta = (from w in db.Wizyty
-                              where w.IdWizyty == selectedWizyta.IdWizyty
-                              select w).First();
-
-                IDwizyty = wizyta.IdWizyty;
-                tOpisWizyty.Text = wizyta.Opis;
+                    IDwizyty = wizyta.IdWizyty;
+                    tOpisWizyty.Text = wizyta.Opis;
+                }
             }
-        }
-
-        private void opisText_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
-            using (DbContext db = new DbContext()) {
-                var queryHistoria = from HistoriaChoroby in db.HistoriaChoroby
-                                    where HistoriaChoroby.Pacjent == pacjent
-                                    select HistoriaChoroby;
-
-                var historia = queryHistoria.FirstOrDefault();
-                historia.OpisChoroby = opisText.Text;
-
-                db.SaveChanges();
-            }
-
         }
 
         private void bSave_Click(object sender, RoutedEventArgs e) {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +22,38 @@ namespace Projekt_BD.Views
     /// </summary>
     public partial class GridPanel : UserControl
     {
+        readonly BackgroundWorker worker = new BackgroundWorker();
         public GridPanel()
         {
+            worker.DoWork += Worker_DoWork;
             InitializeComponent();
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e) {
+            CollectionViewSource wizytyViewSource = ((CollectionViewSource)(this.FindResource("wizytasViewSource")));
+            CollectionViewSource pacjentViewSource = ((CollectionViewSource)(this.FindResource("pacjentsViewSource")));
+            CollectionViewSource lekarzeViewSource = ((CollectionViewSource)(this.FindResource("lekarzsViewSource")));
+            CollectionViewSource dniPrzyjecViewSource = ((CollectionViewSource)(this.FindResource("dniPrzyjecsViewSource")));
+
+
+            using (DbContext context = new DbContext()) {
+                var wizyty = from wizyta in context.Wizyty select wizyta;
+                wizytyViewSource.Dispatcher.Invoke(DispatcherPriority.Normal,
+                    new Action(() => wizytyViewSource.Source = wizyty.ToList()));
+
+                var pac = from pacjentcis in context.Pacjentci select pacjentcis;
+                pacjentViewSource.Dispatcher.Invoke(DispatcherPriority.Normal,
+                    new Action(() => pacjentViewSource.Source = pac.ToList()));
+
+                var lekarze = from Lekarzs in context.Lekarze select Lekarzs;
+                lekarzeViewSource.Dispatcher.Invoke(DispatcherPriority.Normal,
+                    new Action(() => lekarzeViewSource.Source = lekarze.ToList()));
+
+                var przyjecia = from DniPrzyjecs in context.DniPrzyjec select DniPrzyjecs;
+                dniPrzyjecViewSource.Dispatcher.Invoke(DispatcherPriority.Normal,
+                    new Action(() => dniPrzyjecViewSource.Source = przyjecia.ToList()));
+
+            }
         }
 
         private void UserControl_Loaded_1(object sender, RoutedEventArgs e)
@@ -40,27 +70,8 @@ namespace Projekt_BD.Views
 
         private void Grid_Loaded_1(object sender, RoutedEventArgs e)
         {
-            CollectionViewSource wizytyViewSource = ((CollectionViewSource)(this.FindResource("wizytasViewSource")));
-            CollectionViewSource pacjentViewSource = ((CollectionViewSource)(this.FindResource("pacjentsViewSource")));
-            CollectionViewSource lekarzeViewSource = ((CollectionViewSource)(this.FindResource("lekarzsViewSource")));
-            CollectionViewSource dniPrzyjecViewSource = ((CollectionViewSource)(this.FindResource("dniPrzyjecsViewSource")));
-
-
-            using (DbContext context = new DbContext())
-            {
-                var wizyty = from wizyta in context.Wizyty select wizyta;
-                wizytyViewSource.Source = wizyty.ToList();
-
-                var pac = from pacjentcis in context.Pacjentci select pacjentcis;
-                pacjentViewSource.Source = pac.ToList();
-
-                var lekarze = from Lekarzs in context.Lekarze select Lekarzs;
-                lekarzeViewSource.Source = lekarze.ToList();
-
-                var przyjecia = from DniPrzyjecs in context.DniPrzyjec select DniPrzyjecs;
-                dniPrzyjecViewSource.Source = przyjecia.ToList();
-
-            } 
+            if(!worker.IsBusy)
+                worker.RunWorkerAsync();    
 
         }
 

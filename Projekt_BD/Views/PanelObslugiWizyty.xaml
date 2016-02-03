@@ -10,7 +10,7 @@
                 <Grid>
                     <ComboBox x:Name="wyborPacjentaBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged_1"/>
                     <ComboBox x:Name="wyborWizytyBox" HorizontalAlignment="Left" Margin="155,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="wyborWizytyBox_SelectionChanged"/>
-                    <TextBox x:Name="opisText" HorizontalAlignment="Left" Height="133" Margin="10,173,0,0" VerticalAlignment="Top" Width="491" TextChanged="opisText_TextChanged" DataContextChanged="opisText_DataContextChanged"/>
+                    <TextBox x:Name="opisText" HorizontalAlignment="Left" Height="133" Margin="10,173,0,0" VerticalAlignment="Top" Width="491"/>
                     <Button x:Name="bSave" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="120" Click="bSave_Click" Height="27"/>
                     <TextBox x:Name="tOpisWizyty" HorizontalAlignment="Left" Height="92" Margin="10,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="491"/>
                     <Label Content="Opis wizyty" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="102"/>
@@ -20,7 +20,7 @@
             <TabItem Header="Recepta">
                 <Grid>
                     <Label x:Name="label" Content="Wybierz lek" Margin="3,10,610,308" RenderTransformOrigin="0.065,0.503"/>
-                    <DataGrid x:Name="dataGrid_WyborLeku" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="190" Width="157" SelectionChanged="dataGrid_WyborLeku_SelectionChanged"/>
+                    <DataGrid x:Name="dataGrid_WyborLeku" HorizontalAlignment="Left" Margin="11,40,0,0" VerticalAlignment="Top" Height="190" Width="157" SelectionChanged="dataGrid_WyborLeku_SelectionChanged" IsReadOnly="True"/>
                     <Label x:Name="label1" Content="Dawka" HorizontalAlignment="Left" Margin="172,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.163,0.138" Height="35" Width="100"/>
                     <ComboBox x:Name="comboBox_Dawka" HorizontalAlignment="Left" Margin="178,92,0,0" VerticalAlignment="Top" Width="100">
                         <ComboBoxItem>5 mg</ComboBoxItem>
@@ -36,7 +36,7 @@
                     </ComboBox>
                     <Button x:Name="DodajLekButtton" Content="Dodaj Lek" FontSize="16" HorizontalAlignment="Left" Margin="510,62,0,0" VerticalAlignment="Top" Width="142" Click="DodajLekButtton_Click"/>
                     <Label x:Name="label3" Content="Lista dodanych leków" HorizontalAlignment="Left" Margin="504,107,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="dataGridDodaneLeki" HorizontalAlignment="Left" Margin="510,136,0,0" VerticalAlignment="Top" Height="126" Width="142"/>
+                    <DataGrid x:Name="dataGridDodaneLeki" HorizontalAlignment="Left" Margin="510,136,0,0" VerticalAlignment="Top" Height="126" Width="142" IsReadOnly="True"/>
                     <Button x:Name="ZatwierdzRecepteButton" Content="Zatwierdź Receptę" FontSize="16" HorizontalAlignment="Left" Margin="510,293,0,0" VerticalAlignment="Top" Width="142" Height="32" Click="ZatwierdzRecepteButton_Click"/>
                     <Label x:Name="label4" Content="Wybrany Lek:" FontSize="20" HorizontalAlignment="Left" Margin="178,10,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label5_WybranyLek"  FontSize="20" HorizontalAlignment="Left" Margin="306,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.593,-6.897" Height="35" Width="240"/>
