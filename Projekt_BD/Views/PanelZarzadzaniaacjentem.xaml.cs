@@ -44,9 +44,17 @@ namespace Projekt_BD.Views {
                         new Action(() => pacjent = PacjentComboBox.SelectedItem as Pacjent));
                     if (pacjent != null) {
                         //wybrać tylko tych lekarzy którzy nie są już przypisani. 
-                        var lekarz = from l in db.Lekarze select l;
-                        LekarzComboBox.Dispatcher.Invoke(DispatcherPriority.Normal,
-                            new Action(() => LekarzComboBox.ItemsSource = lekarz.ToList()));
+                        var lekarz = from l in db.Lekarze
+                                     where !( from l2 in db.Lekarze
+                                              join hc in db.HistoriaChoroby
+                                              on l2.IdLekarza equals hc.IdLekarza
+                                              where hc.Pesel == pacjent.Pesel
+                                              select l2.IdLekarza).Contains(l.IdLekarza)
+                                     select l;
+
+                        if (lekarz != null)
+                            LekarzComboBox.Dispatcher.Invoke(DispatcherPriority.Normal,
+                                new Action(() => LekarzComboBox.ItemsSource = lekarz.ToList()));
                     }
                 }
             }
@@ -54,19 +62,13 @@ namespace Projekt_BD.Views {
 
         private void Polacz_Click(object sender, RoutedEventArgs e) {
             var lekarz = (Lekarz)LekarzComboBox.SelectedItem;
-
             var pacjent = (Pacjent)PacjentComboBox.SelectedItem;
-            //try {
             using (DbContext db = new DbContext()) {
                 db.HistoriaChoroby.Add(new Models.HistoriaChoroby { IdLekarza = lekarz.IdLekarza, Pesel = pacjent.Pesel, OstatniaModyfikacjaOpisuChoroby = DateTime.Now });
                 db.SaveChanges();
 
                 MessageBox.Show("Dodano " + pacjent.Imie + "" + pacjent.Nazwisko + " do pacjentów " + lekarz.Imie + " " + lekarz.Nazwisko);
             }
-            //}
-            //catch(System.Data.Entity.Infrastructure.DbUpdateException) {
-
-            //}
         }
 
         private void UserControl_Initialized(object sender, EventArgs e) {
@@ -76,7 +78,7 @@ namespace Projekt_BD.Views {
         }
 
         private void PacjentComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            //LekarzComboBox.ItemsSource = null;
+            LekarzComboBox.ItemsSource = null;
             if (PacjentComboBox.SelectedItem != null)
                 while (true)
                     if (!worker.IsBusy) {

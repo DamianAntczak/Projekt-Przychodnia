@@ -1,4 +1,4 @@
-create trigger t1 on  HistoriaChorobies
+create trigger AkutalizujCzasEdycjiOpisu on  HistoriaChorobies
 after insert, update
 AS
  begin
@@ -8,6 +8,7 @@ AS
 	and HistoriaChorobies.IdLekarza in (select distinct IdLekarza from inserted)
  end
  go
+
 create view LiczbaPacjentowLekarza as
 select l.Imie,l.Nazwisko, count(p.Pesel) as LiczbaPacjentow from Pacjents p 
 join HistoriaChorobies h
@@ -15,6 +16,7 @@ on h.Pesel like p.Pesel
 join Lekarzs l
 on h.IdLekarza like l.IdLekarza
 group by l.Imie,l.Nazwisko
+go
 
 select * from LiczbaPacjentowLekarza
 select * from HistoriaChorobies
