@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Projekt_BD.Views.PanelObslugiWizyty"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="383.956" Width="735.216">
+    <Grid>
+        <TabControl x:Name="Obsluga_Wizyt"  FontSize="14">
+            <TabItem Header="Wybór wizyty">
+                <Grid>
+                    <ComboBox x:Name="wyborPacjentaBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged_1"/>
+                    <ComboBox x:Name="wyborWizytyBox" HorizontalAlignment="Left" Margin="155,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="wyborWizytyBox_SelectionChanged"/>
+                    <TextBox x:Name="opisText" HorizontalAlignment="Left" Height="133" Margin="10,173,0,0" VerticalAlignment="Top" Width="491" TextChanged="opisText_TextChanged" DataContextChanged="opisText_DataContextChanged"/>
+                    <Button x:Name="bSave" Content="Zapisz zmiany" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="120" Click="bSave_Click" Height="27"/>
+                    <TextBox x:Name="tOpisWizyty" HorizontalAlignment="Left" Height="92" Margin="10,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="491"/>
+                    <Label Content="Opis wizyty" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="102"/>
+                    <Label Content="Historia chorób" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" Width="102"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Recepta">
+                <Grid>
+                    <Label x:Name="label" Content="Wybierz lek" Margin="3,10,610,308" RenderTransformOrigin="0.065,0.503"/>
+                    <DataGrid x:Name="dataGrid_WyborLeku" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="190" Width="auto" SelectionChanged="dataGrid_WyborLeku_SelectionChanged"/>
+                    <Label x:Name="label1" Content="Dawka" HorizontalAlignment="Left" Margin="172,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.163,0.138" Height="35" Width="100"/>
+                    <ComboBox x:Name="comboBox_Dawka" HorizontalAlignment="Left" Margin="178,92,0,0" VerticalAlignment="Top" Width="100">
+                        <ComboBoxItem>5 mg</ComboBoxItem>
+                        <ComboBoxItem>10 mg</ComboBoxItem>
+                        <ComboBoxItem>15 mg</ComboBoxItem>
+                        <ComboBoxItem>20 mg</ComboBoxItem>
+                    </ComboBox>
+                    <Label x:Name="label2" Content="Ilość Przyjmowania" HorizontalAlignment="Left" Margin="312,58,0,0" VerticalAlignment="Top" Width="126"/>
+                    <ComboBox x:Name="comboBox_Przyjmowanie" HorizontalAlignment="Left" Margin="318,92,0,0" VerticalAlignment="Top" Width="120">
+                        <ComboBoxItem>1 raz dziennie</ComboBoxItem>
+                        <ComboBoxItem>2 razy dziennie</ComboBoxItem>
+                        <ComboBoxItem>3 razy dziennie</ComboBoxItem>
+                    </ComboBox>
+                    <Button x:Name="DodajLekButtton" Content="Dodaj Lek" FontSize="16" HorizontalAlignment="Left" Margin="510,62,0,0" VerticalAlignment="Top" Width="142" Click="DodajLekButtton_Click"/>
+                    <Label x:Name="label3" Content="Lista dodanych leków" HorizontalAlignment="Left" Margin="504,107,0,0" VerticalAlignment="Top"/>
+                    <DataGrid x:Name="dataGridDodaneLeki" HorizontalAlignment="Left" Margin="510,136,0,0" VerticalAlignment="Top" Height="126" Width="142"/>
+                    <Button x:Name="ZatwierdzRecepteButton" Content="Zatwierdź Receptę" FontSize="16" HorizontalAlignment="Left" Margin="510,293,0,0" VerticalAlignment="Top" Width="142" Height="32" Click="ZatwierdzRecepteButton_Click"/>
+                    <Label x:Name="label4" Content="Wybrany Lek:" FontSize="20" HorizontalAlignment="Left" Margin="178,10,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label5_WybranyLek"  FontSize="20" HorizontalAlignment="Left" Margin="306,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.593,-6.897" Height="35" Width="240"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

@@ -9,15 +9,7 @@ using Projekt_BD.Models;
 
 namespace Projekt_BD {
     public class DbContext : System.Data.Entity.DbContext {
-        private string p;
-
         public DbContext() : base("name=DbContext") { }
-
-        public DbContext(string p)
-        {
-            // TODO: Complete member initialization
-            this.p = p;
-        }
         //public DbContext() : base("PrzychodniaDB") { }
         //public DbContext() : base("BazaDanychPrzychodnia") { }
 

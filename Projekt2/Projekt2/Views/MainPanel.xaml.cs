@@ -38,8 +38,6 @@ namespace Projekt_BD.Views {
             przegladajBazeWorker.RunWorkerCompleted += PrzegladajBazeWorker_RunWorkerCompleted;
             InitializeComponent();
             DataContext = this;
-            CenterPanel1.Visibility = Visibility.Hidden;
-            MenuItemName.Content = "Witamy w systemie";
 
         }
 
@@ -54,21 +52,31 @@ namespace Projekt_BD.Views {
             MenuItemName.Dispatcher.Invoke(DispatcherPriority.Normal,
                 new Action(() => MenuItemName.Content = "Przeglądanie Bazy"));
             CenterPanel1.Dispatcher.Invoke(DispatcherPriority.Normal,
-                new Action(() => CenterPanel1.Visibility = Visibility.Hidden));
+                new Action(() => CenterPanel1.Visibility = Visibility.Visible));
 
-            
+            using (var context = new DbContext()) {
+
+                var pac = from pacjentcis in context.Pacjentci select new { pacjentcis.Pesel, pacjentcis.Imie, pacjentcis.Nazwisko, pacjentcis.DataUrodzenie.Year, Wiek = DateTime.Today.Year - pacjentcis.DataUrodzenie.Year, pacjentcis.MiejsceUrodzenia, pacjentcis.Mail, pacjentcis.NrTelefonu };
+                dataGrid_Pacienci.Dispatcher.Invoke(DispatcherPriority.Normal,
+                    new Action(() => dataGrid_Pacienci.ItemsSource = pac.ToList()));
+
+                var lek = from leki in context.SpisLekow select new { leki.NazwaLeku, leki.NazwaPolskaLeku };
+                dataGrid_Leki.Dispatcher.Invoke(DispatcherPriority.Normal,
+                    new Action(() => dataGrid_Leki.ItemsSource = lek.ToList()));
+
+                var wizyty = from wizyta in context.Wizyty select new { wizyta.IdWizyty, wizyta.Data, wizyta.CzasWizyty, wizyta.Recepty };
+                dataGrid_Wizyty.Dispatcher.Invoke(DispatcherPriority.Normal,
+                    new Action(() => dataGrid_Wizyty.ItemsSource = wizyty.ToList()));
+
+                var cho = from choroby in context.SpisChorob select new { choroby.NazwaChoroby, choroby.NazwaPolskaChoroby, choroby.Objawy, choroby.Opis, choroby.SposobyLeczenia };
+                dataGrid_Choroby.Dispatcher.Invoke(DispatcherPriority.Normal,
+                    new Action(() => dataGrid_Choroby.ItemsSource = cho.ToList()));
+            }
         }
         private void PrzegladajBazeButton_Click(object sender, RoutedEventArgs e) {
             Panele.Content = null;
             if (!przegladajBazeWorker.IsBusy)
                 przegladajBazeWorker.RunWorkerAsync();
-
-            var pok = new GridPanel();
-            MenuItemName.Content = "Przeglądanie bazy";
-            CenterPanel1.Visibility = Visibility.Hidden;
-            this.Panele.Content = pok;
-            pok.VerticalAlignment = VerticalAlignment.Top;
-            pok.HorizontalAlignment = HorizontalAlignment.Left;
 
         }
         private void ObsluzWizyteButton_Click(object sender, RoutedEventArgs e) {

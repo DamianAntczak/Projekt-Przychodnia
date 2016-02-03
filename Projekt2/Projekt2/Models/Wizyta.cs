@@ -8,6 +8,7 @@ using Projekt_BD.Annotations;
 
 namespace Projekt_BD.Models
 {
+    [Table("Wizyty")]
     public class Wizyta : INotifyPropertyChanged
     {
         public Wizyta()

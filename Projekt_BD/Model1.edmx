@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PrzychodniaDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="PrzychodniaDBModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="PrzychodniaDBModel.Store.__MigrationHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DniPrzyjecs" EntityType="PrzychodniaDBModel.Store.DniPrzyjecs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HistoriaChorobies" EntityType="PrzychodniaDBModel.Store.HistoriaChorobies" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Lekarzs" EntityType="PrzychodniaDBModel.Store.Lekarzs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Leks" EntityType="PrzychodniaDBModel.Store.Leks" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pacjents" EntityType="PrzychodniaDBModel.Store.Pacjents" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Receptas" EntityType="PrzychodniaDBModel.Store.Receptas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Specjalizacjas" EntityType="PrzychodniaDBModel.Store.Specjalizacjas" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SpisChorbs" EntityType="PrzychodniaDBModel.Store.SpisChorbs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SpisLekows" EntityType="PrzychodniaDBModel.Store.SpisLekows" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Uzytkowniks" EntityType="PrzychodniaDBModel.Store.Uzytkowniks" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Wizytas" EntityType="PrzychodniaDBModel.Store.Wizytas" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_dbo_DniPrzyjecs_dbo_Lekarzs_Lekarz_IdLekarza" Association="PrzychodniaDBModel.Store.FK_dbo_DniPrzyjecs_dbo_Lekarzs_Lekarz_IdLekarza">
+            <End Role="Lekarzs" EntitySet="Lekarzs" />
+            <End Role="DniPrzyjecs" EntitySet="DniPrzyjecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_HistoriaChorobies_dbo_Lekarzs_IdLekarza" Association="PrzychodniaDBModel.Store.FK_dbo_HistoriaChorobies_dbo_Lekarzs_IdLekarza">
+            <End Role="Lekarzs" EntitySet="Lekarzs" />
+            <End Role="HistoriaChorobies" EntitySet="HistoriaChorobies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_HistoriaChorobies_dbo_Pacjents_Pesel" Association="PrzychodniaDBModel.Store.FK_dbo_HistoriaChorobies_dbo_Pacjents_Pesel">
+            <End Role="Pacjents" EntitySet="Pacjents" />
+            <End Role="HistoriaChorobies" EntitySet="HistoriaChorobies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_HistoriaChorobies_dbo_SpisChorbs_ChorobaZeSpisu_NazwaChoroby" Association="PrzychodniaDBModel.Store.FK_dbo_HistoriaChorobies_dbo_SpisChorbs_ChorobaZeSpisu_NazwaChoroby">
+            <End Role="SpisChorbs" EntitySet="SpisChorbs" />
+            <End Role="HistoriaChorobies" EntitySet="HistoriaChorobies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Lekarzs_dbo_Specjalizacjas_Specjalizacja_IdSpecjalizacji" Association="PrzychodniaDBModel.Store.FK_dbo_Lekarzs_dbo_Specjalizacjas_Specjalizacja_IdSpecjalizacji">
+            <End Role="Specjalizacjas" EntitySet="Specjalizacjas" />
+            <End Role="Lekarzs" EntitySet="Lekarzs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Leks_dbo_Receptas_Recepta_IdRecepty" Association="PrzychodniaDBModel.Store.FK_dbo_Leks_dbo_Receptas_Recepta_IdRecepty">
+            <End Role="Receptas" EntitySet="Receptas" />
+            <End Role="Leks" EntitySet="Leks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Leks_dbo_SpisLekows_SpisLekow_NazwaLeku" Association="PrzychodniaDBModel.Store.FK_dbo_Leks_dbo_SpisLekows_SpisLekow_NazwaLeku">
+            <End Role="SpisLekows" EntitySet="SpisLekows" />
+            <End Role="Leks" EntitySet="Leks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Receptas_dbo_Wizytas_Wizyta_IdWizyty" Association="PrzychodniaDBModel.Store.FK_dbo_Receptas_dbo_Wizytas_Wizyta_IdWizyty">
+            <End Role="Wizytas" EntitySet="Wizytas" />
+            <End Role="Receptas" EntitySet="Receptas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Wizytas_dbo_HistoriaChorobies_HistoriaChoroby_Pesel_HistoriaChoroby_IdLekarza" Association="PrzychodniaDBModel.Store.FK_dbo_Wizytas_dbo_HistoriaChorobies_HistoriaChoroby_Pesel_HistoriaChoroby_IdLekarza">
+            <End Role="HistoriaChorobies" EntitySet="HistoriaChorobies" />
+            <End Role="Wizytas" EntitySet="Wizytas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="ContextKey" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" Nullable="false" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="DniPrzyjecs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Lekarz_IdLekarza" Type="uniqueidentifier" />
+          <Property Name="CzasDataRozpoczecia" Type="datetime" Nullable="false" />
+          <Property Name="CzasZakonczenia" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HistoriaChorobies">
+          <Key>
+            <PropertyRef Name="Pesel" />
+            <PropertyRef Name="IdLekarza" />
+          </Key>
+          <Property Name="Pesel" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="IdLekarza" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OpisChoroby" Type="nvarchar(max)" />
+          <Property Name="OstatniaModyfikacjaOpisuChoroby" Type="datetime" Nullable="false" />
+          <Property Name="ChorobaZeSpisu_NazwaChoroby" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Lekarzs">
+          <Key>
+            <PropertyRef Name="IdLekarza" />
+          </Key>
+          <Property Name="IdLekarza" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar(max)" />
+          <Property Name="Nazwisko" Type="nvarchar(max)" />
+          <Property Name="Adres" Type="nvarchar(max)" />
+          <Property Name="Specjalizacja_IdSpecjalizacji" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Leks">
+          <Key>
+            <PropertyRef Name="IdLeku" />
+          </Key>
+          <Property Name="IdLeku" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StopienRefundacji" Type="int" Nullable="false" />
+          <Property Name="Dawka" Type="nvarchar(max)" />
+          <Property Name="Przyjmowanie" Type="nvarchar(max)" />
+          <Property Name="Recepta_IdRecepty" Type="uniqueidentifier" />
+          <Property Name="SpisLekow_NazwaLeku" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Pacjents">
+          <Key>
+            <PropertyRef Name="Pesel" />
+          </Key>
+          <Property Name="Imie" Type="nvarchar(max)" />
+          <Property Name="DataUrodzenie" Type="datetime" Nullable="false" />
+          <Property Name="MiejsceUrodzenia" Type="nvarchar(max)" />
+          <Property Name="Plec" Type="int" Nullable="false" />
+          <Property Name="NrTelefonu" Type="nvarchar(max)" />
+          <Property Name="Mail" Type="nvarchar(max)" />
+          <Property Name="Pesel" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Nazwisko" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Receptas">
+          <Key>
+            <PropertyRef Name="IdRecepty" />
+          </Key>
+          <Property Name="IdRecepty" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CzasWystawienia" Type="datetime" Nullable="false" />
+          <Property Name="Wizyta_IdWizyty" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Specjalizacjas">
+          <Key>
+            <PropertyRef Name="IdSpecjalizacji" />
+          </Key>
+          <Property Name="IdSpecjalizacji" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SpisChorbs">
+          <Key>
+            <PropertyRef Name="NazwaChoroby" />
+          </Key>
+          <Property Name="NazwaChoroby" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="NazwaPolskaChoroby" Type="nvarchar(max)" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="Objawy" Type="nvarchar(max)" />
+          <Property Name="SposobyLeczenia" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SpisLekows">
+          <Key>
+            <PropertyRef Name="NazwaLeku" />
+          </Key>
+          <Property Name="NazwaLeku" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="NazwaPolskaLeku" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Uzytkowniks">
+          <Key>
+            <PropertyRef Name="UzytkownikId" />
+          </Key>
+          <Property Name="UzytkownikId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" />
+          <Property Name="Haslo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Wizytas">
+          <Key>
+            <PropertyRef Name="IdWizyty" />
+          </Key>
+          <Property Name="IdWizyty" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="CzasWizyty" Type="time" Nullable="false" />
+          <Property Name="HistoriaChoroby_Pesel" Type="nvarchar" MaxLength="128" />
+          <Property Name="HistoriaChoroby_IdLekarza" Type="uniqueidentifier" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="CzyOdbyta" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_DniPrzyjecs_dbo_Lekarzs_Lekarz_IdLekarza">
+          <End Role="Lekarzs" Type="PrzychodniaDBModel.Store.Lekarzs" Multiplicity="0..1" />
+          <End Role="DniPrzyjecs" Type="PrzychodniaDBModel.Store.DniPrzyjecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lekarzs">
+              <PropertyRef Name="IdLekarza" />
+            </Principal>
+            <Dependent Role="DniPrzyjecs">
+              <PropertyRef Name="Lekarz_IdLekarza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_HistoriaChorobies_dbo_Lekarzs_IdLekarza">
+          <End Role="Lekarzs" Type="PrzychodniaDBModel.Store.Lekarzs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistoriaChorobies" Type="PrzychodniaDBModel.Store.HistoriaChorobies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lekarzs">
+              <PropertyRef Name="IdLekarza" />
+            </Principal>
+            <Dependent Role="HistoriaChorobies">
+              <PropertyRef Name="IdLekarza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_HistoriaChorobies_dbo_Pacjents_Pesel">
+          <End Role="Pacjents" Type="PrzychodniaDBModel.Store.Pacjents" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistoriaChorobies" Type="PrzychodniaDBModel.Store.HistoriaChorobies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacjents">
+              <PropertyRef Name="Pesel" />
+            </Principal>
+            <Dependent Role="HistoriaChorobies">
+              <PropertyRef Name="Pesel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_HistoriaChorobies_dbo_SpisChorbs_ChorobaZeSpisu_NazwaChoroby">
+          <End Role="SpisChorbs" Type="PrzychodniaDBModel.Store.SpisChorbs" Multiplicity="0..1" />
+          <End Role="HistoriaChorobies" Type="PrzychodniaDBModel.Store.HistoriaChorobies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpisChorbs">
+              <PropertyRef Name="NazwaChoroby" />
+            </Principal>
+            <Dependent Role="HistoriaChorobies">
+              <PropertyRef Name="ChorobaZeSpisu_NazwaChoroby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Lekarzs_dbo_Specjalizacjas_Specjalizacja_IdSpecjalizacji">
+          <End Role="Specjalizacjas" Type="PrzychodniaDBModel.Store.Specjalizacjas" Multiplicity="0..1" />
+          <End Role="Lekarzs" Type="PrzychodniaDBModel.Store.Lekarzs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specjalizacjas">
+              <PropertyRef Name="IdSpecjalizacji" />
+            </Principal>
+            <Dependent Role="Lekarzs">
+              <PropertyRef Name="Specjalizacja_IdSpecjalizacji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Leks_dbo_Receptas_Recepta_IdRecepty">
+          <End Role="Receptas" Type="PrzychodniaDBModel.Store.Receptas" Multiplicity="0..1" />
+          <End Role="Leks" Type="PrzychodniaDBModel.Store.Leks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptas">
+              <PropertyRef Name="IdRecepty" />
+            </Principal>
+            <Dependent Role="Leks">
+              <PropertyRef Name="Recepta_IdRecepty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Leks_dbo_SpisLekows_SpisLekow_NazwaLeku">
+          <End Role="SpisLekows" Type="PrzychodniaDBModel.Store.SpisLekows" Multiplicity="0..1" />
+          <End Role="Leks" Type="PrzychodniaDBModel.Store.Leks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpisLekows">
+              <PropertyRef Name="NazwaLeku" />
+            </Principal>
+            <Dependent Role="Leks">
+              <PropertyRef Name="SpisLekow_NazwaLeku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Receptas_dbo_Wizytas_Wizyta_IdWizyty">
+          <End Role="Wizytas" Type="PrzychodniaDBModel.Store.Wizytas" Multiplicity="0..1" />
+          <End Role="Receptas" Type="PrzychodniaDBModel.Store.Receptas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wizytas">
+              <PropertyRef Name="IdWizyty" />
+            </Principal>
+            <Dependent Role="Receptas">
+              <PropertyRef Name="Wizyta_IdWizyty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Wizytas_dbo_HistoriaChorobies_HistoriaChoroby_Pesel_HistoriaChoroby_IdLekarza">
+          <End Role="HistoriaChorobies" Type="PrzychodniaDBModel.Store.HistoriaChorobies" Multiplicity="0..1" />
+          <End Role="Wizytas" Type="PrzychodniaDBModel.Store.Wizytas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HistoriaChorobies">
+              <PropertyRef Name="Pesel" />
+              <PropertyRef Name="IdLekarza" />
+            </Principal>
+            <Dependent Role="Wizytas">
+              <PropertyRef Name="HistoriaChoroby_Pesel" />
+              <PropertyRef Name="HistoriaChoroby_IdLekarza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrzychodniaDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PrzychodniaDBEntities2" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="PrzychodniaDBModel.C__MigrationHistory" />
+          <EntitySet Name="DniPrzyjecs" EntityType="PrzychodniaDBModel.DniPrzyjecs" />
+          <EntitySet Name="HistoriaChorobies" EntityType="PrzychodniaDBModel.HistoriaChorobies" />
+          <EntitySet Name="Lekarzs" EntityType="PrzychodniaDBModel.Lekarzs" />
+          <EntitySet Name="Leks" EntityType="PrzychodniaDBModel.Leks" />
+          <EntitySet Name="Pacjents" EntityType="PrzychodniaDBModel.Pacjents" />
+          <EntitySet Name="Receptas" EntityType="PrzychodniaDBModel.Receptas" />
+          <EntitySet Name="Specjalizacjas" EntityType="PrzychodniaDBModel.Specjalizacjas" />
+          <EntitySet Name="SpisChorbs" EntityType="PrzychodniaDBModel.SpisChorbs" />
+          <EntitySet Name="SpisLekows" EntityType="PrzychodniaDBModel.SpisLekows" />
+          <EntitySet Name="Uzytkowniks" EntityType="PrzychodniaDBModel.Uzytkowniks" />
+          <EntitySet Name="Wizytas" EntityType="PrzychodniaDBModel.Wizytas" />
+          <AssociationSet Name="FK_dbo_DniPrzyjecs_dbo_Lekarzs_Lekarz_IdLekarza" Association="PrzychodniaDBModel.FK_dbo_DniPrzyjecs_dbo_Lekarzs_Lekarz_IdLekarza">
+            <End Role="Lekarzs" EntitySet="Lekarzs" />
+            <End Role="DniPrzyjecs" EntitySet="DniPrzyjecs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_HistoriaChorobies_dbo_Lekarzs_IdLekarza" Association="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_Lekarzs_IdLekarza">
+            <End Role="Lekarzs" EntitySet="Lekarzs" />
+            <End Role="HistoriaChorobies" EntitySet="HistoriaChorobies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_HistoriaChorobies_dbo_Pacjents_Pesel" Association="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_Pacjents_Pesel">
+            <End Role="Pacjents" EntitySet="Pacjents" />
+            <End Role="HistoriaChorobies" EntitySet="HistoriaChorobies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_HistoriaChorobies_dbo_SpisChorbs_ChorobaZeSpisu_NazwaChoroby" Association="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_SpisChorbs_ChorobaZeSpisu_NazwaChoroby">
+            <End Role="SpisChorbs" EntitySet="SpisChorbs" />
+            <End Role="HistoriaChorobies" EntitySet="HistoriaChorobies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Wizytas_dbo_HistoriaChorobies_HistoriaChoroby_Pesel_HistoriaChoroby_IdLekarza" Association="PrzychodniaDBModel.FK_dbo_Wizytas_dbo_HistoriaChorobies_HistoriaChoroby_Pesel_HistoriaChoroby_IdLekarza">
+            <End Role="HistoriaChorobies" EntitySet="HistoriaChorobies" />
+            <End Role="Wizytas" EntitySet="Wizytas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Lekarzs_dbo_Specjalizacjas_Specjalizacja_IdSpecjalizacji" Association="PrzychodniaDBModel.FK_dbo_Lekarzs_dbo_Specjalizacjas_Specjalizacja_IdSpecjalizacji">
+            <End Role="Specjalizacjas" EntitySet="Specjalizacjas" />
+            <End Role="Lekarzs" EntitySet="Lekarzs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Leks_dbo_Receptas_Recepta_IdRecepty" Association="PrzychodniaDBModel.FK_dbo_Leks_dbo_Receptas_Recepta_IdRecepty">
+            <End Role="Receptas" EntitySet="Receptas" />
+            <End Role="Leks" EntitySet="Leks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Leks_dbo_SpisLekows_SpisLekow_NazwaLeku" Association="PrzychodniaDBModel.FK_dbo_Leks_dbo_SpisLekows_SpisLekow_NazwaLeku">
+            <End Role="SpisLekows" EntitySet="SpisLekows" />
+            <End Role="Leks" EntitySet="Leks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Receptas_dbo_Wizytas_Wizyta_IdWizyty" Association="PrzychodniaDBModel.FK_dbo_Receptas_dbo_Wizytas_Wizyta_IdWizyty">
+            <End Role="Wizytas" EntitySet="Wizytas" />
+            <End Role="Receptas" EntitySet="Receptas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="DniPrzyjecs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Lekarz_IdLekarza" Type="Guid" />
+          <Property Name="CzasDataRozpoczecia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CzasZakonczenia" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Lekarzs" Relationship="PrzychodniaDBModel.FK_dbo_DniPrzyjecs_dbo_Lekarzs_Lekarz_IdLekarza" FromRole="DniPrzyjecs" ToRole="Lekarzs" />
+        </EntityType>
+        <EntityType Name="HistoriaChorobies">
+          <Key>
+            <PropertyRef Name="Pesel" />
+            <PropertyRef Name="IdLekarza" />
+          </Key>
+          <Property Name="Pesel" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IdLekarza" Type="Guid" Nullable="false" />
+          <Property Name="OpisChoroby" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OstatniaModyfikacjaOpisuChoroby" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChorobaZeSpisu_NazwaChoroby" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Lekarzs" Relationship="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_Lekarzs_IdLekarza" FromRole="HistoriaChorobies" ToRole="Lekarzs" />
+          <NavigationProperty Name="Pacjents" Relationship="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_Pacjents_Pesel" FromRole="HistoriaChorobies" ToRole="Pacjents" />
+          <NavigationProperty Name="SpisChorbs" Relationship="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_SpisChorbs_ChorobaZeSpisu_NazwaChoroby" FromRole="HistoriaChorobies" ToRole="SpisChorbs" />
+          <NavigationProperty Name="Wizytas" Relationship="PrzychodniaDBModel.FK_dbo_Wizytas_dbo_HistoriaChorobies_HistoriaChoroby_Pesel_HistoriaChoroby_IdLekarza" FromRole="HistoriaChorobies" ToRole="Wizytas" />
+        </EntityType>
+        <EntityType Name="Lekarzs">
+          <Key>
+            <PropertyRef Name="IdLekarza" />
+          </Key>
+          <Property Name="IdLekarza" Type="Guid" Nullable="false" />
+          <Property Name="Imie" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Adres" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Specjalizacja_IdSpecjalizacji" Type="Guid" />
+          <NavigationProperty Name="DniPrzyjecs" Relationship="PrzychodniaDBModel.FK_dbo_DniPrzyjecs_dbo_Lekarzs_Lekarz_IdLekarza" FromRole="Lekarzs" ToRole="DniPrzyjecs" />
+          <NavigationProperty Name="HistoriaChorobies" Relationship="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_Lekarzs_IdLekarza" FromRole="Lekarzs" ToRole="HistoriaChorobies" />
+          <NavigationProperty Name="Specjalizacjas" Relationship="PrzychodniaDBModel.FK_dbo_Lekarzs_dbo_Specjalizacjas_Specjalizacja_IdSpecjalizacji" FromRole="Lekarzs" ToRole="Specjalizacjas" />
+        </EntityType>
+        <EntityType Name="Leks">
+          <Key>
+            <PropertyRef Name="IdLeku" />
+          </Key>
+          <Property Name="IdLeku" Type="Guid" Nullable="false" />
+          <Property Name="StopienRefundacji" Type="Int32" Nullable="false" />
+          <Property Name="Dawka" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Przyjmowanie" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Recepta_IdRecepty" Type="Guid" />
+          <Property Name="SpisLekow_NazwaLeku" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Receptas" Relationship="PrzychodniaDBModel.FK_dbo_Leks_dbo_Receptas_Recepta_IdRecepty" FromRole="Leks" ToRole="Receptas" />
+          <NavigationProperty Name="SpisLekows" Relationship="PrzychodniaDBModel.FK_dbo_Leks_dbo_SpisLekows_SpisLekow_NazwaLeku" FromRole="Leks" ToRole="SpisLekows" />
+        </EntityType>
+        <EntityType Name="Pacjents">
+          <Key>
+            <PropertyRef Name="Pesel" />
+          </Key>
+          <Property Name="Imie" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DataUrodzenie" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MiejsceUrodzenia" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Plec" Type="Int32" Nullable="false" />
+          <Property Name="NrTelefonu" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Mail" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Pesel" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="HistoriaChorobies" Relationship="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_Pacjents_Pesel" FromRole="Pacjents" ToRole="HistoriaChorobies" />
+        </EntityType>
+        <EntityType Name="Receptas">
+          <Key>
+            <PropertyRef Name="IdRecepty" />
+          </Key>
+          <Property Name="IdRecepty" Type="Guid" Nullable="false" />
+          <Property Name="CzasWystawienia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Wizyta_IdWizyty" Type="Guid" />
+          <NavigationProperty Name="Leks" Relationship="PrzychodniaDBModel.FK_dbo_Leks_dbo_Receptas_Recepta_IdRecepty" FromRole="Receptas" ToRole="Leks" />
+          <NavigationProperty Name="Wizytas" Relationship="PrzychodniaDBModel.FK_dbo_Receptas_dbo_Wizytas_Wizyta_IdWizyty" FromRole="Receptas" ToRole="Wizytas" />
+        </EntityType>
+        <EntityType Name="Specjalizacjas">
+          <Key>
+            <PropertyRef Name="IdSpecjalizacji" />
+          </Key>
+          <Property Name="IdSpecjalizacji" Type="Guid" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Lekarzs" Relationship="PrzychodniaDBModel.FK_dbo_Lekarzs_dbo_Specjalizacjas_Specjalizacja_IdSpecjalizacji" FromRole="Specjalizacjas" ToRole="Lekarzs" />
+        </EntityType>
+        <EntityType Name="SpisChorbs">
+          <Key>
+            <PropertyRef Name="NazwaChoroby" />
+          </Key>
+          <Property Name="NazwaChoroby" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="NazwaPolskaChoroby" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Opis" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Objawy" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SposobyLeczenia" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="HistoriaChorobies" Relationship="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_SpisChorbs_ChorobaZeSpisu_NazwaChoroby" FromRole="SpisChorbs" ToRole="HistoriaChorobies" />
+        </EntityType>
+        <EntityType Name="SpisLekows">
+          <Key>
+            <PropertyRef Name="NazwaLeku" />
+          </Key>
+          <Property Name="NazwaLeku" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="NazwaPolskaLeku" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Leks" Relationship="PrzychodniaDBModel.FK_dbo_Leks_dbo_SpisLekows_SpisLekow_NazwaLeku" FromRole="SpisLekows" ToRole="Leks" />
+        </EntityType>
+        <EntityType Name="Uzytkowniks">
+          <Key>
+            <PropertyRef Name="UzytkownikId" />
+          </Key>
+          <Property Name="UzytkownikId" Type="Guid" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Haslo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Wizytas">
+          <Key>
+            <PropertyRef Name="IdWizyty" />
+          </Key>
+          <Property Name="IdWizyty" Type="Guid" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CzasWizyty" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="HistoriaChoroby_Pesel" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="HistoriaChoroby_IdLekarza" Type="Guid" />
+          <Property Name="Opis" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CzyOdbyta" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="HistoriaChorobies" Relationship="PrzychodniaDBModel.FK_dbo_Wizytas_dbo_HistoriaChorobies_HistoriaChoroby_Pesel_HistoriaChoroby_IdLekarza" FromRole="Wizytas" ToRole="HistoriaChorobies" />
+          <NavigationProperty Name="Receptas" Relationship="PrzychodniaDBModel.FK_dbo_Receptas_dbo_Wizytas_Wizyta_IdWizyty" FromRole="Wizytas" ToRole="Receptas" />
+        </EntityType>
+        <Association Name="FK_dbo_DniPrzyjecs_dbo_Lekarzs_Lekarz_IdLekarza">
+          <End Role="Lekarzs" Type="PrzychodniaDBModel.Lekarzs" Multiplicity="0..1" />
+          <End Role="DniPrzyjecs" Type="PrzychodniaDBModel.DniPrzyjecs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lekarzs">
+              <PropertyRef Name="IdLekarza" />
+            </Principal>
+            <Dependent Role="DniPrzyjecs">
+              <PropertyRef Name="Lekarz_IdLekarza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_HistoriaChorobies_dbo_Lekarzs_IdLekarza">
+          <End Role="Lekarzs" Type="PrzychodniaDBModel.Lekarzs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistoriaChorobies" Type="PrzychodniaDBModel.HistoriaChorobies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lekarzs">
+              <PropertyRef Name="IdLekarza" />
+            </Principal>
+            <Dependent Role="HistoriaChorobies">
+              <PropertyRef Name="IdLekarza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_HistoriaChorobies_dbo_Pacjents_Pesel">
+          <End Role="Pacjents" Type="PrzychodniaDBModel.Pacjents" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistoriaChorobies" Type="PrzychodniaDBModel.HistoriaChorobies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacjents">
+              <PropertyRef Name="Pesel" />
+            </Principal>
+            <Dependent Role="HistoriaChorobies">
+              <PropertyRef Name="Pesel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_HistoriaChorobies_dbo_SpisChorbs_ChorobaZeSpisu_NazwaChoroby">
+          <End Role="SpisChorbs" Type="PrzychodniaDBModel.SpisChorbs" Multiplicity="0..1" />
+          <End Role="HistoriaChorobies" Type="PrzychodniaDBModel.HistoriaChorobies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpisChorbs">
+              <PropertyRef Name="NazwaChoroby" />
+            </Principal>
+            <Dependent Role="HistoriaChorobies">
+              <PropertyRef Name="ChorobaZeSpisu_NazwaChoroby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Wizytas_dbo_HistoriaChorobies_HistoriaChoroby_Pesel_HistoriaChoroby_IdLekarza">
+          <End Role="HistoriaChorobies" Type="PrzychodniaDBModel.HistoriaChorobies" Multiplicity="0..1" />
+          <End Role="Wizytas" Type="PrzychodniaDBModel.Wizytas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HistoriaChorobies">
+              <PropertyRef Name="Pesel" />
+              <PropertyRef Name="IdLekarza" />
+            </Principal>
+            <Dependent Role="Wizytas">
+              <PropertyRef Name="HistoriaChoroby_Pesel" />
+              <PropertyRef Name="HistoriaChoroby_IdLekarza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Lekarzs_dbo_Specjalizacjas_Specjalizacja_IdSpecjalizacji">
+          <End Role="Specjalizacjas" Type="PrzychodniaDBModel.Specjalizacjas" Multiplicity="0..1" />
+          <End Role="Lekarzs" Type="PrzychodniaDBModel.Lekarzs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specjalizacjas">
+              <PropertyRef Name="IdSpecjalizacji" />
+            </Principal>
+            <Dependent Role="Lekarzs">
+              <PropertyRef Name="Specjalizacja_IdSpecjalizacji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Leks_dbo_Receptas_Recepta_IdRecepty">
+          <End Role="Receptas" Type="PrzychodniaDBModel.Receptas" Multiplicity="0..1" />
+          <End Role="Leks" Type="PrzychodniaDBModel.Leks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receptas">
+              <PropertyRef Name="IdRecepty" />
+            </Principal>
+            <Dependent Role="Leks">
+              <PropertyRef Name="Recepta_IdRecepty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Leks_dbo_SpisLekows_SpisLekow_NazwaLeku">
+          <End Role="SpisLekows" Type="PrzychodniaDBModel.SpisLekows" Multiplicity="0..1" />
+          <End Role="Leks" Type="PrzychodniaDBModel.Leks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpisLekows">
+              <PropertyRef Name="NazwaLeku" />
+            </Principal>
+            <Dependent Role="Leks">
+              <PropertyRef Name="SpisLekow_NazwaLeku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Receptas_dbo_Wizytas_Wizyta_IdWizyty">
+          <End Role="Wizytas" Type="PrzychodniaDBModel.Wizytas" Multiplicity="0..1" />
+          <End Role="Receptas" Type="PrzychodniaDBModel.Receptas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wizytas">
+              <PropertyRef Name="IdWizyty" />
+            </Principal>
+            <Dependent Role="Receptas">
+              <PropertyRef Name="Wizyta_IdWizyty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PrzychodniaDBModelStoreContainer" CdmEntityContainer="PrzychodniaDBEntities2">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DniPrzyjecs">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.DniPrzyjecs">
+              <MappingFragment StoreEntitySet="DniPrzyjecs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Lekarz_IdLekarza" ColumnName="Lekarz_IdLekarza" />
+                <ScalarProperty Name="CzasDataRozpoczecia" ColumnName="CzasDataRozpoczecia" />
+                <ScalarProperty Name="CzasZakonczenia" ColumnName="CzasZakonczenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoriaChorobies">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.HistoriaChorobies">
+              <MappingFragment StoreEntitySet="HistoriaChorobies">
+                <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+                <ScalarProperty Name="IdLekarza" ColumnName="IdLekarza" />
+                <ScalarProperty Name="OpisChoroby" ColumnName="OpisChoroby" />
+                <ScalarProperty Name="OstatniaModyfikacjaOpisuChoroby" ColumnName="OstatniaModyfikacjaOpisuChoroby" />
+                <ScalarProperty Name="ChorobaZeSpisu_NazwaChoroby" ColumnName="ChorobaZeSpisu_NazwaChoroby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lekarzs">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.Lekarzs">
+              <MappingFragment StoreEntitySet="Lekarzs">
+                <ScalarProperty Name="IdLekarza" ColumnName="IdLekarza" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Specjalizacja_IdSpecjalizacji" ColumnName="Specjalizacja_IdSpecjalizacji" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leks">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.Leks">
+              <MappingFragment StoreEntitySet="Leks">
+                <ScalarProperty Name="IdLeku" ColumnName="IdLeku" />
+                <ScalarProperty Name="StopienRefundacji" ColumnName="StopienRefundacji" />
+                <ScalarProperty Name="Dawka" ColumnName="Dawka" />
+                <ScalarProperty Name="Przyjmowanie" ColumnName="Przyjmowanie" />
+                <ScalarProperty Name="Recepta_IdRecepty" ColumnName="Recepta_IdRecepty" />
+                <ScalarProperty Name="SpisLekow_NazwaLeku" ColumnName="SpisLekow_NazwaLeku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacjents">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.Pacjents">
+              <MappingFragment StoreEntitySet="Pacjents">
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="DataUrodzenie" ColumnName="DataUrodzenie" />
+                <ScalarProperty Name="MiejsceUrodzenia" ColumnName="MiejsceUrodzenia" />
+                <ScalarProperty Name="Plec" ColumnName="Plec" />
+                <ScalarProperty Name="NrTelefonu" ColumnName="NrTelefonu" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receptas">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.Receptas">
+              <MappingFragment StoreEntitySet="Receptas">
+                <ScalarProperty Name="IdRecepty" ColumnName="IdRecepty" />
+                <ScalarProperty Name="CzasWystawienia" ColumnName="CzasWystawienia" />
+                <ScalarProperty Name="Wizyta_IdWizyty" ColumnName="Wizyta_IdWizyty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specjalizacjas">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.Specjalizacjas">
+              <MappingFragment StoreEntitySet="Specjalizacjas">
+                <ScalarProperty Name="IdSpecjalizacji" ColumnName="IdSpecjalizacji" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpisChorbs">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.SpisChorbs">
+              <MappingFragment StoreEntitySet="SpisChorbs">
+                <ScalarProperty Name="NazwaChoroby" ColumnName="NazwaChoroby" />
+                <ScalarProperty Name="NazwaPolskaChoroby" ColumnName="NazwaPolskaChoroby" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Objawy" ColumnName="Objawy" />
+                <ScalarProperty Name="SposobyLeczenia" ColumnName="SposobyLeczenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpisLekows">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.SpisLekows">
+              <MappingFragment StoreEntitySet="SpisLekows">
+                <ScalarProperty Name="NazwaLeku" ColumnName="NazwaLeku" />
+                <ScalarProperty Name="NazwaPolskaLeku" ColumnName="NazwaPolskaLeku" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uzytkowniks">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.Uzytkowniks">
+              <MappingFragment StoreEntitySet="Uzytkowniks">
+                <ScalarProperty Name="UzytkownikId" ColumnName="UzytkownikId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wizytas">
+            <EntityTypeMapping TypeName="PrzychodniaDBModel.Wizytas">
+              <MappingFragment StoreEntitySet="Wizytas">
+                <ScalarProperty Name="IdWizyty" ColumnName="IdWizyty" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="CzasWizyty" ColumnName="CzasWizyty" />
+                <ScalarProperty Name="HistoriaChoroby_Pesel" ColumnName="HistoriaChoroby_Pesel" />
+                <ScalarProperty Name="HistoriaChoroby_IdLekarza" ColumnName="HistoriaChoroby_IdLekarza" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="CzyOdbyta" ColumnName="CzyOdbyta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

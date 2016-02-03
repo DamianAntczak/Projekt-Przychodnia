@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fb2e4b881a2b4d5aaa0fb526bb7d3f54" Name="Diagram1">
+        <EntityTypeShape EntityType="PrzychodniaDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.DniPrzyjecs" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.HistoriaChorobies" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.Lekarzs" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.Leks" Width="1.5" PointX="15" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.Pacjents" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.Receptas" Width="1.5" PointX="12.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.Specjalizacjas" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.SpisChorbs" Width="1.5" PointX="6" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.SpisLekows" Width="1.5" PointX="12.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.Uzytkowniks" Width="1.5" PointX="2.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrzychodniaDBModel.Wizytas" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="PrzychodniaDBModel.FK_dbo_DniPrzyjecs_dbo_Lekarzs_Lekarz_IdLekarza" ManuallyRouted="false" />
+        <AssociationConnector Association="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_Lekarzs_IdLekarza" ManuallyRouted="false" />
+        <AssociationConnector Association="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_Pacjents_Pesel" ManuallyRouted="false" />
+        <AssociationConnector Association="PrzychodniaDBModel.FK_dbo_HistoriaChorobies_dbo_SpisChorbs_ChorobaZeSpisu_NazwaChoroby" ManuallyRouted="false" />
+        <AssociationConnector Association="PrzychodniaDBModel.FK_dbo_Wizytas_dbo_HistoriaChorobies_HistoriaChoroby_Pesel_HistoriaChoroby_IdLekarza" ManuallyRouted="false" />
+        <AssociationConnector Association="PrzychodniaDBModel.FK_dbo_Lekarzs_dbo_Specjalizacjas_Specjalizacja_IdSpecjalizacji" ManuallyRouted="false" />
+        <AssociationConnector Association="PrzychodniaDBModel.FK_dbo_Leks_dbo_Receptas_Recepta_IdRecepty" ManuallyRouted="false" />
+        <AssociationConnector Association="PrzychodniaDBModel.FK_dbo_Leks_dbo_SpisLekows_SpisLekow_NazwaLeku" ManuallyRouted="false" />
+        <AssociationConnector Association="PrzychodniaDBModel.FK_dbo_Receptas_dbo_Wizytas_Wizyta_IdWizyty" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

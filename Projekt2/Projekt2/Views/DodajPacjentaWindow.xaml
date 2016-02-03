@@ -1,0 +1,13 @@
+﻿<Window x:Class="Projekt_BD.Views.DodajPacjentaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:Projekt_BD.Views"
+        xmlns:local="clr-namespace:Projekt_BD.Views"
+        mc:Ignorable="d"
+        Title="DodajPacjentaWindow" Height="428.571" Width="359.775">
+    <Grid>
+        <controls:PanelDodawaniaPacjenta HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Width="351"></controls:PanelDodawaniaPacjenta>
+    </Grid>
+</Window>
