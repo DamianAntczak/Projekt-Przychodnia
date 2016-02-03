@@ -33,21 +33,24 @@ namespace Projekt_BD.Views {
         private Recepta NowaRecepta;
 
         public PanelObslugiWizyty() {
-            InitializeComponent();
+            ListaLekow = new List<Lek>();
             worker.DoWork += Worker_DoWork;
+            InitializeComponent();
         }
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e) {
-            ListaLekow = new List<Lek>();
-            using (DbContext db = new DbContext()) {
-                var lekarz = db.Lekarze.First();
+            WczytajDane();
+        }
+        private void WczytajDane() {
+            using (var context = new DbContext()) {
+                var lekarz = context.Lekarze.First();
                 var idLekarza = lekarz.IdLekarza;
-                var pacjent = from p in db.Pacjentci
-                              join h in db.HistoriaChoroby on p.Pesel equals h.Pesel
+                var pacjent = from p in context.Pacjentci
+                              join h in context.HistoriaChoroby on p.Pesel equals h.Pesel
                               where h.Lekarz.IdLekarza == idLekarza
                               select p;
                 this.pacjent = pacjent.FirstOrDefault();
-                var leks = from leki in db.SpisLekow select new { leki.NazwaLeku };
+                var leks = from leki in context.SpisLekow select new { leki.NazwaLeku };
                 dataGrid_WyborLeku.Dispatcher.Invoke(DispatcherPriority.Normal,
                     new Action(() => dataGrid_WyborLeku.ItemsSource = leks.ToList()));
                 wyborPacjentaBox.Dispatcher.Invoke(DispatcherPriority.Normal,

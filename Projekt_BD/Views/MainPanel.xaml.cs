@@ -79,7 +79,6 @@ namespace Projekt_BD.Views {
         }
         private void ZarzadzajWizytamiButton_Click(object sender, RoutedEventArgs e) {
             MenuItemName.Content = "Zarządanie Wizytami";
-
             PanelZarzadzaniaWizyta pzw = new PanelZarzadzaniaWizyta();
             CenterPanel1.Visibility = Visibility.Hidden;
             this.Panele.Content = pzw;
