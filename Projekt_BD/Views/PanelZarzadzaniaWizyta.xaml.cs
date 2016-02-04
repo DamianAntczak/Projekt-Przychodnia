@@ -101,7 +101,7 @@ namespace Projekt_BD.Views {
         }
 
         private void DodajNowaWizyte_Click(object sender, RoutedEventArgs e) {
-            if (WybierzDate.SelectedDate.HasValue && LekarzComboBox.SelectedItem != null && CzasComboBox != null) {
+            if (WybierzDate.SelectedDate.HasValue && LekarzComboBox.SelectedItem != null && CzasComboBox != null && GodzinaWizyty.Text != godz && MinutaWizyty.Text != min) {
                 var czas = (Models.Czas)CzasComboBox.SelectedItem;
                 // d = Enum.GetValues(Models.Czas);
                 using (var context = new DbContext()) {
@@ -126,7 +126,7 @@ namespace Projekt_BD.Views {
                 WyswietlListeWizyt();
             }
             else
-                MessageBox.Show("Proszę wybrać pacjenta, lekarza i datę wizyty");
+                MessageBox.Show("Proszę wybrać pacjenta, lekarza, datę i godzinę wizyty");
         }
         private void PrzesunCzas() {
             var dlugoscWizyty = (int)CzasComboBox.SelectedValue;
@@ -171,7 +171,7 @@ namespace Projekt_BD.Views {
 
         private void GodzinaWizyty_LostFocus(object sender, RoutedEventArgs e) {
             var textbox = (TextBox)sender;
-            if (textbox.Text == "") {
+            if (textbox.Text == "" || int.Parse(textbox.Text) > 23) {
                 textbox.Foreground = Brushes.Gray;
                 textbox.Text = godz;
             }
@@ -179,7 +179,7 @@ namespace Projekt_BD.Views {
 
         private void MinutaWizyty_LostFocus(object sender, RoutedEventArgs e) {
             var textbox = (TextBox)sender;
-            if (textbox.Text == "") {
+            if (textbox.Text == "" || int.Parse(textbox.Text) > 59) {
                 textbox.Foreground = Brushes.Gray;
                 textbox.Text = min;
             }

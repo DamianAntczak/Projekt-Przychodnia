@@ -16,7 +16,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="WyszukajPacjenta" HorizontalAlignment="Left" Margin="134,76,0,455" TextWrapping="Wrap" Text="Wpisz pesel pacjenta." Width="120" Foreground="#FFB4B4B4" Grid.ColumnSpan="2" GotFocus="WyszukajPacjenta_GotFocus" LostFocus="WyszukajPacjenta_LostFocus" PreviewTextInput="TylkoNumer_Handler"/>
                     <Button x:Name="DodajNowaWizyte" Content="Dodaj nową wizytę" HorizontalAlignment="Left" Margin="242.226,442,0,0" VerticalAlignment="Top" Width="120" Height="54" Click="DodajNowaWizyte_Click" LostFocus="DodajNowaWizyte_LostFocus" Grid.Column="1" />
-                    <DataGrid x:Name="dataGrid_Pacjenci" HorizontalAlignment="Left" Margin="15,134,0,0" VerticalAlignment="Top" Height="175" Width="532" SelectionChanged="dataGrid_Pacjenci_SelectionChanged" Grid.ColumnSpan="2"/>
+                    <DataGrid x:Name="dataGrid_Pacjenci" HorizontalAlignment="Left" Margin="15,134,0,0" VerticalAlignment="Top" Height="175" Width="532" SelectionChanged="dataGrid_Pacjenci_SelectionChanged" Grid.ColumnSpan="2" IsReadOnly="True"/>
                     <ComboBox x:Name="LekarzComboBox" HorizontalAlignment="Left" Margin="15,368,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="LekarzComboBox_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -68,7 +68,7 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                     <TextBox x:Name="WyszukajPacjentaLekarz" HorizontalAlignment="Left" Height="23" Margin="49,76,0,0" TextWrapping="Wrap" Text="Wpisz pesel pacjenta." VerticalAlignment="Top" Width="120" Foreground="#FFB4B4B4" Grid.Column="1" Grid.ColumnSpan="2" GotFocus="WyszukajPacjenta_GotFocus" LostFocus="WyszukajPacjenta_LostFocus" PreviewTextInput="TylkoNumer_Handler" />
-                    <DataGrid x:Name="PacjenciLekarza" HorizontalAlignment="Left" Margin="15,107,0,0" VerticalAlignment="Top" Height="202" Width="553" Grid.ColumnSpan="3"/>
+                    <DataGrid x:Name="PacjenciLekarza" HorizontalAlignment="Left" Margin="15,107,0,0" VerticalAlignment="Top" Height="202" Width="553" Grid.ColumnSpan="3" IsReadOnly="True"/>
                     <Label x:Name="label_Copy" Content="Wybierz pacjenta" HorizontalAlignment="Left" Margin="15,72,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                     <DatePicker x:Name="WybierzDateLekarz" HorizontalAlignment="Left" Margin="96.534,354,0,0" VerticalAlignment="Top" Width="120" Grid.Column="2"  />
                     <Label x:Name="label2_Copy" Content="Data wizyty" HorizontalAlignment="Left" Margin="96.534,323,0,0" VerticalAlignment="Top" Grid.Column="2"/>
